@@ -6,7 +6,7 @@ from cram_api.models.student_model import StudentCourse, Student
 from cram_api.serializers import CourseSerializer
 from cram_api.serializers import StudentCourseSerializer, StudentSerializer
 from cram_api.services.student_with_course import GetCourseStudents, GetCourseStudentsDay, GetAllCourseStudents, CreateCourseSigningTable
-
+from cram_api.services.student_with_course import CreateSingleStudentCourseBank, CreateAllStudentCourseBank
 
 class StudentInCourseList(generics.RetrieveAPIView):
     """
@@ -59,6 +59,30 @@ class StudentCreateCourseSigningList(generics.RetrieveAPIView):
 
     def get(self, request, day, date, format=None):
         content = CreateCourseSigningTable.create(day, date)
+        return Response(content)
+
+
+class StudentCreateSingleCourseBank(generics.RetrieveAPIView):
+    """
+    Create course bank for each student for a specific course.
+    """
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+    def get(self, request, pk, format=None):
+        content = CreateSingleStudentCourseBank.create(pk)
+        return Response(content)
+
+
+class StudentCreateAllStudentBank(generics.CreateAPIView):
+    """
+    Create course bank for each student for the all courses.
+    """
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+    def get(self, request, format=None):
+        content = CreateAllStudentCourseBank.create(arg='')
         return Response(content)
 
 

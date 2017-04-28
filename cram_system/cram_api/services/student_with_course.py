@@ -1,6 +1,6 @@
 from django.utils import timezone
 from cram_api.models.course_model import Course
-from cram_api.models.student_model import StudentCourse, StudentCourseSigning
+from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank
 
 """
 Provide Services for the interaction between Student and Course
@@ -9,7 +9,7 @@ Provide Services for the interaction between Student and Course
 
 class GetCourseStudents:
     """
-    Get all student in a specific Course by the course id.
+    Get all student in a specific Course by the course pk.
     """
     def get(pk):
         course = Course.objects.get(id=pk)
@@ -93,4 +93,36 @@ class CreateCourseSigningTable:
                         course=course,
                         date=d
                     )
+        return {'status': 'success'}
+
+
+class CreateSingleStudentCourseBank:
+    """
+    Create Course Bank for each student in the Course by course pk.
+    """
+    def create(pk):
+        course = Course.objects.get(id=pk)
+        studentsInCourse = StudentCourse.objects.filter(course=course)
+
+        for student in studentsInCourse:
+            if StudentCourseBank.objects.filter(owner=student.owner, course=course).exists():
+                print('already exist')
+            else:
+                print('create new course bank')
+                StudentCourseBank.objects.create(
+                    owner=student.owner,
+                    course=course,
+                    balance=0
+                )
+        return {'status': 'success'}
+
+
+class CreateAllStudentCourseBank:
+    """
+    Create Course Bank for each student for all courses.
+    """
+    def create(arg):
+        course_list = Course.objects.all()
+        for course in course_list:
+            CreateSingleStudentCourseBank.create(course.id)
         return {'status': 'success'}

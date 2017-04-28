@@ -49,6 +49,10 @@ urlpatterns = [
     url(r'^api/v1.0/students/in/courses/all/$', student_with_course.StudentInAllCoursesList.as_view()),
     url(r'^api/v1.0/student/create/course/signing/(?P<day>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         student_with_course.StudentCreateCourseSigningList.as_view()),
+    url(r'^api/v1.0/student/create/course/bank/(?P<pk>[0-9]+)/$',
+        student_with_course.StudentCreateSingleCourseBank.as_view()),
+    url(r'^api/v1.0/student/create/all_course/bank/$',
+        student_with_course.StudentCreateAllStudentBank.as_view()),
     url(r'^api/v1.0/test/(?P<pk>[0-9]+)/$', student_with_course.Test.as_view()),
 ]
 
