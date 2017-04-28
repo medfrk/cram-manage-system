@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from cram_api.views import account_view, course_view, space_view, teacher_view, student_view
-
+from cram_api.views import student_with_course
 
 urlpatterns = [
     url(r'^api/v1.0/account/$', account_view.AccountList.as_view()),
@@ -44,6 +44,10 @@ urlpatterns = [
     url(r'^api/v1.0/student/study/(?P<pk>[0-9]+)/$', student_view.StudentStudyDetail.as_view()),
     url(r'^api/v1.0/student/study/signing/$', student_view.StudentStudySigningList.as_view()),
     url(r'^api/v1.0/student/study/signing/(?P<pk>[0-9]+)/$', student_view.StudentStudySigningDetail.as_view()),
+    url(r'^api/v1.0/students/in/course/(?P<pk>[0-9]+)/$', student_with_course.StudentInCourseList.as_view()),
+    url(r'^api/v1.0/students/in/courses/day/(?P<day>[0-9]+)/$', student_with_course.StudentInCoursesDayList.as_view()),
+    url(r'^api/v1.0/students/in/courses/all/$', student_with_course.StudentInAllCoursesList.as_view()),
+    url(r'^api/v1.0/test/(?P<pk>[0-9]+)/$', student_with_course.Test.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
