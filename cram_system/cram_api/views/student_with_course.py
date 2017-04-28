@@ -2,6 +2,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from cram_api.services.student_with_course import GetCourseStudents, GetCourseStudentsDay, GetAllCourseStudents, CreateCourseSigningTable
 from cram_api.services.student_with_course import CreateSingleStudentCourseBank, CreateAllStudentCourseBank
+from cram_api.services.student_with_course import GetStudentCourseSigningTable, GetStudentCourseSigningTableRange
 
 class StudentInCourseList(generics.RetrieveAPIView):
     """
@@ -14,7 +15,7 @@ class StudentInCourseList(generics.RetrieveAPIView):
 
 class StudentInCoursesDayList(generics.RetrieveAPIView):
     """
-    List all students of the courses in a specified day.
+    List all students of the courses in a specific day.
     """
     def get(self, request, day, format=None):
         content = GetCourseStudentsDay.get(day)
@@ -30,7 +31,25 @@ class StudentInAllCoursesList(generics.RetrieveAPIView):
         return Response(content)
 
 
-class StudentCreateCourseSigningList(generics.RetrieveAPIView):
+class StudentSigningTableDayList(generics.RetrieveAPIView):
+    """
+    List all signing tables in a specific day.
+    """
+    def get(self, resuest, date, format=None):
+        content = GetStudentCourseSigningTable.get(date)
+        return Response(content)
+
+
+class StudentSigningTableDayRangeList(generics.RetrieveAPIView):
+    """
+    List all signing tables in a day range.
+    """
+    def get(self, request, date_start, date_end, format=None):
+        content = GetStudentCourseSigningTableRange.get(date_start, date_end)
+        return Response(content)
+
+
+class StudentCreateCourseSigning(generics.RetrieveAPIView):
     """
     Create Course signing table for a specific day.
     

@@ -1,6 +1,7 @@
 from django.utils import timezone
 from cram_api.models.course_model import Course
 from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank
+from datetime import timedelta
 
 """
 Provide Services for the interaction between Student and Course
@@ -69,6 +70,61 @@ class GetAllCourseStudents:
         return result
 
 
+class GetStudentCourseSigningTable:
+    """
+    Get signing table for a specific date
+    """
+    def get(date):
+        split_date = date.split("-")
+        d = timezone.datetime(
+            year=int(split_date[0]),
+            month=int(split_date[1]),
+            day=int(split_date[2])
+        )
+        signing_list = StudentCourseSigning.objects.filter(date=d)
+        content = []
+        for signing in signing_list:
+            obj = {
+                "id": str(signing.id),
+                "name": signing.owner.name,
+                "course": signing.course.__str__(),
+                "sign": signing.sign,
+            }
+            content.append(obj)
+        result = {
+            "signings": content,
+            "date": date,
+        }
+        return result
+
+
+class GetStudentCourseSigningTableRange:
+    """
+    Get signing table for a specific date range
+    """
+    def get(date_start, date_end):
+        split_date_start = date_start.split("-")
+        split_date_end = date_end.split("-")
+        d_start = timezone.datetime(
+            year=int(split_date_start[0]),
+            month=int(split_date_start[1]),
+            day=int(split_date_start[2])
+        )
+        d_end = timezone.datetime(
+            year=int(split_date_end[0]),
+            month=int(split_date_end[1]),
+            day=int(split_date_end[2])
+        )
+        content = []
+        for day in range((d_end - d_start).days):
+            date = d_start + timedelta(day)
+            content.append(GetStudentCourseSigningTable.get(date.strftime("%Y-%m-%d")))
+        result = {
+            "signing_list": content,
+        }
+        return result
+
+
 class CreateCourseSigningTable:
     """
     Create course signing tables for students in a specific day. 
@@ -76,14 +132,14 @@ class CreateCourseSigningTable:
     def create(day, date):
         courses = Course.objects.filter(day=int(day))
         split_date = date.split("-")
+        d = timezone.datetime(
+            year=int(split_date[0]),
+            month=int(split_date[1]),
+            day=int(split_date[2])
+        )
         for course in courses:
             studentsInCourse = StudentCourse.objects.filter(course=course)
             for student in studentsInCourse:
-                d = timezone.datetime(
-                    year=int(split_date[0]),
-                    month=int(split_date[1]),
-                    day=int(split_date[2])
-                )
                 if StudentCourseSigning.objects.filter(owner=student.owner, course=course, date=d).exists():
                     print('already exist')
                 else:

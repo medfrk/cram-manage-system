@@ -49,15 +49,21 @@ urlpatterns = [
     url(r'^api/v1.0/students/in/courses/day/(?P<day>[0-9]+)/$', student_with_course.StudentInCoursesDayList.as_view()),
     url(r'^api/v1.0/students/in/courses/all/$', student_with_course.StudentInAllCoursesList.as_view()),
     url(r'^api/v1.0/student/create/course/signing/(?P<day>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
-        student_with_course.StudentCreateCourseSigningList.as_view()),
+        student_with_course.StudentCreateCourseSigning.as_view()),
     url(r'^api/v1.0/student/create/course/bank/(?P<pk>[0-9]+)/$',
         student_with_course.StudentCreateSingleCourseBank.as_view()),
     url(r'^api/v1.0/student/create/all_course/bank/$',
         student_with_course.StudentCreateAllStudentBank.as_view()),
+    url(r'^api/v1.0/students/course/signing/date/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        student_with_course.StudentSigningTableDayList.as_view()),
+    url(r'^api/v1.0/students/course/signing/date/range/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
+        r'0-9]+[-][0-9]+)/$',
+        student_with_course.StudentSigningTableDayRangeList.as_view()),
     url(r'^api/v1.0/students/study/(?P<day>[0-9]+)',
         student_with_study.StudentInOneDayList.as_view()),
     url(r'^api/v1.0/students/study/all',
         student_with_study.StudentInAllDayList.as_view()),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
