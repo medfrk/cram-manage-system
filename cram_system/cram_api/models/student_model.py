@@ -67,7 +67,7 @@ class StudentCourseBank(models.Model):
 class StudentCourseSigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
     course = models.ForeignKey(Course, on_delete=models.CASCADE,)
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     sign = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)

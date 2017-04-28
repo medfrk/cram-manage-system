@@ -5,7 +5,7 @@ from cram_api.models.course_model import Course
 from cram_api.models.student_model import StudentCourse, Student
 from cram_api.serializers import CourseSerializer
 from cram_api.serializers import StudentCourseSerializer, StudentSerializer
-from cram_api.services.get_course_students import GetCourseStudents, GetCourseStudentsDay, GetAllCourseStudents
+from cram_api.services.get_course_students import GetCourseStudents, GetCourseStudentsDay, GetAllCourseStudents, CreateCourseSigningTable
 
 
 class StudentInCourseList(generics.RetrieveAPIView):
@@ -41,6 +41,26 @@ class StudentInAllCoursesList(generics.RetrieveAPIView):
 
     def get(self, request, format=None):
         content = GetAllCourseStudents.get([1, 2, 3, 4, 5, 6, 7])
+        return Response(content)
+
+
+class StudentCreateCourseSigningList(generics.RetrieveAPIView):
+    """
+    Create Course signing table for a specific day.
+    
+    input example : 
+    {
+        day = 1~7
+        date = 2017-4-26
+    }
+    """
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+    def get(self, request, day, date, format=None):
+        print(day)
+        print(date)
+        content = CreateCourseSigningTable.create(day, date)
         return Response(content)
 
 

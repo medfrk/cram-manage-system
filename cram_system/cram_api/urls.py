@@ -47,6 +47,8 @@ urlpatterns = [
     url(r'^api/v1.0/students/in/course/(?P<pk>[0-9]+)/$', student_with_course.StudentInCourseList.as_view()),
     url(r'^api/v1.0/students/in/courses/day/(?P<day>[0-9]+)/$', student_with_course.StudentInCoursesDayList.as_view()),
     url(r'^api/v1.0/students/in/courses/all/$', student_with_course.StudentInAllCoursesList.as_view()),
+    url(r'^api/v1.0/student/create/course/signing/(?P<day>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        student_with_course.StudentCreateCourseSigningList.as_view()),
     url(r'^api/v1.0/test/(?P<pk>[0-9]+)/$', student_with_course.Test.as_view()),
 ]
 
