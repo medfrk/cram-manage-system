@@ -84,7 +84,7 @@ class CreateCourseSigningTable:
                     month=int(split_date[1]),
                     day=int(split_date[2])
                 )
-                if(StudentCourseSigning.objects.get(owner=student.owner, course=course, date=d)):
+                if StudentCourseSigning.objects.filter(owner=student.owner, course=course, date=d).exists():
                     print('already exist')
                 else:
                     print('create new signing table')
