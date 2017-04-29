@@ -10,7 +10,8 @@ class TeacherList(generics.ListCreateAPIView):
     """
     List all Teachers, or create a new teacher
     """
-    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly, )
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated, )
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
 
