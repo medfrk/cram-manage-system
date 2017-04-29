@@ -3,12 +3,14 @@ from rest_framework import generics
 from rest_framework.response import Response
 from cram_api.models.teacher_model import Teacher, TeacherNote, TeacherArrange
 from cram_api.serializers import TeacherSerializer, TeacherNoteSerializer, TeacherArrangeSerializer
+from rest_framework import permissions
 
 
 class TeacherList(generics.ListCreateAPIView):
     """
     List all Teachers, or create a new teacher
     """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly, )
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
 
