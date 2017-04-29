@@ -1,0 +1,7 @@
+{% if socialaccount and provider %}
+    <p> Your uid is {{socialaccount}}. </p>
+    <p> Your provider is {{provider}}. </p>
+    <a href="/accounts/logout/">logout</a>
+{% else %}
+    <p> Not login.</p>
+{% endif %}

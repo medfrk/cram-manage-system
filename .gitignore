@@ -104,4 +104,4 @@ node_modules/
 
 cram_system/nohup.out
 
-**/migrations/*
+**/migrations/

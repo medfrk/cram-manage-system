@@ -47,9 +47,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'cram_api',
     'website',
+    'authentication',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
+#SOCIALACCOUNT_ADAPTER = 'authentication.socialaccount_adapter.mySocialAccountAdapter'
+LOGIN_REDIRECT_URL = '/testprofilepage'
+ACCOUNT_LOGOUT_REDIRECT_URL  = '/accounts/login'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
