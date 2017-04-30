@@ -10,6 +10,7 @@ class StudentPlanSerializer(serializers.ModelSerializer):
             'owner',
             'date',
             'subject',
+            'range',
             'need_quiz',
             'score',
             'finish_quiz',

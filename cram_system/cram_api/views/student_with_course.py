@@ -1,8 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from cram_api.services.student_with_course import GetCourseStudents, GetCourseStudentsDay, GetAllCourseStudents, CreateCourseSigningTable
-from cram_api.services.student_with_course import CreateSingleStudentCourseBank, CreateAllStudentCourseBank
-from cram_api.services.student_with_course import GetStudentCourseSigningTable, GetStudentCourseSigningTableRange
+from cram_api.services.student_with_course import *
+
 
 class StudentInCourseList(generics.RetrieveAPIView):
     """

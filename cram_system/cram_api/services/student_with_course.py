@@ -121,6 +121,8 @@ class GetStudentCourseSigningTableRange:
             content.append(GetStudentCourseSigningTable.get(date.strftime("%Y-%m-%d")))
         result = {
             "signing_list": content,
+            "date_start": date_start,
+            "data_end": date_end,
         }
         return result
 

@@ -105,7 +105,7 @@ class StudentStudyBank(models.Model):
 
 class StudentStudySigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     finish_previous = models.BooleanField(default=False)
     sign = models.BooleanField(default=False)
     finish_homework = models.BooleanField(default=False)
@@ -185,7 +185,7 @@ class StudentQuiz(models.Model):
         ('civil_ethics_education', '公民'),
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     subject = models.CharField(
         max_length=25,
         choices=SUBJECT_CHOICES,
@@ -213,7 +213,7 @@ class StudentPlan(models.Model):
         ('civil_ethics_education', '公民'),
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     subject = models.CharField(
         max_length=25,
         choices=SUBJECT_CHOICES,

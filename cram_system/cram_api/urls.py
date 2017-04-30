@@ -63,7 +63,18 @@ urlpatterns = [
         student_with_study.StudentInOneDayList.as_view()),
     url(r'^api/v1.0/students/study/all',
         student_with_study.StudentInAllDayList.as_view()),
-
+    url(r'api/v1.0/students/study/signing/date/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        student_with_study.StudentDailySigningList.as_view()),
+    url(r'api/v1.0/students/study/signing/date/range/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
+        r'0-9]+[-][0-9]+)/$',
+        student_with_study.StudentRangeSigningList.as_view()),
+    url(r'api/v1.0/student/study/bank/by/student_id/(?P<id>[0-9]+)/$',
+        student_with_study.StudentStudyBankList.as_view()),
+    url(r'api/v1.0/students/study/bank', student_with_study.StudentStudyBankAllList.as_view()),
+    url(r'api/v1.0/student/create/study/signing/student_id/(?P<student_id>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        student_with_study.CreateStudySigningTable.as_view()),
+    url(r"api/v1.0/student/create/all/study/signing/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$",
+        student_with_study.CreateAllStudySigningTable.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
