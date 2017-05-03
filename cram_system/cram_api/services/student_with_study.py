@@ -139,7 +139,7 @@ def get_all_study_bank():
     return result
 
 
-def create_study_signing_by_student_id(student_id, date):
+def create_study_signing_by_student_id(student_id, seat, date):
     """
     Create Study Signing Table for a specific student by student id and date.
     """
@@ -156,11 +156,15 @@ def create_study_signing_by_student_id(student_id, date):
     if StudentStudySigning.objects.filter(owner=student, date=d).exists():
         result = {
             'error': 'study signing table already exist',
+            'student_id': student_id,
             'student_name': student.name,
+            'student_seat': seat,
+            'date': date,
         }
     else:
         StudentStudySigning.objects.create(
             owner=student,
+            seat=seat,
             date=d,
             finish_previous=finish_previous_plan,
         )
@@ -168,6 +172,7 @@ def create_study_signing_by_student_id(student_id, date):
             'status': 'create study signing table success',
             'student_id': student_id,
             'student_name': student.name,
+            'student_seat': seat,
             'date': date,
         }
     return result
@@ -183,7 +188,7 @@ def create_all_study_signing_by_date(date):
 
     content = []
     for student in students:
-        content.append(create_study_signing_by_student_id(student['id'], date))
+        content.append(create_study_signing_by_student_id(student['id'], student['seat'], date))
     result = {
         'log': content,
         'date': date,

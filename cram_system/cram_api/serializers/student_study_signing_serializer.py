@@ -7,6 +7,7 @@ class StudentStudySigningSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentStudySigning
         fields = (
+            'id',
             'owner',
             'date',
             'finish_previous',

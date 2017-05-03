@@ -106,6 +106,7 @@ class StudentStudyBank(models.Model):
 
 class StudentStudySigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
+    seat = models.CharField(max_length=50, default="")
     date = models.DateField(default=timezone.now, editable=True)
     finish_previous = models.BooleanField(default=False)
     sign_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
