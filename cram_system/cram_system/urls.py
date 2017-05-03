@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^docs/', include('rest_framework_docs.urls')),
     url(r'^', include('cram_api.urls')),
+    url(r'^', include('website.urls')),
 ]
