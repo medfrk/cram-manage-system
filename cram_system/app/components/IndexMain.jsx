@@ -13,14 +13,31 @@ class IndexMain extends React.Component {
     super();
     this.state = {
       students: [],
+      numberReport: [],
     }
 
+    this.getNumberReport = this.getNumberReport.bind(this);
     this.getAllStudent = this.getAllStudent.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.storeData = this.storeData.bind(this);
+    this.storeNumberReport = this.storeNumberReport.bind(this);
 
-    this.getAllStudent();
+    // this.getAllStudent();
+
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+    this.getNumberReport(date);
+  }
+
+  getNumberReport(specific_date) {
+    return fetch('http://localhost:8000/api/v1.0/study_manage/' + specific_date + '/', {
+             accept: 'application/json',
+             method: 'get',
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+             .then(this.storeNumberReport)
   }
 
   getAllStudent() {
@@ -55,6 +72,12 @@ class IndexMain extends React.Component {
     });
   }
 
+  storeNumberReport(data) {
+    this.setState({
+      numberReport: data,
+    });
+  }
+
   render() {
     var studentCardList = this.state.students.map((student, index) => {
       return (
@@ -67,12 +90,33 @@ class IndexMain extends React.Component {
       )
     })
 
-    var signingListGroups = <SigningListGroups expected={40} actual={25} absent={10} leave={5} />
-    var quizCreateListGroups = <QuizCreateListGroups expected={25} done={20} not_done={5} />
-    var homeworkListGroups = <HomeworkListGroups expected={25} done={23} not_done={2} />
-    var quizListGroups = <QuizListGroups expected={20} done={17} not_done={3} />
-    var planListGroups = <PlanListGroups expected={25} done={23} not_done={2} />
-    var leftListGroups = <LeftListGroups total={25} can_left={5} left={3} not_left={22} />
+    var number = this.state.numberReport
+    var signingListGroups = <SigningListGroups
+          expected={number['signingExpect']}
+          actual={number['signingActual']}
+          absent={number['signingAbsent']}
+          leave={number['signingLeave']} />
+    var quizCreateListGroups = <QuizCreateListGroups
+          expected={number['quizCreateExpect']}
+          done={number['quizCreateDone']}
+          not_done={number['quizCreateNotDone']} />
+    var homeworkListGroups = <HomeworkListGroups
+          expected={number['homeworkExpect']}
+          done={number['homeworkDone']}
+          not_done={number['homeworkNotDone']} />
+    var quizListGroups = <QuizListGroups
+          expected={number['quizExpect']}
+          done={number['quizDone']}
+          not_done={number['quizNotDone']} />
+    var planListGroups = <PlanListGroups
+          expected={number['planExpect']}
+          done={number['planDone']}
+          not_done={number['planNotDone']} />
+    var leftListGroups = <LeftListGroups
+          total={number['leftExpect']}
+          can_left={number['leftCanGo']}
+          left={number['leftDone']}
+          not_left={number['leftNotDone']} />
 
 
 

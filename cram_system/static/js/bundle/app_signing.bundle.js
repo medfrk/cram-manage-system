@@ -48,9 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var Index = __webpack_require__(159);
+	var Signing = __webpack_require__(172);
 
-	ReactDOM.render(React.createElement(Index, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Signing, null), document.getElementById('app'));
 
 /***/ }),
 /* 1 */
@@ -19747,52 +19747,7 @@
 
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-	var CramHeader = __webpack_require__(160);
-	var CramFooter = __webpack_require__(161);
-	var IndexMain = __webpack_require__(162);
-
-	var Index = function (_React$Component) {
-	  _inherits(Index, _React$Component);
-
-	  function Index() {
-	    _classCallCheck(this, Index);
-
-	    return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
-	  }
-
-	  _createClass(Index, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(CramHeader, null),
-	        React.createElement(IndexMain, null),
-	        React.createElement(CramFooter, null)
-	      );
-	    }
-	  }]);
-
-	  return Index;
-	}(React.Component);
-
-	module.exports = Index;
-
-/***/ }),
+/* 159 */,
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20102,7 +20057,17 @@
 	module.exports = CramFooter;
 
 /***/ }),
-/* 162 */
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20116,58 +20081,87 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var StudentCard = __webpack_require__(163);
-	var SigningListGroups = __webpack_require__(164);
-	var QuizCreateListGroups = __webpack_require__(165);
-	var HomeworkListGroups = __webpack_require__(166);
-	var QuizListGroups = __webpack_require__(167);
-	var PlanListGroups = __webpack_require__(168);
-	var LeftListGroups = __webpack_require__(169);
+	var CramHeader = __webpack_require__(160);
+	var CramFooter = __webpack_require__(161);
+	var SigningMain = __webpack_require__(173);
 
-	var IndexMain = function (_React$Component) {
-	  _inherits(IndexMain, _React$Component);
+	var Signing = function (_React$Component) {
+	  _inherits(Signing, _React$Component);
 
-	  function IndexMain() {
-	    _classCallCheck(this, IndexMain);
+	  function Signing() {
+	    _classCallCheck(this, Signing);
 
-	    var _this = _possibleConstructorReturn(this, (IndexMain.__proto__ || Object.getPrototypeOf(IndexMain)).call(this));
+	    return _possibleConstructorReturn(this, (Signing.__proto__ || Object.getPrototypeOf(Signing)).apply(this, arguments));
+	  }
+
+	  _createClass(Signing, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(CramHeader, null),
+	        React.createElement(SigningMain, null),
+	        React.createElement(CramFooter, null)
+	      );
+	    }
+	  }]);
+
+	  return Signing;
+	}(React.Component);
+
+	module.exports = Signing;
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var SigningTableRow = __webpack_require__(174);
+
+	var SigningMain = function (_React$Component) {
+	  _inherits(SigningMain, _React$Component);
+
+	  function SigningMain() {
+	    _classCallCheck(this, SigningMain);
+
+	    var _this = _possibleConstructorReturn(this, (SigningMain.__proto__ || Object.getPrototypeOf(SigningMain)).call(this));
 
 	    _this.state = {
 	      students: [],
-	      numberReport: []
+	      list: []
 	    };
 
-	    _this.getNumberReport = _this.getNumberReport.bind(_this);
-	    _this.getAllStudent = _this.getAllStudent.bind(_this);
+	    _this.getSigningExpect = _this.getSigningExpect.bind(_this);
 	    _this.checkStatus = _this.checkStatus.bind(_this);
 	    _this.parseJSON = _this.parseJSON.bind(_this);
 	    _this.storeData = _this.storeData.bind(_this);
-	    _this.storeNumberReport = _this.storeNumberReport.bind(_this);
-
-	    // this.getAllStudent();
+	    _this.handleData = _this.handleData.bind(_this);
 
 	    var today = new Date();
 	    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-	    _this.getNumberReport(date);
+	    _this.getSigningExpect(date);
 	    return _this;
 	  }
 
-	  _createClass(IndexMain, [{
-	    key: 'getNumberReport',
-	    value: function getNumberReport(specific_date) {
-	      return fetch('http://localhost:8000/api/v1.0/study_manage/' + specific_date + '/', {
+	  _createClass(SigningMain, [{
+	    key: 'getSigningExpect',
+	    value: function getSigningExpect(specific_date) {
+	      return fetch('http://localhost:8000/api/v1.0/study_manage/signing/expect/' + specific_date + '/', {
 	        accept: 'application/json',
 	        method: 'get'
-	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeNumberReport);
-	    }
-	  }, {
-	    key: 'getAllStudent',
-	    value: function getAllStudent() {
-	      return fetch('http://localhost:8000/api/v1.0/basic/student/', {
-	        accept: 'application/json',
-	        method: 'get'
-	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeData);
+	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeData).then(this.handleData);
 	    }
 	  }, {
 	    key: 'checkStatus',
@@ -20192,56 +20186,28 @@
 	    key: 'storeData',
 	    value: function storeData(data) {
 	      this.setState({
-	        students: data.results
+	        students: data
 	      });
 	    }
 	  }, {
-	    key: 'storeNumberReport',
-	    value: function storeNumberReport(data) {
+	    key: 'handleData',
+	    value: function handleData(data) {
+	      var studentSigningTableRowList = this.state.students['signing_list'].map(function (student, index) {
+	        return React.createElement(SigningTableRow, {
+	          key: index,
+	          student_number: index + 1,
+	          student_name: student['student_name'],
+	          student_seat: student['student_seat'],
+	          student_sign: student['sign']
+	        });
+	      });
 	      this.setState({
-	        numberReport: data
+	        list: studentSigningTableRowList
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var studentCardList = this.state.students.map(function (student, index) {
-	        return React.createElement(StudentCard, {
-	          key: index,
-	          student_name: student['name'],
-	          student_image: student['image'],
-	          student_school: student['school']
-	        });
-	      });
-
-	      var number = this.state.numberReport;
-	      var signingListGroups = React.createElement(SigningListGroups, {
-	        expected: number['signingExpect'],
-	        actual: number['signingActual'],
-	        absent: number['signingAbsent'],
-	        leave: number['signingLeave'] });
-	      var quizCreateListGroups = React.createElement(QuizCreateListGroups, {
-	        expected: number['quizCreateExpect'],
-	        done: number['quizCreateDone'],
-	        not_done: number['quizCreateNotDone'] });
-	      var homeworkListGroups = React.createElement(HomeworkListGroups, {
-	        expected: number['homeworkExpect'],
-	        done: number['homeworkDone'],
-	        not_done: number['homeworkNotDone'] });
-	      var quizListGroups = React.createElement(QuizListGroups, {
-	        expected: number['quizExpect'],
-	        done: number['quizDone'],
-	        not_done: number['quizNotDone'] });
-	      var planListGroups = React.createElement(PlanListGroups, {
-	        expected: number['planExpect'],
-	        done: number['planDone'],
-	        not_done: number['planNotDone'] });
-	      var leftListGroups = React.createElement(LeftListGroups, {
-	        total: number['leftExpect'],
-	        can_left: number['leftCanGo'],
-	        left: number['leftDone'],
-	        not_left: number['leftNotDone'] });
-
 	      return React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -20251,39 +20217,62 @@
 	          ' '
 	        ),
 	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          signingListGroups,
-	          quizCreateListGroups
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          homeworkListGroups,
-	          quizListGroups
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          planListGroups,
-	          leftListGroups
+	          'h1',
+	          null,
+	          'SigningMain'
 	        ),
 	        React.createElement(
 	          'div',
 	          null,
-	          studentCardList
+	          React.createElement(
+	            'table',
+	            { className: 'table table-striped table-hover ' },
+	            React.createElement(
+	              'thead',
+	              null,
+	              React.createElement(
+	                'tr',
+	                null,
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '#'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  'Column heading'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  'Column heading'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  'Column heading'
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'tbody',
+	              null,
+	              this.state.list
+	            )
+	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return IndexMain;
+	  return SigningMain;
 	}(React.Component);
 
-	module.exports = IndexMain;
+	module.exports = SigningMain;
 
 /***/ }),
-/* 163 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20298,591 +20287,49 @@
 
 	var React = __webpack_require__(1);
 
-	var StudentCard = function (_React$Component) {
-	  _inherits(StudentCard, _React$Component);
+	var SigningTableRow = function (_React$Component) {
+	  _inherits(SigningTableRow, _React$Component);
 
-	  function StudentCard() {
-	    _classCallCheck(this, StudentCard);
+	  function SigningTableRow() {
+	    _classCallCheck(this, SigningTableRow);
 
-	    return _possibleConstructorReturn(this, (StudentCard.__proto__ || Object.getPrototypeOf(StudentCard)).call(this));
+	    return _possibleConstructorReturn(this, (SigningTableRow.__proto__ || Object.getPrototypeOf(SigningTableRow)).call(this));
 	  }
 
-	  _createClass(StudentCard, [{
+	  _createClass(SigningTableRow, [{
 	    key: 'render',
 	    value: function render() {
-	      var imgStyle = {
-	        'width': '100%'
-	      };
-	      var pStyle = {
-	        'textAlign': 'center'
-	      };
-
 	      return React.createElement(
-	        'div',
-	        { className: 'col-md-3' },
-	        React.createElement('img', { style: imgStyle, src: this.props.student_image }),
+	        'tr',
+	        null,
 	        React.createElement(
-	          'p',
-	          { style: pStyle },
+	          'td',
+	          null,
+	          this.props.student_number
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
 	          this.props.student_name
 	        ),
 	        React.createElement(
-	          'p',
-	          { style: pStyle },
-	          this.props.student_school
-	        )
-	      );
-	    }
-	  }]);
-
-	  return StudentCard;
-	}(React.Component);
-
-	module.exports = StudentCard;
-
-/***/ }),
-/* 164 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var SigningListGroups = function (_React$Component) {
-	  _inherits(SigningListGroups, _React$Component);
-
-	  function SigningListGroups() {
-	    _classCallCheck(this, SigningListGroups);
-
-	    return _possibleConstructorReturn(this, (SigningListGroups.__proto__ || Object.getPrototypeOf(SigningListGroups)).call(this));
-	  }
-
-	  _createClass(SigningListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
+	          'td',
+	          null,
+	          this.props.student_seat
+	        ),
 	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.expected
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u81EA\u7FD2\u61C9\u5230\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.actual
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u81EA\u7FD2\u5DF2\u5230\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.absent
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u81EA\u7FD2\u672A\u5230\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.leave
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u81EA\u7FD2\u8ACB\u5047\u4EBA\u6578"
-	            )
-	          )
+	          'td',
+	          null,
+	          this.props.student_sign
 	        )
 	      );
 	    }
 	  }]);
 
-	  return SigningListGroups;
+	  return SigningTableRow;
 	}(React.Component);
 
-	module.exports = SigningListGroups;
-
-/***/ }),
-/* 165 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var QuizCreateListGroups = function (_React$Component) {
-	  _inherits(QuizCreateListGroups, _React$Component);
-
-	  function QuizCreateListGroups() {
-	    _classCallCheck(this, QuizCreateListGroups);
-
-	    return _possibleConstructorReturn(this, (QuizCreateListGroups.__proto__ || Object.getPrototypeOf(QuizCreateListGroups)).call(this));
-	  }
-
-	  _createClass(QuizCreateListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
-	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.expected
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u61C9\u8A72\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u5DF2\u7D93\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.not_done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u9084\u672A\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return QuizCreateListGroups;
-	}(React.Component);
-
-	module.exports = QuizCreateListGroups;
-
-/***/ }),
-/* 166 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var HomeworkListGroups = function (_React$Component) {
-	  _inherits(HomeworkListGroups, _React$Component);
-
-	  function HomeworkListGroups() {
-	    _classCallCheck(this, HomeworkListGroups);
-
-	    return _possibleConstructorReturn(this, (HomeworkListGroups.__proto__ || Object.getPrototypeOf(HomeworkListGroups)).call(this));
-	  }
-
-	  _createClass(HomeworkListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
-	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.expected
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u61C9\u8A72\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u5DF2\u7D93\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.not_done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u9084\u672A\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return HomeworkListGroups;
-	}(React.Component);
-
-	module.exports = HomeworkListGroups;
-
-/***/ }),
-/* 167 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var QuizListGroups = function (_React$Component) {
-	  _inherits(QuizListGroups, _React$Component);
-
-	  function QuizListGroups() {
-	    _classCallCheck(this, QuizListGroups);
-
-	    return _possibleConstructorReturn(this, (QuizListGroups.__proto__ || Object.getPrototypeOf(QuizListGroups)).call(this));
-	  }
-
-	  _createClass(QuizListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
-	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.expected
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u61C9\u8A72\u5B8C\u6210\u8003\u8A66\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u5DF2\u7D93\u5B8C\u6210\u8003\u8A66\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.not_done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u9084\u672A\u5B8C\u6210\u8003\u8A66\u4EBA\u6578"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return QuizListGroups;
-	}(React.Component);
-
-	module.exports = QuizListGroups;
-
-/***/ }),
-/* 168 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var PlanListGroups = function (_React$Component) {
-	  _inherits(PlanListGroups, _React$Component);
-
-	  function PlanListGroups() {
-	    _classCallCheck(this, PlanListGroups);
-
-	    return _possibleConstructorReturn(this, (PlanListGroups.__proto__ || Object.getPrototypeOf(PlanListGroups)).call(this));
-	  }
-
-	  _createClass(PlanListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
-	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.expected
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u61C9\u8A72\u5B8C\u6210\u8B80\u8A08\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u5DF2\u7D93\u5B8C\u6210\u8B80\u8A08\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.not_done
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u9084\u672A\u5B8C\u6210\u8B80\u8A08\u4EBA\u6578"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return PlanListGroups;
-	}(React.Component);
-
-	module.exports = PlanListGroups;
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var LeftListGroups = function (_React$Component) {
-	  _inherits(LeftListGroups, _React$Component);
-
-	  function LeftListGroups() {
-	    _classCallCheck(this, LeftListGroups);
-
-	    return _possibleConstructorReturn(this, (LeftListGroups.__proto__ || Object.getPrototypeOf(LeftListGroups)).call(this));
-	  }
-
-	  _createClass(LeftListGroups, [{
-	    key: "render",
-	    value: function render() {
-	      return React.createElement(
-	        "div",
-	        { className: "col-md-6" },
-	        React.createElement(
-	          "ul",
-	          { className: "list-group" },
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.total
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u4ECA\u65E5\u81EA\u7FD2\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.can_left
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u53EF\u4EE5\u56DE\u5BB6\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.left
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u5DF2\u7D93\u56DE\u5BB6\u4EBA\u6578"
-	            )
-	          ),
-	          React.createElement(
-	            "li",
-	            { className: "list-group-item" },
-	            React.createElement(
-	              "span",
-	              { className: "badge" },
-	              this.props.not_left
-	            ),
-	            React.createElement(
-	              "a",
-	              { href: "#" },
-	              "\u9084\u6C92\u56DE\u5BB6\u4EBA\u6578"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return LeftListGroups;
-	}(React.Component);
-
-	module.exports = LeftListGroups;
+	module.exports = SigningTableRow;
 
 /***/ })
 /******/ ]);

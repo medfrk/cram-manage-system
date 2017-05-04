@@ -72,6 +72,8 @@ urlpatterns = [
     url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
     url(r'^api/v1.0/study_manage/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudyManageList.as_view()),
+    url(r'^api/v1.0/study_manage/signing/expect/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudySigningExpectList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

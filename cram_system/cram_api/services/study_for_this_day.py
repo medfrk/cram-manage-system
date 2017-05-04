@@ -37,7 +37,20 @@ def loop_through_signing_list(signing_list):
             "student_name": signing.owner.name,
             "student_school": signing.owner.school,
             "student_grade": trans_grade(signing.owner.grade),
+            "finish_previous": signing.finish_previous,
             "sign_at": signing.sign_at,
+            "sign": signing.sign,
+            "leave": signing.leave,
+            "create_quiz_at": signing.create_quiz_at,
+            "have_create_quiz": signing.have_create_quiz,
+            "finish_homework_at": signing.finish_homework_at,
+            "finish_homework": signing.finish_homework,
+            "finish_quiz_at": signing.finish_quiz_at,
+            "finish_quiz": signing.finish_quiz,
+            "finish_plan_at": signing.finish_plan_at,
+            "finish_plan": signing.finish_plan,
+            "left_at": signing.left_at,
+            "left": signing.left,
         }
         content.append(obj)
     result = {
@@ -117,7 +130,7 @@ def left_not_done(date):
     return loop_through_signing_list(signing_list)
 
 
-def collect_study_signing_data(date):
+def collect_the_study_number_report(date):
     d = datetime_gen(date)
 
     signingExpect = signing_expect(d)
@@ -141,41 +154,31 @@ def collect_study_signing_data(date):
     leftNotDone = left_not_done(d)
 
     result = {
-        "signingExpect": signingExpect,
-        "signingActual": signingActual,
-        "signingAbsent": signingAbsent,
-        "signingLeave": signingLeave,
-        "quizCreateDone": quizCreateDone,
-        "quizCreateNotDone": quizCreateNotDone,
-        "homeworkDone": homeworkDone,
-        "homeworkNotDone": homeworkNotDone,
-        "quizDone": quizDone,
-        "quizNotDone": quizNotDone,
-        "planDone": planDone,
-        "planNotDone": planNotDone,
-        "leftDone": leftDone,
-        "leftNotDone": leftNotDone,
+        "signingExpect": signingExpect['count'],
+        "signingActual": signingActual['count'],
+        "signingAbsent": signingAbsent['count'],
+        "signingLeave": signingLeave['count'],
+        "quizCreateExpect": signingActual['count'],
+        "quizCreateDone": quizCreateDone['count'],
+        "quizCreateNotDone": quizCreateNotDone['count'],
+        "homeworkExpect": signingActual['count'],
+        "homeworkDone": homeworkDone['count'],
+        "homeworkNotDone": homeworkNotDone['count'],
+        "quizExpect": signingActual['count'],
+        "quizDone": quizDone['count'],
+        "quizNotDone": quizNotDone['count'],
+        "planExpect": signingActual['count'],
+        "planDone": planDone['count'],
+        "planNotDone": planNotDone['count'],
+        "leftExpect": signingActual['count'],
+        "leftCanGo": planDone['count'],
+        "leftDone": leftDone['count'],
+        "leftNotDone": leftNotDone['count'],
     }
     return result
 
 
-# class StudentStudySigning(models.Model):
-#     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-#     seat = models.CharField(max_length=50, default="")
-#     date = models.DateField(default=timezone.now, editable=True)
-#     finish_previous = models.BooleanField(default=False)
-#     sign_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     sign = models.BooleanField(default=False)
-#     leave = models.BooleanField(default=False)
-#     create_quiz_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     have_create_quiz = models.BooleanField(default=False)
-#     finish_homework_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     finish_homework = models.BooleanField(default=False)
-#     finish_quiz_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     finish_quiz = models.BooleanField(default=False)
-#     finish_plan_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     finish_plan = models.BooleanField(default=False)
-#     left_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
-#     left = models.BooleanField(default=False)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+def collect_signing_expect_list(date):
+    d = datetime_gen(date)
+    signingExpect = signing_expect(d)
+    return signingExpect

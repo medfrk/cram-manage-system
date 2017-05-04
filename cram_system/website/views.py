@@ -12,3 +12,8 @@ def index_view(requests):
 @api_view(['GET'])
 def quiz_view(requests):
     return render(request=requests, template_name='quiz.html')
+
+
+@api_view(['GET'])
+def signing_view(requests):
+    return render(request=requests, template_name='signing.html')
