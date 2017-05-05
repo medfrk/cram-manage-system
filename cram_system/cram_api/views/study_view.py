@@ -42,3 +42,21 @@ class StudySigningExpectList(generics.RetrieveAPIView):
     def get(self, request, date, format=None):
         content = collect_signing_expect_list(date)
         return Response(content)
+
+
+class StudentSignIn(generics.RetrieveAPIView):
+    """
+    Sign in. 
+    """
+    def get(self, request, signing_id, format=None):
+        content = sign_in(signing_id)
+        return Response(content)
+
+
+class StudentTakeALeave(generics.RetrieveAPIView):
+    """
+    Take a Leave.
+    """
+    def get(self, request, signing_id, format=None):
+        content = take_a_leave(signing_id)
+        return Response(content)

@@ -130,6 +130,21 @@ def left_not_done(date):
     return loop_through_signing_list(signing_list)
 
 
+def sign_in(signing_id):
+    signing = StudentStudySigning.objects.get(id=signing_id)
+    signing.sign = True
+    signing.sign_at = timezone.now()
+    signing.save()
+    return {'status': 'success'}
+
+
+def take_a_leave(signing_id):
+    signing = StudentStudySigning.objects.get(id=signing_id)
+    signing.leave = True
+    signing.save()
+    return {'status': 'success'}
+
+
 def collect_the_study_number_report(date):
     d = datetime_gen(date)
 

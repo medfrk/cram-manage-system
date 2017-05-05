@@ -7,6 +7,7 @@ class SigningMain extends React.Component {
     this.state = {
       students: [],
       list: [],
+      update_at: [],
     }
 
     this.getSigningExpect = this.getSigningExpect.bind(this);
@@ -14,6 +15,7 @@ class SigningMain extends React.Component {
     this.parseJSON = this.parseJSON.bind(this);
     this.storeData = this.storeData.bind(this);
     this.handleData = this.handleData.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
 
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -59,10 +61,13 @@ class SigningMain extends React.Component {
       return (
         <SigningTableRow
           key={index}
+          signing_id={student['id']}
           student_number={index+1}
           student_name={student['student_name']}
           student_seat={student['student_seat']}
           student_sign={student['sign']}
+          student_leave={student['leave']}
+          handle_update={this.handleUpdate}
         />
       )
     });
@@ -71,21 +76,34 @@ class SigningMain extends React.Component {
     });
   }
 
-
+  handleUpdate(data){
+    console.log('handleUpdate has been called');
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    // this.getSigningExpect(date)
+    // this.setState({
+    //   update_at: data,
+    // });
+  }
 
   render() {
+    const hStyle = {
+      'textAlign': 'center',
+    }
+
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <h1>SigningMain</h1>
-        <div>
+        <div className="row"> <h3 style={hStyle}>自習學生應到名單</h3></div>
+        <div className="row">
           <table className="table table-striped table-hover ">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
+                <th>姓名</th>
+                <th>座位</th>
+                <th>簽到</th>
+                <th>請假</th>
               </tr>
             </thead>
             <tbody>

@@ -20139,7 +20139,8 @@
 
 	    _this.state = {
 	      students: [],
-	      list: []
+	      list: [],
+	      update_at: []
 	    };
 
 	    _this.getSigningExpect = _this.getSigningExpect.bind(_this);
@@ -20147,6 +20148,7 @@
 	    _this.parseJSON = _this.parseJSON.bind(_this);
 	    _this.storeData = _this.storeData.bind(_this);
 	    _this.handleData = _this.handleData.bind(_this);
+	    _this.handleUpdate = _this.handleUpdate.bind(_this);
 
 	    var today = new Date();
 	    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -20192,13 +20194,18 @@
 	  }, {
 	    key: 'handleData',
 	    value: function handleData(data) {
+	      var _this2 = this;
+
 	      var studentSigningTableRowList = this.state.students['signing_list'].map(function (student, index) {
 	        return React.createElement(SigningTableRow, {
 	          key: index,
+	          signing_id: student['id'],
 	          student_number: index + 1,
 	          student_name: student['student_name'],
 	          student_seat: student['student_seat'],
-	          student_sign: student['sign']
+	          student_sign: student['sign'],
+	          student_leave: student['leave'],
+	          handle_update: _this2.handleUpdate
 	        });
 	      });
 	      this.setState({
@@ -20206,8 +20213,23 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleUpdate',
+	    value: function handleUpdate(data) {
+	      console.log('handleUpdate has been called');
+	      var today = new Date();
+	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	      // this.getSigningExpect(date)
+	      // this.setState({
+	      //   update_at: data,
+	      // });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var hStyle = {
+	        'textAlign': 'center'
+	      };
+
 	      return React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -20217,13 +20239,18 @@
 	          ' '
 	        ),
 	        React.createElement(
-	          'h1',
-	          null,
-	          'SigningMain'
+	          'div',
+	          { className: 'row' },
+	          ' ',
+	          React.createElement(
+	            'h3',
+	            { style: hStyle },
+	            '\u81EA\u7FD2\u5B78\u751F\u61C9\u5230\u540D\u55AE'
+	          )
 	        ),
 	        React.createElement(
 	          'div',
-	          null,
+	          { className: 'row' },
 	          React.createElement(
 	            'table',
 	            { className: 'table table-striped table-hover ' },
@@ -20241,17 +20268,22 @@
 	                React.createElement(
 	                  'th',
 	                  null,
-	                  'Column heading'
+	                  '\u59D3\u540D'
 	                ),
 	                React.createElement(
 	                  'th',
 	                  null,
-	                  'Column heading'
+	                  '\u5EA7\u4F4D'
 	                ),
 	                React.createElement(
 	                  'th',
 	                  null,
-	                  'Column heading'
+	                  '\u7C3D\u5230'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u8ACB\u5047'
 	                )
 	              )
 	            ),
@@ -20293,12 +20325,84 @@
 	  function SigningTableRow() {
 	    _classCallCheck(this, SigningTableRow);
 
-	    return _possibleConstructorReturn(this, (SigningTableRow.__proto__ || Object.getPrototypeOf(SigningTableRow)).call(this));
+	    var _this = _possibleConstructorReturn(this, (SigningTableRow.__proto__ || Object.getPrototypeOf(SigningTableRow)).call(this));
+
+	    _this.state = {
+	      update_at: []
+	    };
+
+	    _this.sign_in = _this.sign_in.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    _this.parseJSON = _this.parseJSON.bind(_this);
+
+	    return _this;
 	  }
 
 	  _createClass(SigningTableRow, [{
+	    key: 'sign_in',
+	    value: function sign_in(signing_id) {
+	      var now = new Date();
+	      console.log(now.toTimeString());
+	      console.log(now);
+	      console.log('click');
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          sign: true,
+	          sign_at: now.toTimeString()
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(this.props.handle_update({ 'updated_at': now }));
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'parseJSON',
+	    value: function parseJSON(response) {
+	      console.log(response);
+	      return response.json();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var have_come = this.props.student_sign || this.props.student_leave;
+	      var sign_button = React.createElement(
+	        'button',
+	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
+	            _this2.sign_in(_this2.props.signing_id);
+	          } },
+	        '\u7C3D\u5230'
+	      );
+	      var leave_button = React.createElement(
+	        'a',
+	        { href: '#', className: 'btn btn-warning btn-xs' },
+	        '\u8ACB\u5047'
+	      );
+
+	      if (have_come) {
+	        if (this.props.student_sign) {
+	          leave_button = 'xxxx';
+	        } else {
+	          sign_button = 'xxxx';
+	        }
+	      }
+
 	      return React.createElement(
 	        'tr',
 	        null,
@@ -20320,7 +20424,12 @@
 	        React.createElement(
 	          'td',
 	          null,
-	          this.props.student_sign
+	          have_come && this.props.student_sign ? '簽到' : sign_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          have_come && this.props.student_leave ? '請假' : leave_button
 	        )
 	      );
 	    }
