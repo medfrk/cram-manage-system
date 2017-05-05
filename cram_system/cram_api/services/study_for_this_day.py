@@ -197,3 +197,21 @@ def collect_signing_expect_list(date):
     d = datetime_gen(date)
     signingExpect = signing_expect(d)
     return signingExpect
+
+
+def collect_signing_absent_list(date):
+    d = datetime_gen(date)
+    signingAbsent = signing_absent(d)
+    return signingAbsent
+
+
+def collect_signing_actual_list(date):
+    d = datetime_gen(date)
+    signingActual = signing_actual(d)
+    return signingActual
+
+
+def collect_signing_leave_list(date):
+    d = datetime_gen(date)
+    signingLeave = signing_leave(d)
+    return signingLeave

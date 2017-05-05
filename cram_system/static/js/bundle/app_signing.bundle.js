@@ -20181,7 +20181,6 @@
 	  }, {
 	    key: 'parseJSON',
 	    value: function parseJSON(response) {
-	      console.log(response);
 	      return response.json();
 	    }
 	  }, {
@@ -20215,13 +20214,12 @@
 	  }, {
 	    key: 'handleUpdate',
 	    value: function handleUpdate(data) {
-	      console.log('handleUpdate has been called');
 	      var today = new Date();
 	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	      // this.getSigningExpect(date)
-	      // this.setState({
-	      //   update_at: data,
-	      // });
+	      this.getSigningExpect(date);
+	      this.setState({
+	        update_at: data
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -20284,6 +20282,11 @@
 	                  'th',
 	                  null,
 	                  '\u8ACB\u5047'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u53D6\u6D88'
 	                )
 	              )
 	            ),
@@ -20332,6 +20335,8 @@
 	    };
 
 	    _this.sign_in = _this.sign_in.bind(_this);
+	    _this.leave = _this.leave.bind(_this);
+	    _this.cancel = _this.cancel.bind(_this);
 	    _this.checkStatus = _this.checkStatus.bind(_this);
 	    _this.parseJSON = _this.parseJSON.bind(_this);
 
@@ -20340,11 +20345,8 @@
 
 	  _createClass(SigningTableRow, [{
 	    key: 'sign_in',
-	    value: function sign_in(signing_id) {
+	    value: function sign_in(signing_id, cb) {
 	      var now = new Date();
-	      console.log(now.toTimeString());
-	      console.log(now);
-	      console.log('click');
 	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
 	        method: 'PATCH',
 	        headers: {
@@ -20355,7 +20357,38 @@
 	          sign: true,
 	          sign_at: now.toTimeString()
 	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(this.props.handle_update({ 'updated_at': now }));
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'leave',
+	    value: function leave(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          leave: true
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'cancel',
+	    value: function cancel(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          sign: false,
+	          leave: false
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
 	    }
 	  }, {
 	    key: 'checkStatus',
@@ -20373,7 +20406,6 @@
 	  }, {
 	    key: 'parseJSON',
 	    value: function parseJSON(response) {
-	      console.log(response);
 	      return response.json();
 	    }
 	  }, {
@@ -20384,15 +20416,30 @@
 	      var have_come = this.props.student_sign || this.props.student_leave;
 	      var sign_button = React.createElement(
 	        'button',
-	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
-	            _this2.sign_in(_this2.props.signing_id);
+	        { className: 'btn btn-warning btn-xs', onClick: function onClick() {
+	            _this2.sign_in(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
 	          } },
 	        '\u7C3D\u5230'
 	      );
 	      var leave_button = React.createElement(
-	        'a',
-	        { href: '#', className: 'btn btn-warning btn-xs' },
+	        'button',
+	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
+	            _this2.leave(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
 	        '\u8ACB\u5047'
+	      );
+	      var cancel_button = React.createElement(
+	        'button',
+	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
+	            _this2.cancel(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u53D6\u6D88'
 	      );
 
 	      if (have_come) {
@@ -20430,6 +20477,11 @@
 	          'td',
 	          null,
 	          have_come && this.props.student_leave ? '請假' : leave_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          have_come ? cancel_button : 'xxxx'
 	        )
 	      );
 	    }

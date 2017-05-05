@@ -1,7 +1,7 @@
 var React = require('react');
 var SigningTableRow = require('SigningTableRow');
 
-class SigningMain extends React.Component {
+class SigningAbsentMain extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -24,7 +24,7 @@ class SigningMain extends React.Component {
   }
 
   getSigningExpect(specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/study_manage/signing/expect/' + specific_date + '/', {
+    return fetch('http://localhost:8000/api/v1.0/study_manage/signing/absent/' + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)
@@ -92,7 +92,7 @@ class SigningMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div className="row"> <h3 style={hStyle}>自習學生應到名單</h3></div>
+        <div className="row"> <h3 style={hStyle}>自習學生未到名單</h3></div>
         <div className="row">
           <table className="table table-striped table-hover ">
             <thead>
@@ -115,4 +115,4 @@ class SigningMain extends React.Component {
   }
 }
 
-module.exports = SigningMain;
+module.exports = SigningAbsentMain;

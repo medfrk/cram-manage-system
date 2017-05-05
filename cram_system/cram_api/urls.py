@@ -74,8 +74,12 @@ urlpatterns = [
         study_view.StudyManageList.as_view()),
     url(r'^api/v1.0/study_manage/signing/expect/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudySigningExpectList.as_view()),
-    url(r'^api/v1.0/sign_in/(?P<signing_id>[0-9]+)/$', study_view.StudentSignIn.as_view()),
-    url(r'^api/v1.0/leave/(?P<signing_id>[0-9]+)/$', study_view.StudentTakeALeave.as_view()),
+    url(r'^api/v1.0/study_manage/signing/absent/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudySigningAbsentList.as_view()),
+    url(r'^api/v1.0/study_manage/signing/actual/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudySigningActualList.as_view()),
+    url(r'^api/v1.0/study_manage/signing/leave/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudySigningLeaveList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

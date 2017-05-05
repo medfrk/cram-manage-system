@@ -44,19 +44,29 @@ class StudySigningExpectList(generics.RetrieveAPIView):
         return Response(content)
 
 
-class StudentSignIn(generics.RetrieveAPIView):
+class StudySigningAbsentList(generics.RetrieveAPIView):
     """
-    Sign in. 
+    Get the list of student who is absent today.
     """
-    def get(self, request, signing_id, format=None):
-        content = sign_in(signing_id)
+    def get(self, request, date, format=None):
+        content = collect_signing_absent_list(date)
         return Response(content)
 
 
-class StudentTakeALeave(generics.RetrieveAPIView):
+class StudySigningActualList(generics.RetrieveAPIView):
     """
-    Take a Leave.
+    Get the list of student who had signed today.
     """
-    def get(self, request, signing_id, format=None):
-        content = take_a_leave(signing_id)
+    def get(self, request, date, format=None):
+        content = collect_signing_actual_list(date)
         return Response(content)
+
+
+class StudySigningLeaveList(generics.RetrieveAPIView):
+    """
+    Get the list of student who take a day off today.
+    """
+    def get(self, request, date, format=None):
+        content = collect_signing_leave_list(date)
+        return Response(content)
+
