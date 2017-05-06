@@ -48,9 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var SigningAbsent = __webpack_require__(180);
+	var CreateQuiz = __webpack_require__(159);
 
-	ReactDOM.render(React.createElement(SigningAbsent, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(CreateQuiz, null), document.getElementById('app'));
 
 /***/ }),
 /* 1 */
@@ -19747,7 +19747,52 @@
 
 
 /***/ }),
-/* 159 */,
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var CramHeader = __webpack_require__(160);
+	var CramFooter = __webpack_require__(161);
+	var CreateQuizMain = __webpack_require__(162);
+
+	var CreateQuiz = function (_React$Component) {
+	  _inherits(CreateQuiz, _React$Component);
+
+	  function CreateQuiz() {
+	    _classCallCheck(this, CreateQuiz);
+
+	    return _possibleConstructorReturn(this, (CreateQuiz.__proto__ || Object.getPrototypeOf(CreateQuiz)).apply(this, arguments));
+	  }
+
+	  _createClass(CreateQuiz, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(CramHeader, null),
+	        React.createElement(CreateQuizMain, null),
+	        React.createElement(CramFooter, null)
+	      );
+	    }
+	  }]);
+
+	  return CreateQuiz;
+	}(React.Component);
+
+	module.exports = CreateQuiz;
+
+/***/ }),
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20057,27 +20102,10 @@
 	module.exports = CramFooter;
 
 /***/ }),
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20089,415 +20117,56 @@
 
 	var React = __webpack_require__(1);
 
-	var SigningTableRow = function (_React$Component) {
-	  _inherits(SigningTableRow, _React$Component);
+	var CreateQuizMain = function (_React$Component) {
+	  _inherits(CreateQuizMain, _React$Component);
 
-	  function SigningTableRow() {
-	    _classCallCheck(this, SigningTableRow);
+	  function CreateQuizMain() {
+	    _classCallCheck(this, CreateQuizMain);
 
-	    var _this = _possibleConstructorReturn(this, (SigningTableRow.__proto__ || Object.getPrototypeOf(SigningTableRow)).call(this));
+	    var _this = _possibleConstructorReturn(this, (CreateQuizMain.__proto__ || Object.getPrototypeOf(CreateQuizMain)).call(this));
 
 	    _this.state = {
-	      update_at: []
+	      name: []
 	    };
-
-	    _this.sign_in = _this.sign_in.bind(_this);
-	    _this.leave = _this.leave.bind(_this);
-	    _this.cancel = _this.cancel.bind(_this);
-	    _this.checkStatus = _this.checkStatus.bind(_this);
-	    _this.parseJSON = _this.parseJSON.bind(_this);
-
 	    return _this;
 	  }
 
-	  _createClass(SigningTableRow, [{
-	    key: 'sign_in',
-	    value: function sign_in(signing_id, cb) {
-	      var now = new Date();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
-	        method: 'PATCH',
-	        headers: {
-	          'Accept': 'application/json',
-	          'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify({
-	          sign: true,
-	          sign_at: now.toTimeString()
-	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	  _createClass(CreateQuizMain, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.setState({
+	        name: localStorage.getItem("name")
+	      });
 	    }
 	  }, {
-	    key: 'leave',
-	    value: function leave(signing_id, cb) {
-	      var now = new Date();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
-	        method: 'PATCH',
-	        headers: {
-	          'Accept': 'application/json',
-	          'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify({
-	          leave: true
-	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
-	    }
-	  }, {
-	    key: 'cancel',
-	    value: function cancel(signing_id, cb) {
-	      var now = new Date();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
-	        method: 'PATCH',
-	        headers: {
-	          'Accept': 'application/json',
-	          'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify({
-	          sign: false,
-	          leave: false
-	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
-	    }
-	  }, {
-	    key: 'checkStatus',
-	    value: function checkStatus(response) {
-	      if (response.status >= 200 && response.status < 300) {
-	        return response;
-	      } else {
-	        var error = new Error('HTTP Error ' + response.statusText);
-	        error.status = response.statusText;
-	        error.response = response;
-	        console.log(error);
-	        throw error;
-	      }
-	    }
-	  }, {
-	    key: 'parseJSON',
-	    value: function parseJSON(response) {
-	      return response.json();
-	    }
-	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      var _this2 = this;
-
-	      var have_come = this.props.student_sign || this.props.student_leave;
-	      var sign_button = React.createElement(
-	        'a',
-	        { className: 'btn btn-warning btn-xs', onClick: function onClick() {
-	            _this2.sign_in(_this2.props.signing_id, function (results) {
-	              _this2.props.handle_update('123');
-	            });
-	          } },
-	        '\u7C3D\u5230'
-	      );
-	      var leave_button = React.createElement(
-	        'a',
-	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
-	            _this2.leave(_this2.props.signing_id, function (results) {
-	              _this2.props.handle_update('123');
-	            });
-	          } },
-	        '\u8ACB\u5047'
-	      );
-	      var cancel_button = React.createElement(
-	        'a',
-	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
-	            _this2.cancel(_this2.props.signing_id, function (results) {
-	              _this2.props.handle_update('123');
-	            });
-	          } },
-	        '\u53D6\u6D88'
-	      );
-
-	      if (have_come) {
-	        if (this.props.student_sign) {
-	          leave_button = 'xxxx';
-	        } else {
-	          sign_button = 'xxxx';
-	        }
-	      }
-
 	      return React.createElement(
-	        'tr',
-	        null,
+	        "div",
+	        { className: "container" },
 	        React.createElement(
-	          'td',
-	          null,
-	          this.props.student_number
+	          "div",
+	          { className: "page-header", id: "banner" },
+	          " "
 	        ),
 	        React.createElement(
-	          'td',
+	          "h1",
 	          null,
-	          this.props.student_name
+	          "CreateQuizMain"
 	        ),
 	        React.createElement(
-	          'td',
+	          "p",
 	          null,
-	          this.props.student_seat
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          have_come && this.props.student_sign ? '簽到' : sign_button
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          have_come && this.props.student_leave ? '請假' : leave_button
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          have_come ? cancel_button : 'xxxx'
+	          this.state.name
 	        )
 	      );
 	    }
 	  }]);
 
-	  return SigningTableRow;
+	  return CreateQuizMain;
 	}(React.Component);
 
-	module.exports = SigningTableRow;
-
-/***/ }),
-/* 180 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-	var CramHeader = __webpack_require__(160);
-	var CramFooter = __webpack_require__(161);
-	var SigningAbsentMain = __webpack_require__(181);
-
-	var SigningAbsent = function (_React$Component) {
-	  _inherits(SigningAbsent, _React$Component);
-
-	  function SigningAbsent() {
-	    _classCallCheck(this, SigningAbsent);
-
-	    return _possibleConstructorReturn(this, (SigningAbsent.__proto__ || Object.getPrototypeOf(SigningAbsent)).apply(this, arguments));
-	  }
-
-	  _createClass(SigningAbsent, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(CramHeader, null),
-	        React.createElement(SigningAbsentMain, null),
-	        React.createElement(CramFooter, null)
-	      );
-	    }
-	  }]);
-
-	  return SigningAbsent;
-	}(React.Component);
-
-	module.exports = SigningAbsent;
-
-/***/ }),
-/* 181 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-	var SigningTableRow = __webpack_require__(179);
-
-	var SigningAbsentMain = function (_React$Component) {
-	  _inherits(SigningAbsentMain, _React$Component);
-
-	  function SigningAbsentMain() {
-	    _classCallCheck(this, SigningAbsentMain);
-
-	    var _this = _possibleConstructorReturn(this, (SigningAbsentMain.__proto__ || Object.getPrototypeOf(SigningAbsentMain)).call(this));
-
-	    _this.state = {
-	      students: [],
-	      list: [],
-	      update_at: []
-	    };
-
-	    _this.getSigningExpect = _this.getSigningExpect.bind(_this);
-	    _this.checkStatus = _this.checkStatus.bind(_this);
-	    _this.parseJSON = _this.parseJSON.bind(_this);
-	    _this.storeData = _this.storeData.bind(_this);
-	    _this.handleData = _this.handleData.bind(_this);
-	    _this.handleUpdate = _this.handleUpdate.bind(_this);
-
-	    var today = new Date();
-	    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-	    _this.getSigningExpect(date);
-	    return _this;
-	  }
-
-	  _createClass(SigningAbsentMain, [{
-	    key: 'getSigningExpect',
-	    value: function getSigningExpect(specific_date) {
-	      return fetch('http://localhost:8000/api/v1.0/study_manage/signing/absent/' + specific_date + '/', {
-	        accept: 'application/json',
-	        method: 'get'
-	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeData).then(this.handleData);
-	    }
-	  }, {
-	    key: 'checkStatus',
-	    value: function checkStatus(response) {
-	      if (response.status >= 200 && response.status < 300) {
-	        return response;
-	      } else {
-	        var error = new Error('HTTP Error ' + response.statusText);
-	        error.status = response.statusText;
-	        error.response = response;
-	        console.log(error);
-	        throw error;
-	      }
-	    }
-	  }, {
-	    key: 'parseJSON',
-	    value: function parseJSON(response) {
-	      return response.json();
-	    }
-	  }, {
-	    key: 'storeData',
-	    value: function storeData(data) {
-	      this.setState({
-	        students: data
-	      });
-	    }
-	  }, {
-	    key: 'handleData',
-	    value: function handleData(data) {
-	      var _this2 = this;
-
-	      var studentSigningTableRowList = this.state.students['signing_list'].map(function (student, index) {
-	        return React.createElement(SigningTableRow, {
-	          key: index,
-	          signing_id: student['id'],
-	          student_number: index + 1,
-	          student_name: student['student_name'],
-	          student_seat: student['student_seat'],
-	          student_sign: student['sign'],
-	          student_leave: student['leave'],
-	          handle_update: _this2.handleUpdate
-	        });
-	      });
-	      this.setState({
-	        list: studentSigningTableRowList
-	      });
-	    }
-	  }, {
-	    key: 'handleUpdate',
-	    value: function handleUpdate(data) {
-	      var today = new Date();
-	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	      this.getSigningExpect(date);
-	      this.setState({
-	        update_at: data
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var hStyle = {
-	        'textAlign': 'center'
-	      };
-
-	      return React.createElement(
-	        'div',
-	        { className: 'container' },
-	        React.createElement(
-	          'div',
-	          { className: 'page-header', id: 'banner' },
-	          ' '
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          ' ',
-	          React.createElement(
-	            'h3',
-	            { style: hStyle },
-	            '\u81EA\u7FD2\u5B78\u751F\u672A\u5230\u540D\u55AE'
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'table',
-	            { className: 'table table-striped table-hover ' },
-	            React.createElement(
-	              'thead',
-	              null,
-	              React.createElement(
-	                'tr',
-	                null,
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '#'
-	                ),
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '\u59D3\u540D'
-	                ),
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '\u5EA7\u4F4D'
-	                ),
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '\u7C3D\u5230'
-	                ),
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '\u8ACB\u5047'
-	                ),
-	                React.createElement(
-	                  'th',
-	                  null,
-	                  '\u53D6\u6D88'
-	                )
-	              )
-	            ),
-	            React.createElement(
-	              'tbody',
-	              null,
-	              this.state.list
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return SigningAbsentMain;
-	}(React.Component);
-
-	module.exports = SigningAbsentMain;
+	module.exports = CreateQuizMain;
 
 /***/ })
 /******/ ]);

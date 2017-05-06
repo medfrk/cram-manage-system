@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^signing_absent/$', views.signing_absent_view),
     url(r'^signing_actual/$', views.signing_actual_view),
     url(r'^signing_leave/$', views.signing_leave_view),
-
+    url(r'^create_quiz/$', views.create_quiz_view),
+    url(r'^quiz_create_expect/$', views.quiz_create_expect_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

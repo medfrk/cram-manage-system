@@ -32,3 +32,13 @@ def signing_actual_view(requests):
 @api_view(['GET'])
 def signing_leave_view(requests):
     return render(request=requests, template_name='signing_leave.html')
+
+
+@api_view(['GET'])
+def quiz_create_expect_view(requests):
+    return render(request=requests, template_name='quiz_create_expect.html')
+
+
+@api_view(['GET'])
+def create_quiz_view(requests):
+    return render(request=requests, template_name='create_quiz.html')

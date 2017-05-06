@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var SigningActual = __webpack_require__(177);
+	var SigningActual = __webpack_require__(182);
 
 	ReactDOM.render(React.createElement(SigningActual, null), document.getElementById('app'));
 
@@ -20069,7 +20069,12 @@
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20177,7 +20182,7 @@
 
 	      var have_come = this.props.student_sign || this.props.student_leave;
 	      var sign_button = React.createElement(
-	        'button',
+	        'a',
 	        { className: 'btn btn-warning btn-xs', onClick: function onClick() {
 	            _this2.sign_in(_this2.props.signing_id, function (results) {
 	              _this2.props.handle_update('123');
@@ -20186,7 +20191,7 @@
 	        '\u7C3D\u5230'
 	      );
 	      var leave_button = React.createElement(
-	        'button',
+	        'a',
 	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
 	            _this2.leave(_this2.props.signing_id, function (results) {
 	              _this2.props.handle_update('123');
@@ -20195,7 +20200,7 @@
 	        '\u8ACB\u5047'
 	      );
 	      var cancel_button = React.createElement(
-	        'button',
+	        'a',
 	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
 	            _this2.cancel(_this2.props.signing_id, function (results) {
 	              _this2.props.handle_update('123');
@@ -20255,9 +20260,9 @@
 	module.exports = SigningTableRow;
 
 /***/ }),
-/* 175 */,
-/* 176 */,
-/* 177 */
+/* 180 */,
+/* 181 */,
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20273,7 +20278,7 @@
 	var React = __webpack_require__(1);
 	var CramHeader = __webpack_require__(160);
 	var CramFooter = __webpack_require__(161);
-	var SigningActualMain = __webpack_require__(178);
+	var SigningActualMain = __webpack_require__(183);
 
 	var SigningActual = function (_React$Component) {
 	  _inherits(SigningActual, _React$Component);
@@ -20303,7 +20308,7 @@
 	module.exports = SigningActual;
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20317,7 +20322,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var SigningTableRow = __webpack_require__(174);
+	var SigningTableRow = __webpack_require__(179);
 
 	var SigningActualMain = function (_React$Component) {
 	  _inherits(SigningActualMain, _React$Component);

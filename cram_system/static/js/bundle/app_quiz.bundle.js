@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var Quiz = __webpack_require__(170);
+	var Quiz = __webpack_require__(172);
 
 	ReactDOM.render(React.createElement(Quiz, null), document.getElementById('app'));
 
@@ -20065,7 +20065,9 @@
 /* 167 */,
 /* 168 */,
 /* 169 */,
-/* 170 */
+/* 170 */,
+/* 171 */,
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20081,7 +20083,7 @@
 	var React = __webpack_require__(1);
 	var CramHeader = __webpack_require__(160);
 	var CramFooter = __webpack_require__(161);
-	var QuizMain = __webpack_require__(171);
+	var QuizMain = __webpack_require__(173);
 
 	var Quiz = function (_React$Component) {
 	  _inherits(Quiz, _React$Component);
@@ -20111,7 +20113,7 @@
 	module.exports = Quiz;
 
 /***/ }),
-/* 171 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

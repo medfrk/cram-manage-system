@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var Index = __webpack_require__(159);
+	var Index = __webpack_require__(163);
 
 	ReactDOM.render(React.createElement(Index, null), document.getElementById('app'));
 
@@ -19747,52 +19747,7 @@
 
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-	var CramHeader = __webpack_require__(160);
-	var CramFooter = __webpack_require__(161);
-	var IndexMain = __webpack_require__(162);
-
-	var Index = function (_React$Component) {
-	  _inherits(Index, _React$Component);
-
-	  function Index() {
-	    _classCallCheck(this, Index);
-
-	    return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
-	  }
-
-	  _createClass(Index, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(CramHeader, null),
-	        React.createElement(IndexMain, null),
-	        React.createElement(CramFooter, null)
-	      );
-	    }
-	  }]);
-
-	  return Index;
-	}(React.Component);
-
-	module.exports = Index;
-
-/***/ }),
+/* 159 */,
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20102,7 +20057,8 @@
 	module.exports = CramFooter;
 
 /***/ }),
-/* 162 */
+/* 162 */,
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20116,13 +20072,59 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var StudentCard = __webpack_require__(163);
-	var SigningListGroups = __webpack_require__(164);
-	var QuizCreateListGroups = __webpack_require__(165);
-	var HomeworkListGroups = __webpack_require__(166);
-	var QuizListGroups = __webpack_require__(167);
-	var PlanListGroups = __webpack_require__(168);
-	var LeftListGroups = __webpack_require__(169);
+	var CramHeader = __webpack_require__(160);
+	var CramFooter = __webpack_require__(161);
+	var IndexMain = __webpack_require__(164);
+
+	var Index = function (_React$Component) {
+	  _inherits(Index, _React$Component);
+
+	  function Index() {
+	    _classCallCheck(this, Index);
+
+	    return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
+	  }
+
+	  _createClass(Index, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(CramHeader, null),
+	        React.createElement(IndexMain, null),
+	        React.createElement(CramFooter, null)
+	      );
+	    }
+	  }]);
+
+	  return Index;
+	}(React.Component);
+
+	module.exports = Index;
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var StudentCard = __webpack_require__(165);
+	var SigningListGroups = __webpack_require__(166);
+	var QuizCreateListGroups = __webpack_require__(167);
+	var HomeworkListGroups = __webpack_require__(168);
+	var QuizListGroups = __webpack_require__(169);
+	var PlanListGroups = __webpack_require__(170);
+	var LeftListGroups = __webpack_require__(171);
 
 	var IndexMain = function (_React$Component) {
 	  _inherits(IndexMain, _React$Component);
@@ -20283,7 +20285,7 @@
 	module.exports = IndexMain;
 
 /***/ }),
-/* 163 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20341,7 +20343,7 @@
 	module.exports = StudentCard;
 
 /***/ }),
-/* 164 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20441,7 +20443,7 @@
 	module.exports = SigningListGroups;
 
 /***/ }),
-/* 165 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20484,7 +20486,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/quiz_create_expect/" },
 	              "\u61C9\u8A72\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
 	            )
 	          ),
@@ -20527,7 +20529,7 @@
 	module.exports = QuizCreateListGroups;
 
 /***/ }),
-/* 166 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20613,7 +20615,7 @@
 	module.exports = HomeworkListGroups;
 
 /***/ }),
-/* 167 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20699,7 +20701,7 @@
 	module.exports = QuizListGroups;
 
 /***/ }),
-/* 168 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20785,7 +20787,7 @@
 	module.exports = PlanListGroups;
 
 /***/ }),
-/* 169 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
