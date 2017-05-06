@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_docs',
     'corsheaders',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+#    'allauth',
+#    'allauth.account',
+#    'allauth.socialaccount',
+#    'allauth.socialaccount.providers.facebook',
     'cram_api',
     'website',
     'authentication',
@@ -53,7 +53,13 @@ INSTALLED_APPS = [
 SITE_ID = 2
 #SOCIALACCOUNT_ADAPTER = 'authentication.socialaccount_adapter.mySocialAccountAdapter'
 LOGIN_REDIRECT_URL = '/testprofilepage'
-ACCOUNT_LOGOUT_REDIRECT_URL  = '/accounts/login'
+#ACCOUNT_LOGOUT_REDIRECT_URL  = '/accounts/login'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# HTTPS settings, though not supported by development server
+#SECURE_SSL_REDIRECT = True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

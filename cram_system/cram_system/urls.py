@@ -19,7 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^docs/', include('rest_framework_docs.urls')),
-    url(r'^accounts/', include('allauth.urls')),
+    #url(r'^accounts/', include('allauth.urls')),
     url(r'^testprofilepage/', include('authentication.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framwork')),
     url(r'^', include('cram_api.urls')),
 ]
