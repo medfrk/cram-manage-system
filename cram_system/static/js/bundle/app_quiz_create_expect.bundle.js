@@ -20393,6 +20393,12 @@
 	      return response.json();
 	    }
 	  }, {
+	    key: 'setLocalStorage',
+	    value: function setLocalStorage() {
+	      localStorage.setItem('student_name', this.props.student_name);
+	      localStorage.setItem('student_id', this.props.student_id);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -20402,7 +20408,7 @@
 	      var create_button = React.createElement(
 	        'a',
 	        { href: create_url, onClick: function onClick() {
-	            localStorage.setItem('name', _this2.props.student_name);
+	            _this2.setLocalStorage();
 	          }, className: 'btn btn-warning btn-xs' },
 	        '\u65B0\u589E'
 	      );

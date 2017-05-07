@@ -63,10 +63,15 @@ class QuizCreateTableRow extends React.Component {
     return response.json();
   }
 
+  setLocalStorage() {
+    localStorage.setItem('student_name', this.props.student_name);
+    localStorage.setItem('student_id', this.props.student_id);
+  }
+
   render() {
     const create_url = "http://localhost:8000/create_quiz/"
     var have_create = this.props.student_have_create_quiz
-    var create_button = <a href={create_url} onClick={() => { localStorage.setItem('name', this.props.student_name) }} className="btn btn-warning btn-xs" >新增</a>
+    var create_button = <a href={create_url} onClick={() => {this.setLocalStorage()} } className="btn btn-warning btn-xs" >新增</a>
     var done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.create_quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
     var cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
 

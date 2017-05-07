@@ -20105,7 +20105,7 @@
 /* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20126,38 +20126,285 @@
 	    var _this = _possibleConstructorReturn(this, (CreateQuizMain.__proto__ || Object.getPrototypeOf(CreateQuizMain)).call(this));
 
 	    _this.state = {
-	      name: []
+	      name: [],
+	      id: [],
+	      subject: 'chinese',
+	      range: '',
+	      note: ''
 	    };
+
+	    _this.create_quiz = _this.create_quiz.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    _this.parseJSON = _this.parseJSON.bind(_this);
+	    _this.getSubject = _this.getSubject.bind(_this);
+	    _this.handleRangeChange = _this.handleRangeChange.bind(_this);
+	    _this.handleSubjectChange = _this.handleSubjectChange.bind(_this);
+	    _this.handleNoteChange = _this.handleNoteChange.bind(_this);
+	    _this.handleCancel = _this.handleCancel.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(CreateQuizMain, [{
-	    key: "componentDidMount",
+	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState({
-	        name: localStorage.getItem("name")
+	        name: localStorage.getItem("student_name"),
+	        id: localStorage.getItem("student_id")
 	      });
 	    }
 	  }, {
-	    key: "render",
+	    key: 'getSubject',
+	    value: function getSubject(subject) {
+	      switch (subject) {
+	        case '國文':
+	          return 'chinese';
+	        case '英文':
+	          return 'english';
+	        case '數學':
+	          return 'math';
+	        case '物理':
+	          return 'physics';
+	        case '化學':
+	          return 'chemistry';
+	        case '生物':
+	          return 'biology';
+	        case '地科':
+	          return 'earth_science';
+	        case '地理':
+	          return 'geography';
+	        case '歷史':
+	          return 'history';
+	        case '公民':
+	          return 'civil_ethics_education';
+	        default:
+	          return 'no match';
+	      }
+	    }
+	  }, {
+	    key: 'create_quiz',
+	    value: function create_quiz(cb) {
+	      var today = new Date();
+	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/quiz/', {
+	        method: 'POST',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          owner: this.state.id,
+	          date: date,
+	          subject: this.state.subject,
+	          range: this.state.range,
+	          note: this.state.note
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'parseJSON',
+	    value: function parseJSON(response) {
+	      return response.json();
+	    }
+	  }, {
+	    key: 'handleRangeChange',
+	    value: function handleRangeChange(e) {
+	      this.setState({ range: e.target.value });
+	    }
+	  }, {
+	    key: 'handleSubjectChange',
+	    value: function handleSubjectChange(e) {
+	      this.setState({ subject: this.getSubject(e.target.value) });
+	    }
+	  }, {
+	    key: 'handleNoteChange',
+	    value: function handleNoteChange(e) {
+	      this.setState({ note: e.target.value });
+	    }
+	  }, {
+	    key: 'handleCancel',
+	    value: function handleCancel() {
+	      this.setState({
+	        subject: 'chinese',
+	        range: '',
+	        note: ''
+	      });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit() {
+	      this.create_quiz();
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
+	      var hStyle = {
+	        'textAlign': 'center'
+	      };
+
 	      return React.createElement(
-	        "div",
-	        { className: "container" },
+	        'div',
+	        { className: 'container' },
 	        React.createElement(
-	          "div",
-	          { className: "page-header", id: "banner" },
-	          " "
+	          'div',
+	          { className: 'page-header', id: 'banner' },
+	          ' '
 	        ),
 	        React.createElement(
-	          "h1",
+	          'div',
 	          null,
-	          "CreateQuizMain"
+	          React.createElement(
+	            'h1',
+	            { style: hStyle },
+	            '新增' + this.state.name + '的明天小考'
+	          )
 	        ),
 	        React.createElement(
-	          "p",
-	          null,
-	          this.state.name
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'well bs-component' },
+	            React.createElement(
+	              'form',
+	              { className: 'form-horizontal' },
+	              React.createElement(
+	                'fieldset',
+	                null,
+	                React.createElement(
+	                  'legend',
+	                  null,
+	                  this.state.name + '小考'
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  React.createElement(
+	                    'label',
+	                    { htmlFor: 'inputSubject', className: 'col-lg-2 control-label' },
+	                    '\u79D1\u76EE'
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'col-lg-10' },
+	                    React.createElement(
+	                      'select',
+	                      { className: 'form-control', id: 'select', name: 'subject', onChange: this.handleSubjectChange },
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u570B\u6587'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u82F1\u6587'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u6578\u5B78'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u7269\u7406'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u5316\u5B78'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u751F\u7269'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u5730\u79D1'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u5730\u7406'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u6B77\u53F2'
+	                      ),
+	                      React.createElement(
+	                        'option',
+	                        null,
+	                        '\u516C\u6C11'
+	                      )
+	                    )
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  React.createElement(
+	                    'label',
+	                    { htmlFor: 'inputRange', className: 'col-lg-2 control-label' },
+	                    '\u7BC4\u570D'
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'col-lg-10' },
+	                    React.createElement('input', { type: 'text', className: 'form-control', id: 'inputRange', placeholder: 'Range', name: 'range', value: this.state.range, onChange: this.handleRangeChange })
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  React.createElement(
+	                    'label',
+	                    { htmlFor: 'textArea', className: 'col-lg-2 control-label' },
+	                    '\u5099\u8A3B'
+	                  ),
+	                  React.createElement(
+	                    'div',
+	                    { className: 'col-lg-10' },
+	                    React.createElement('textarea', { className: 'form-control', rows: '3', id: 'textArea', name: 'note', onChange: this.handleNoteChange })
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'form-group' },
+	                  React.createElement(
+	                    'div',
+	                    { className: 'col-lg-10 col-lg-offset-2' },
+	                    React.createElement(
+	                      'button',
+	                      { type: 'reset', className: 'btn btn-default', onClick: this.handleCancel },
+	                      'Cancel'
+	                    ),
+	                    React.createElement(
+	                      'button',
+	                      { type: 'submit', className: 'btn btn-primary', onClick: this.handleSubmit },
+	                      'Submit'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
 	        )
 	      );
 	    }
