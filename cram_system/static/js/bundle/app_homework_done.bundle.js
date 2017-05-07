@@ -48,9 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var CreateQuiz = __webpack_require__(159);
+	var HomeworkDone = __webpack_require__(163);
 
-	ReactDOM.render(React.createElement(CreateQuiz, null), document.getElementById('app'));
+	ReactDOM.render(React.createElement(HomeworkDone, null), document.getElementById('app'));
 
 /***/ }),
 /* 1 */
@@ -19747,52 +19747,7 @@
 
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-	var CramHeader = __webpack_require__(160);
-	var CramFooter = __webpack_require__(161);
-	var CreateQuizMain = __webpack_require__(162);
-
-	var CreateQuiz = function (_React$Component) {
-	  _inherits(CreateQuiz, _React$Component);
-
-	  function CreateQuiz() {
-	    _classCallCheck(this, CreateQuiz);
-
-	    return _possibleConstructorReturn(this, (CreateQuiz.__proto__ || Object.getPrototypeOf(CreateQuiz)).apply(this, arguments));
-	  }
-
-	  _createClass(CreateQuiz, [{
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(CramHeader, null),
-	        React.createElement(CreateQuizMain, null),
-	        React.createElement(CramFooter, null)
-	      );
-	    }
-	  }]);
-
-	  return CreateQuiz;
-	}(React.Component);
-
-	module.exports = CreateQuiz;
-
-/***/ }),
+/* 159 */,
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20102,7 +20057,243 @@
 	module.exports = CramFooter;
 
 /***/ }),
-/* 162 */
+/* 162 */,
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var CramHeader = __webpack_require__(160);
+	var CramFooter = __webpack_require__(161);
+	var HomeworkDoneMain = __webpack_require__(164);
+
+	var HomeworkDone = function (_React$Component) {
+	  _inherits(HomeworkDone, _React$Component);
+
+	  function HomeworkDone() {
+	    _classCallCheck(this, HomeworkDone);
+
+	    return _possibleConstructorReturn(this, (HomeworkDone.__proto__ || Object.getPrototypeOf(HomeworkDone)).apply(this, arguments));
+	  }
+
+	  _createClass(HomeworkDone, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(CramHeader, null),
+	        React.createElement(HomeworkDoneMain, null),
+	        React.createElement(CramFooter, null)
+	      );
+	    }
+	  }]);
+
+	  return HomeworkDone;
+	}(React.Component);
+
+	module.exports = HomeworkDone;
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var HomeworkTableRow = __webpack_require__(165);
+
+	var HomeworkDoneMain = function (_React$Component) {
+	  _inherits(HomeworkDoneMain, _React$Component);
+
+	  function HomeworkDoneMain() {
+	    _classCallCheck(this, HomeworkDoneMain);
+
+	    var _this = _possibleConstructorReturn(this, (HomeworkDoneMain.__proto__ || Object.getPrototypeOf(HomeworkDoneMain)).call(this));
+
+	    _this.state = {
+	      students: [],
+	      list: [],
+	      update_at: []
+	    };
+
+	    _this.getHomeworkDone = _this.getHomeworkDone.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    _this.parseJSON = _this.parseJSON.bind(_this);
+	    _this.storeData = _this.storeData.bind(_this);
+	    _this.handleData = _this.handleData.bind(_this);
+	    _this.handleUpdate = _this.handleUpdate.bind(_this);
+
+	    var today = new Date();
+	    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+	    _this.getHomeworkDone(date);
+	    return _this;
+	  }
+
+	  _createClass(HomeworkDoneMain, [{
+	    key: 'getHomeworkDone',
+	    value: function getHomeworkDone(specific_date) {
+	      return fetch('http://localhost:8000/api/v1.0/study_manage/homework/done/' + specific_date + '/', {
+	        accept: 'application/json',
+	        method: 'get'
+	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeData).then(this.handleData);
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'parseJSON',
+	    value: function parseJSON(response) {
+	      return response.json();
+	    }
+	  }, {
+	    key: 'storeData',
+	    value: function storeData(data) {
+	      this.setState({
+	        students: data
+	      });
+	    }
+	  }, {
+	    key: 'handleData',
+	    value: function handleData(data) {
+	      var _this2 = this;
+
+	      var studentHomeworkTableRowList = this.state.students['signing_list'].map(function (student, index) {
+	        return React.createElement(HomeworkTableRow, {
+	          key: index,
+	          signing_id: student['id'],
+	          student_number: index + 1,
+	          student_id: student['student_id'],
+	          student_name: student['student_name'],
+	          student_seat: student['student_seat'],
+	          student_have_finish_homework: student['finish_homework'],
+	          handle_update: _this2.handleUpdate
+	        });
+	      });
+	      this.setState({
+	        list: studentHomeworkTableRowList
+	      });
+	    }
+	  }, {
+	    key: 'handleUpdate',
+	    value: function handleUpdate(data) {
+	      var today = new Date();
+	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	      this.getHomeworkDone(date);
+	      this.setState({
+	        update_at: data
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var hStyle = {
+	        'textAlign': 'center'
+	      };
+
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'page-header', id: 'banner' },
+	          ' '
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          ' ',
+	          React.createElement(
+	            'h3',
+	            { style: hStyle },
+	            '\u4F5C\u696D\u5DF2\u5B8C\u6210\u540D\u55AE'
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'table',
+	            { className: 'table table-striped table-hover ' },
+	            React.createElement(
+	              'thead',
+	              null,
+	              React.createElement(
+	                'tr',
+	                null,
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '#'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u59D3\u540D'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u5EA7\u4F4D'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u5B8C\u6210'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u53D6\u6D88'
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'tbody',
+	              null,
+	              this.state.list
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return HomeworkDoneMain;
+	}(React.Component);
+
+	module.exports = HomeworkDoneMain;
+
+/***/ }),
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20117,87 +20308,53 @@
 
 	var React = __webpack_require__(1);
 
-	var CreateQuizMain = function (_React$Component) {
-	  _inherits(CreateQuizMain, _React$Component);
+	var HomeworkTableRow = function (_React$Component) {
+	  _inherits(HomeworkTableRow, _React$Component);
 
-	  function CreateQuizMain() {
-	    _classCallCheck(this, CreateQuizMain);
+	  function HomeworkTableRow() {
+	    _classCallCheck(this, HomeworkTableRow);
 
-	    var _this = _possibleConstructorReturn(this, (CreateQuizMain.__proto__ || Object.getPrototypeOf(CreateQuizMain)).call(this));
+	    var _this = _possibleConstructorReturn(this, (HomeworkTableRow.__proto__ || Object.getPrototypeOf(HomeworkTableRow)).call(this));
 
 	    _this.state = {
-	      name: [],
-	      id: [],
-	      subject: 'chinese',
-	      range: '',
-	      note: ''
+	      update_at: []
 	    };
 
-	    _this.create_quiz = _this.create_quiz.bind(_this);
+	    _this.homework_done = _this.homework_done.bind(_this);
+	    _this.cancel = _this.cancel.bind(_this);
 	    _this.checkStatus = _this.checkStatus.bind(_this);
 	    _this.parseJSON = _this.parseJSON.bind(_this);
-	    _this.getSubject = _this.getSubject.bind(_this);
-	    _this.handleRangeChange = _this.handleRangeChange.bind(_this);
-	    _this.handleSubjectChange = _this.handleSubjectChange.bind(_this);
-	    _this.handleNoteChange = _this.handleNoteChange.bind(_this);
-	    _this.handleCancel = _this.handleCancel.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(CreateQuizMain, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setState({
-	        name: localStorage.getItem("student_name"),
-	        id: localStorage.getItem("student_id")
-	      });
-	    }
-	  }, {
-	    key: 'getSubject',
-	    value: function getSubject(subject) {
-	      switch (subject) {
-	        case '國文':
-	          return 'chinese';
-	        case '英文':
-	          return 'english';
-	        case '數學':
-	          return 'math';
-	        case '物理':
-	          return 'physics';
-	        case '化學':
-	          return 'chemistry';
-	        case '生物':
-	          return 'biology';
-	        case '地科':
-	          return 'earth_science';
-	        case '地理':
-	          return 'geography';
-	        case '歷史':
-	          return 'history';
-	        case '公民':
-	          return 'civil_ethics_education';
-	        default:
-	          return 'no match';
-	      }
-	    }
-	  }, {
-	    key: 'create_quiz',
-	    value: function create_quiz(cb) {
-	      var today = new Date();
-	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/quiz/', {
-	        method: 'POST',
+	  _createClass(HomeworkTableRow, [{
+	    key: 'homework_done',
+	    value: function homework_done(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
 	        headers: {
 	          'Accept': 'application/json',
 	          'Content-Type': 'application/json'
 	        },
 	        body: JSON.stringify({
-	          owner: this.state.id,
-	          date: date,
-	          subject: this.state.subject,
-	          range: this.state.range,
-	          note: this.state.note
+	          finish_homework: true,
+	          finish_homework_at: now.toTimeString()
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'cancel',
+	    value: function cancel(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          finish_homework: false
 	        })
 	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
 	    }
@@ -20220,200 +20377,72 @@
 	      return response.json();
 	    }
 	  }, {
-	    key: 'handleRangeChange',
-	    value: function handleRangeChange(e) {
-	      this.setState({ range: e.target.value });
-	    }
-	  }, {
-	    key: 'handleSubjectChange',
-	    value: function handleSubjectChange(e) {
-	      this.setState({ subject: this.getSubject(e.target.value) });
-	    }
-	  }, {
-	    key: 'handleNoteChange',
-	    value: function handleNoteChange(e) {
-	      this.setState({ note: e.target.value });
-	    }
-	  }, {
-	    key: 'handleCancel',
-	    value: function handleCancel() {
-	      this.setState({
-	        subject: 'chinese',
-	        range: '',
-	        note: ''
-	      });
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit() {
-	      this.create_quiz();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var hStyle = {
-	        'textAlign': 'center'
-	      };
+	      var _this2 = this;
+
+	      var have_done = this.props.student_have_finish_homework;
+	      var done_button = React.createElement(
+	        'a',
+	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
+	            _this2.homework_done(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u5B8C\u6210'
+	      );
+	      var cancel_button = React.createElement(
+	        'a',
+	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
+	            _this2.cancel(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u53D6\u6D88'
+	      );
+
+	      if (have_done) {
+	        done_button = '完成';
+	      } else {
+	        cancel_button = 'xxxx';
+	      }
 
 	      return React.createElement(
-	        'div',
-	        { className: 'container' },
+	        'tr',
+	        null,
 	        React.createElement(
-	          'div',
-	          { className: 'page-header', id: 'banner' },
-	          ' '
-	        ),
-	        React.createElement(
-	          'div',
+	          'td',
 	          null,
-	          React.createElement(
-	            'h3',
-	            { style: hStyle },
-	            '新增' + this.state.name + '的明天小考'
-	          )
+	          this.props.student_number
 	        ),
 	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'well bs-component' },
-	            React.createElement(
-	              'form',
-	              { className: 'form-horizontal' },
-	              React.createElement(
-	                'fieldset',
-	                null,
-	                React.createElement(
-	                  'legend',
-	                  null,
-	                  this.state.name + '小考'
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'label',
-	                    { htmlFor: 'inputSubject', className: 'col-lg-2 control-label' },
-	                    '\u79D1\u76EE'
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-lg-10' },
-	                    React.createElement(
-	                      'select',
-	                      { className: 'form-control', id: 'select', name: 'subject', onChange: this.handleSubjectChange },
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u570B\u6587'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u82F1\u6587'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u6578\u5B78'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u7269\u7406'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u5316\u5B78'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u751F\u7269'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u5730\u79D1'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u5730\u7406'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u6B77\u53F2'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '\u516C\u6C11'
-	                      )
-	                    )
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'label',
-	                    { htmlFor: 'inputRange', className: 'col-lg-2 control-label' },
-	                    '\u7BC4\u570D'
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-lg-10' },
-	                    React.createElement('input', { type: 'text', className: 'form-control', id: 'inputRange', placeholder: 'Range', name: 'range', value: this.state.range, onChange: this.handleRangeChange })
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'label',
-	                    { htmlFor: 'textArea', className: 'col-lg-2 control-label' },
-	                    '\u5099\u8A3B'
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-lg-10' },
-	                    React.createElement('textarea', { className: 'form-control', rows: '3', id: 'textArea', name: 'note', onChange: this.handleNoteChange })
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-lg-10 col-lg-offset-2' },
-	                    React.createElement(
-	                      'button',
-	                      { type: 'reset', className: 'btn btn-default', onClick: this.handleCancel },
-	                      'Cancel'
-	                    ),
-	                    React.createElement(
-	                      'button',
-	                      { type: 'submit', className: 'btn btn-primary', onClick: this.handleSubmit },
-	                      'Submit'
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
+	          'td',
+	          null,
+	          this.props.student_name
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.student_seat
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          done_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          cancel_button
 	        )
 	      );
 	    }
 	  }]);
 
-	  return CreateQuizMain;
+	  return HomeworkTableRow;
 	}(React.Component);
 
-	module.exports = CreateQuizMain;
+	module.exports = HomeworkTableRow;
 
 /***/ })
 /******/ ]);

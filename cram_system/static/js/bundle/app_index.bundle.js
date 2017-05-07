@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var Index = __webpack_require__(163);
+	var Index = __webpack_require__(170);
 
 	ReactDOM.render(React.createElement(Index, null), document.getElementById('app'));
 
@@ -20058,7 +20058,14 @@
 
 /***/ }),
 /* 162 */,
-/* 163 */
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20074,7 +20081,7 @@
 	var React = __webpack_require__(1);
 	var CramHeader = __webpack_require__(160);
 	var CramFooter = __webpack_require__(161);
-	var IndexMain = __webpack_require__(164);
+	var IndexMain = __webpack_require__(171);
 
 	var Index = function (_React$Component) {
 	  _inherits(Index, _React$Component);
@@ -20104,7 +20111,7 @@
 	module.exports = Index;
 
 /***/ }),
-/* 164 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20118,13 +20125,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var StudentCard = __webpack_require__(165);
-	var SigningListGroups = __webpack_require__(166);
-	var QuizCreateListGroups = __webpack_require__(167);
-	var HomeworkListGroups = __webpack_require__(168);
-	var QuizListGroups = __webpack_require__(169);
-	var PlanListGroups = __webpack_require__(170);
-	var LeftListGroups = __webpack_require__(171);
+	var StudentCard = __webpack_require__(172);
+	var SigningListGroups = __webpack_require__(173);
+	var QuizCreateListGroups = __webpack_require__(174);
+	var HomeworkListGroups = __webpack_require__(175);
+	var QuizListGroups = __webpack_require__(176);
+	var PlanListGroups = __webpack_require__(177);
+	var LeftListGroups = __webpack_require__(178);
 
 	var IndexMain = function (_React$Component) {
 	  _inherits(IndexMain, _React$Component);
@@ -20285,7 +20292,7 @@
 	module.exports = IndexMain;
 
 /***/ }),
-/* 165 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20343,7 +20350,7 @@
 	module.exports = StudentCard;
 
 /***/ }),
-/* 166 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20443,7 +20450,7 @@
 	module.exports = SigningListGroups;
 
 /***/ }),
-/* 167 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20500,7 +20507,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/quiz_create_done/" },
 	              "\u5DF2\u7D93\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
 	            )
 	          ),
@@ -20514,7 +20521,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/quiz_create_not_done/" },
 	              "\u9084\u672A\u586B\u5BEB\u8003\u8A66\u4EBA\u6578"
 	            )
 	          )
@@ -20529,7 +20536,7 @@
 	module.exports = QuizCreateListGroups;
 
 /***/ }),
-/* 168 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20572,7 +20579,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/homework_expect/" },
 	              "\u61C9\u8A72\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
 	            )
 	          ),
@@ -20586,7 +20593,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/homework_done/" },
 	              "\u5DF2\u7D93\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
 	            )
 	          ),
@@ -20600,7 +20607,7 @@
 	            ),
 	            React.createElement(
 	              "a",
-	              { href: "#" },
+	              { href: "http://localhost:8000/homework_not_done/" },
 	              "\u9084\u672A\u5B8C\u6210\u4F5C\u696D\u4EBA\u6578"
 	            )
 	          )
@@ -20615,7 +20622,7 @@
 	module.exports = HomeworkListGroups;
 
 /***/ }),
-/* 169 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20701,7 +20708,7 @@
 	module.exports = QuizListGroups;
 
 /***/ }),
-/* 170 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20787,7 +20794,7 @@
 	module.exports = PlanListGroups;
 
 /***/ }),
-/* 171 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

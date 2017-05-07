@@ -115,7 +115,7 @@ class CreateQuizMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div><h1 style={hStyle}>{'新增'+this.state.name+'的明天小考'}</h1></div>
+        <div><h3 style={hStyle}>{'新增'+this.state.name+'的明天小考'}</h3></div>
         <div className="row">
           <div className="well bs-component">
             <form className="form-horizontal">

@@ -215,3 +215,27 @@ def collect_signing_leave_list(date):
     d = datetime_gen(date)
     signingLeave = signing_leave(d)
     return signingLeave
+
+
+def collect_quiz_create_done_list(date):
+    d = datetime_gen(date)
+    quizCreateDone = quiz_create_done(d)
+    return quizCreateDone
+
+
+def collect_quiz_create_not_done_list(date):
+    d = datetime_gen(date)
+    quizCreateNotDone = quiz_create_not_done(d)
+    return quizCreateNotDone
+
+
+def collect_homework_done_list(date):
+    d = datetime_gen(date)
+    homeworkDone = homework_done(d)
+    return homeworkDone
+
+
+def collect_homework_not_done_list(date):
+    d = datetime_gen(date)
+    homeworkNotDone = homework_not_done(d)
+    return homeworkNotDone

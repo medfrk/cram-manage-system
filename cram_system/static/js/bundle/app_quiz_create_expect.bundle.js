@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var QuizCreateExpect = __webpack_require__(174);
+	var QuizCreateExpect = __webpack_require__(184);
 
 	ReactDOM.render(React.createElement(QuizCreateExpect, null), document.getElementById('app'));
 
@@ -20069,7 +20069,187 @@
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var QuizCreateTableRow = function (_React$Component) {
+	  _inherits(QuizCreateTableRow, _React$Component);
+
+	  function QuizCreateTableRow() {
+	    _classCallCheck(this, QuizCreateTableRow);
+
+	    var _this = _possibleConstructorReturn(this, (QuizCreateTableRow.__proto__ || Object.getPrototypeOf(QuizCreateTableRow)).call(this));
+
+	    _this.state = {
+	      update_at: []
+	    };
+
+	    _this.create_quiz_done = _this.create_quiz_done.bind(_this);
+	    _this.cancel = _this.cancel.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    _this.parseJSON = _this.parseJSON.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(QuizCreateTableRow, [{
+	    key: 'create_quiz_done',
+	    value: function create_quiz_done(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          have_create_quiz: true,
+	          create_quiz_at: now.toTimeString()
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'cancel',
+	    value: function cancel(signing_id, cb) {
+	      var now = new Date();
+	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+	        method: 'PATCH',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify({
+	          have_create_quiz: false
+	        })
+	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'parseJSON',
+	    value: function parseJSON(response) {
+	      return response.json();
+	    }
+	  }, {
+	    key: 'setLocalStorage',
+	    value: function setLocalStorage() {
+	      localStorage.setItem('student_name', this.props.student_name);
+	      localStorage.setItem('student_id', this.props.student_id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var create_url = "http://localhost:8000/create_quiz/";
+	      var have_create = this.props.student_have_create_quiz;
+	      var create_button = React.createElement(
+	        'a',
+	        { href: create_url, onClick: function onClick() {
+	            _this2.setLocalStorage();
+	          }, className: 'btn btn-warning btn-xs' },
+	        '\u65B0\u589E'
+	      );
+	      var done_button = React.createElement(
+	        'a',
+	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
+	            _this2.create_quiz_done(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u5B8C\u6210'
+	      );
+	      var cancel_button = React.createElement(
+	        'a',
+	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
+	            _this2.cancel(_this2.props.signing_id, function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u53D6\u6D88'
+	      );
+
+	      if (have_create) {
+	        done_button = '完成';
+	      } else {
+	        cancel_button = 'xxxx';
+	      }
+
+	      return React.createElement(
+	        'tr',
+	        null,
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.student_number
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.student_name
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.student_seat
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          create_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          done_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          cancel_button
+	        )
+	      );
+	    }
+	  }]);
+
+	  return QuizCreateTableRow;
+	}(React.Component);
+
+	module.exports = QuizCreateTableRow;
+
+/***/ }),
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20085,7 +20265,7 @@
 	var React = __webpack_require__(1);
 	var CramHeader = __webpack_require__(160);
 	var CramFooter = __webpack_require__(161);
-	var QuizCreateExpectMain = __webpack_require__(175);
+	var QuizCreateExpectMain = __webpack_require__(185);
 
 	var QuizCreateExpect = function (_React$Component) {
 	  _inherits(QuizCreateExpect, _React$Component);
@@ -20115,7 +20295,7 @@
 	module.exports = QuizCreateExpect;
 
 /***/ }),
-/* 175 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20129,7 +20309,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var QuizCreateTableRow = __webpack_require__(176);
+	var QuizCreateTableRow = __webpack_require__(183);
 
 	var QuizCreateExpectMain = function (_React$Component) {
 	  _inherits(QuizCreateExpectMain, _React$Component);
@@ -20307,177 +20487,6 @@
 	}(React.Component);
 
 	module.exports = QuizCreateExpectMain;
-
-/***/ }),
-/* 176 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var QuizCreateTableRow = function (_React$Component) {
-	  _inherits(QuizCreateTableRow, _React$Component);
-
-	  function QuizCreateTableRow() {
-	    _classCallCheck(this, QuizCreateTableRow);
-
-	    var _this = _possibleConstructorReturn(this, (QuizCreateTableRow.__proto__ || Object.getPrototypeOf(QuizCreateTableRow)).call(this));
-
-	    _this.state = {
-	      update_at: []
-	    };
-
-	    _this.create_quiz_done = _this.create_quiz_done.bind(_this);
-	    _this.cancel = _this.cancel.bind(_this);
-	    _this.checkStatus = _this.checkStatus.bind(_this);
-	    _this.parseJSON = _this.parseJSON.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(QuizCreateTableRow, [{
-	    key: 'create_quiz_done',
-	    value: function create_quiz_done(signing_id, cb) {
-	      var now = new Date();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
-	        method: 'PATCH',
-	        headers: {
-	          'Accept': 'application/json',
-	          'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify({
-	          have_create_quiz: true,
-	          create_quiz_at: now.toTimeString()
-	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
-	    }
-	  }, {
-	    key: 'cancel',
-	    value: function cancel(signing_id, cb) {
-	      var now = new Date();
-	      fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
-	        method: 'PATCH',
-	        headers: {
-	          'Accept': 'application/json',
-	          'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify({
-	          have_create_quiz: false
-	        })
-	      }).then(this.checkStatus).then(this.parseJSON).then(cb);
-	    }
-	  }, {
-	    key: 'checkStatus',
-	    value: function checkStatus(response) {
-	      if (response.status >= 200 && response.status < 300) {
-	        return response;
-	      } else {
-	        var error = new Error('HTTP Error ' + response.statusText);
-	        error.status = response.statusText;
-	        error.response = response;
-	        console.log(error);
-	        throw error;
-	      }
-	    }
-	  }, {
-	    key: 'parseJSON',
-	    value: function parseJSON(response) {
-	      return response.json();
-	    }
-	  }, {
-	    key: 'setLocalStorage',
-	    value: function setLocalStorage() {
-	      localStorage.setItem('student_name', this.props.student_name);
-	      localStorage.setItem('student_id', this.props.student_id);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var create_url = "http://localhost:8000/create_quiz/";
-	      var have_create = this.props.student_have_create_quiz;
-	      var create_button = React.createElement(
-	        'a',
-	        { href: create_url, onClick: function onClick() {
-	            _this2.setLocalStorage();
-	          }, className: 'btn btn-warning btn-xs' },
-	        '\u65B0\u589E'
-	      );
-	      var done_button = React.createElement(
-	        'a',
-	        { className: 'btn btn-success btn-xs', onClick: function onClick() {
-	            _this2.create_quiz_done(_this2.props.signing_id, function (results) {
-	              _this2.props.handle_update('123');
-	            });
-	          } },
-	        '\u5B8C\u6210'
-	      );
-	      var cancel_button = React.createElement(
-	        'a',
-	        { className: 'btn btn-primary btn-xs', onClick: function onClick() {
-	            _this2.cancel(_this2.props.signing_id, function (results) {
-	              _this2.props.handle_update('123');
-	            });
-	          } },
-	        '\u53D6\u6D88'
-	      );
-
-	      if (have_create) {
-	        done_button = '完成';
-	      } else {
-	        cancel_button = 'xxxx';
-	      }
-
-	      return React.createElement(
-	        'tr',
-	        null,
-	        React.createElement(
-	          'td',
-	          null,
-	          this.props.student_number
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          this.props.student_name
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          this.props.student_seat
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          create_button
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          done_button
-	        ),
-	        React.createElement(
-	          'td',
-	          null,
-	          cancel_button
-	        )
-	      );
-	    }
-	  }]);
-
-	  return QuizCreateTableRow;
-	}(React.Component);
-
-	module.exports = QuizCreateTableRow;
 
 /***/ })
 /******/ ]);

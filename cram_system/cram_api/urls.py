@@ -80,6 +80,14 @@ urlpatterns = [
         study_view.StudySigningActualList.as_view()),
     url(r'^api/v1.0/study_manage/signing/leave/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudySigningLeaveList.as_view()),
+    url(r'^api/v1.0/study_manage/quiz_create/done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyQuizCreateDoneList.as_view()),
+    url(r'^api/v1.0/study_manage/quiz_create/not_done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyQuizCreateNotDoneList.as_view()),
+    url(r'^api/v1.0/study_manage/homework/done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyHomeworkDoneList.as_view()),
+    url(r'^api/v1.0/study_manage/homework/not_done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyHomeworkNotDoneList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
