@@ -100,6 +100,7 @@ class QuizCreateExpectMain extends React.Component {
                 <th>#</th>
                 <th>姓名</th>
                 <th>座位</th>
+                <th>查看</th>
                 <th>新增</th>
                 <th>完成</th>
                 <th>取消</th>

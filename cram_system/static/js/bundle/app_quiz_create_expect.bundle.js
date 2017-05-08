@@ -48,7 +48,7 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var QuizCreateExpect = __webpack_require__(184);
+	var QuizCreateExpect = __webpack_require__(185);
 
 	ReactDOM.render(React.createElement(QuizCreateExpect, null), document.getElementById('app'));
 
@@ -20078,7 +20078,8 @@
 /* 180 */,
 /* 181 */,
 /* 182 */,
-/* 183 */
+/* 183 */,
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20173,7 +20174,15 @@
 	      var _this2 = this;
 
 	      var create_url = "http://localhost:8000/create_quiz/";
+	      var check_url = "http://localhost:8000/quiz/";
 	      var have_create = this.props.student_have_create_quiz;
+	      var check_button = React.createElement(
+	        'a',
+	        { href: check_url, onClick: function onClick() {
+	            _this2.setLocalStorage();
+	          }, className: 'btn btn-primary btn-xs' },
+	        '\u67E5\u770B'
+	      );
 	      var create_button = React.createElement(
 	        'a',
 	        { href: create_url, onClick: function onClick() {
@@ -20227,6 +20236,11 @@
 	        React.createElement(
 	          'td',
 	          null,
+	          check_button
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
 	          create_button
 	        ),
 	        React.createElement(
@@ -20249,7 +20263,7 @@
 	module.exports = QuizCreateTableRow;
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20265,7 +20279,7 @@
 	var React = __webpack_require__(1);
 	var CramHeader = __webpack_require__(160);
 	var CramFooter = __webpack_require__(161);
-	var QuizCreateExpectMain = __webpack_require__(185);
+	var QuizCreateExpectMain = __webpack_require__(186);
 
 	var QuizCreateExpect = function (_React$Component) {
 	  _inherits(QuizCreateExpect, _React$Component);
@@ -20295,7 +20309,7 @@
 	module.exports = QuizCreateExpect;
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20309,7 +20323,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
-	var QuizCreateTableRow = __webpack_require__(183);
+	var QuizCreateTableRow = __webpack_require__(184);
 
 	var QuizCreateExpectMain = function (_React$Component) {
 	  _inherits(QuizCreateExpectMain, _React$Component);
@@ -20454,6 +20468,11 @@
 	                  'th',
 	                  null,
 	                  '\u5EA7\u4F4D'
+	                ),
+	                React.createElement(
+	                  'th',
+	                  null,
+	                  '\u67E5\u770B'
 	                ),
 	                React.createElement(
 	                  'th',

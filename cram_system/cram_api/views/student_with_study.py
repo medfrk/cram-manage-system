@@ -57,6 +57,15 @@ class StudentStudyBankAllList(generics.RetrieveAPIView):
         return Response(content)
 
 
+class StudentQuizList(generics.RetrieveAPIView):
+    """
+    Get student quiz list by student id and date.
+    """
+    def get(self, request, student_id, date, format=None):
+        content = get_all_quiz_by_student_id_and_date(student_id, date)
+        return Response(content)
+
+
 class CreateStudySigningTable(generics.RetrieveAPIView):
     """
     Create Study Signing table for a specific date.

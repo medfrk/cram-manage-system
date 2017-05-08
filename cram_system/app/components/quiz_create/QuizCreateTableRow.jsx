@@ -70,7 +70,9 @@ class QuizCreateTableRow extends React.Component {
 
   render() {
     const create_url = "http://localhost:8000/create_quiz/"
+    const check_url = "http://localhost:8000/quiz/"
     var have_create = this.props.student_have_create_quiz
+    var check_button = <a href={check_url} onClick={() => {this.setLocalStorage()} } className="btn btn-primary btn-xs">查看</a>
     var create_button = <a href={create_url} onClick={() => {this.setLocalStorage()} } className="btn btn-warning btn-xs" >新增</a>
     var done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.create_quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
     var cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
@@ -87,6 +89,7 @@ class QuizCreateTableRow extends React.Component {
         <td>{this.props.student_number}</td>
         <td>{this.props.student_name}</td>
         <td>{this.props.student_seat}</td>
+        <td>{check_button}</td>
         <td>{create_button}</td>
         <td>{done_button}</td>
         <td>{cancel_button}</td>

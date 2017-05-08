@@ -37,6 +37,7 @@ module.exports = {
       SigningListGroups: 'app/components/list_group/SigningListGroups.jsx',
       Quiz: 'app/components/Quiz.jsx',
       QuizMain: 'app/components/QuizMain.jsx',
+      QuizCard: 'app/components/QuizCard.jsx',
       Signing: 'app/components/signing/Signing.jsx',
       SigningAbsentMain: 'app/components/signing/SigningAbsentMain.jsx',
       SigningActual: 'app/components/signing/SigningActual.jsx',

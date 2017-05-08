@@ -20123,6 +20123,143 @@
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+	var QuizCard = __webpack_require__(181);
+
+	var QuizMain = function (_React$Component) {
+	  _inherits(QuizMain, _React$Component);
+
+	  function QuizMain() {
+	    _classCallCheck(this, QuizMain);
+
+	    var _this = _possibleConstructorReturn(this, (QuizMain.__proto__ || Object.getPrototypeOf(QuizMain)).call(this));
+
+	    _this.state = {
+	      name: [],
+	      id: [],
+	      quizzes: []
+	    };
+
+	    _this.getAllQuiz = _this.getAllQuiz.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    _this.parseJSON = _this.parseJSON.bind(_this);
+	    _this.storeQuizList = _this.storeQuizList.bind(_this);
+
+	    return _this;
+	  }
+
+	  // Before the first render, set state by localStorage.
+
+
+	  _createClass(QuizMain, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        name: localStorage.getItem("student_name"),
+	        id: localStorage.getItem("student_id")
+	      });
+	    }
+
+	    // After the first render, fetch the api to get quiz list.
+
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var today = new Date();
+	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+	      this.getAllQuiz(this.state.id, date);
+	    }
+	  }, {
+	    key: 'getAllQuiz',
+	    value: function getAllQuiz(student_id, specific_date) {
+	      return fetch('http://localhost:8000/api/v1.0/study_manage/quiz_list/' + student_id + '/' + specific_date + '/', {
+	        accept: 'application/json',
+	        method: 'get'
+	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeQuizList);
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'parseJSON',
+	    value: function parseJSON(response) {
+	      return response.json();
+	    }
+	  }, {
+	    key: 'storeQuizList',
+	    value: function storeQuizList(data) {
+	      this.setState({
+	        quizzes: data
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log('render' + this.state.id);
+	      return React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'page-header', id: 'banner' },
+	          ' '
+	        ),
+	        React.createElement(
+	          'h1',
+	          null,
+	          'QuizMain'
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          this.state.id
+	        ),
+	        React.createElement(
+	          'p',
+	          null,
+	          this.state.name
+	        ),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null),
+	        React.createElement(QuizCard, null)
+	      );
+	    }
+	  }]);
+
+	  return QuizMain;
+	}(React.Component);
+
+	module.exports = QuizMain;
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -20135,39 +20272,47 @@
 
 	var React = __webpack_require__(1);
 
-	var QuizMain = function (_React$Component) {
-	  _inherits(QuizMain, _React$Component);
+	var QuizCard = function (_React$Component) {
+	  _inherits(QuizCard, _React$Component);
 
-	  function QuizMain() {
-	    _classCallCheck(this, QuizMain);
+	  function QuizCard() {
+	    _classCallCheck(this, QuizCard);
 
-	    return _possibleConstructorReturn(this, (QuizMain.__proto__ || Object.getPrototypeOf(QuizMain)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (QuizCard.__proto__ || Object.getPrototypeOf(QuizCard)).apply(this, arguments));
 	  }
 
-	  _createClass(QuizMain, [{
+	  _createClass(QuizCard, [{
 	    key: "render",
 	    value: function render() {
 	      return React.createElement(
 	        "div",
-	        { className: "container" },
+	        { className: "col-md-3" },
 	        React.createElement(
 	          "div",
-	          { className: "page-header", id: "banner" },
-	          " "
-	        ),
-	        React.createElement(
-	          "h1",
-	          null,
-	          "QuizMain"
+	          { className: "panel panel-primary" },
+	          React.createElement(
+	            "div",
+	            { className: "panel-heading" },
+	            React.createElement(
+	              "h3",
+	              { className: "panel-title" },
+	              "Panel primary"
+	            )
+	          ),
+	          React.createElement(
+	            "div",
+	            { className: "panel-body" },
+	            "Panel content"
+	          )
 	        )
 	      );
 	    }
 	  }]);
 
-	  return QuizMain;
+	  return QuizCard;
 	}(React.Component);
 
-	module.exports = QuizMain;
+	module.exports = QuizCard;
 
 /***/ })
 /******/ ]);

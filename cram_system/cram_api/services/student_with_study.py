@@ -1,5 +1,5 @@
 from django.utils import timezone
-from cram_api.models.student_model import Student, StudentStudy, StudentStudySigning, StudentStudyBank, StudentPlan
+from cram_api.models.student_model import Student, StudentStudy, StudentStudySigning, StudentStudyBank, StudentPlan, StudentQuiz
 from datetime import timedelta
 
 """
@@ -137,6 +137,43 @@ def get_all_study_bank():
         "bank_list": bank_list
     }
     return result
+
+
+def get_all_quiz_by_student_id_and_date(student_id, date):
+    """
+    Get all the quiz for a student in a specific date. 
+    :param student_id: student's primary key.
+    :param date: usually be today.
+    :return: collection of quiz list.
+    """
+    student = Student.objects.get(id=student_id)
+    d = datetime_gen(date)
+    all_quiz = StudentQuiz.objects.filter(owner=student, date=d)
+    if all_quiz.exists():
+        quiz_list = []
+        for quiz in all_quiz:
+            obj = {
+                "id": str(quiz.id),
+                "date": quiz.date,
+                "subject": quiz.subject,
+                "range": quiz.range,
+                "finish": quiz.finish,
+                "score": quiz.score,
+                "note": quiz.note,
+            }
+            quiz_list.append(obj)
+        result = {
+            "quiz_list": quiz_list,
+            "count": all_quiz.count(),
+        }
+        return result
+    else:
+        result = {
+            "quiz_list": [],
+            "count": 0,
+        }
+        return result
+
 
 
 def create_study_signing_by_student_id(student_id, seat, date):
