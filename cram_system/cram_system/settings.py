@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'authentication',
 ]
 
-SITE_ID = 2
+SITE_ID = 1
 #SOCIALACCOUNT_ADAPTER = 'authentication.socialaccount_adapter.mySocialAccountAdapter'
 LOGIN_REDIRECT_URL = '/profile'
 #ACCOUNT_LOGOUT_REDIRECT_URL  = '/accounts/login'
