@@ -152,8 +152,9 @@ class CreateQuizMain extends React.Component {
                 </div>
                 <div className="form-group">
                   <div className="col-lg-10 col-lg-offset-2">
-                    <button type="reset" className="btn btn-default" onClick={this.handleCancel}>Cancel</button>
-                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+                    <a className="btn btn-primary" onClick={() => {window.history.back()}}>Back</a>
+                    <a type="submit" className="btn btn-primary pull-right" onClick={this.handleSubmit}>Submit</a>
+                    <a type="reset" className="btn btn-default pull-right" onClick={this.handleCancel}>Cancel</a>
                   </div>
                 </div>
               </fieldset>

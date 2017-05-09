@@ -14,7 +14,10 @@ module.exports = {
     app_quiz_create_not_done: './app/app_quiz_create_not_done.jsx',
     app_homework_done: './app/app_homework_done.jsx',
     app_homework_expect: './app/app_homework_expect.jsx',
-    app_homework_not_done: './app/app_homework_not_done.jsx'
+    app_homework_not_done: './app/app_homework_not_done.jsx',
+    app_quiz_done: './app/app_quiz_done.jsx',
+    app_quiz_expect: './app/app_quiz_expect.jsx',
+    app_quiz_not_done: './app/app_quiz_not_done.jsx',
   },
   output: {
     path: path.join(__dirname, "/static/js/bundle"),
@@ -61,7 +64,14 @@ module.exports = {
       HomeworkExpectMain: 'app/components/homework/HomeworkExpectMain.jsx',
       HomeworkNotDone: 'app/components/homework/HomeworkNotDone.jsx',
       HomeworkNotDoneMain: 'app/components/homework/HomeworkNotDoneMain.jsx',
-      HomeworkTableRow: 'app/components/homework/HomeworkTableRow.jsx'
+      HomeworkTableRow: 'app/components/homework/HomeworkTableRow.jsx',
+      QuizDone: 'app/components/quiz/QuizDone.jsx',
+      QuizDoneMain: 'app/components/quiz/QuizDoneMain.jsx',
+      QuizExpect: 'app/components/quiz/QuizExpect.jsx',
+      QuizExpectMain: 'app/components/quiz/QuizExpectMain.jsx',
+      QuizNotDone: 'app/components/quiz/QuizNotDone.jsx',
+      QuizNotDoneMain: 'app/components/quiz/QuizNotDoneMain.jsx',
+      QuizTableRow: 'app/components/quiz/QuizTableRow.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

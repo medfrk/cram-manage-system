@@ -105,3 +105,22 @@ class StudyHomeworkNotDoneList(generics.RetrieveAPIView):
     def get(self, request, date, format=None):
         content = collect_homework_not_done_list(date)
         return Response(content)
+
+
+class StudyQuizDoneList(generics.RetrieveAPIView):
+    """
+    Get the list of student who have finished the quiz. 
+    """
+    def get(self, request, date, format=None):
+        content = collect_quiz_done_list(date)
+        return Response(content)
+
+
+class StudyQuizNotDoneList(generics.RetrieveAPIView):
+    """
+    Get the list of student who have not finished the quiz yet.
+    """
+    def get(self, request, date, format=None):
+        content = collect_quiz_not_done_list(date)
+        return Response(content)
+

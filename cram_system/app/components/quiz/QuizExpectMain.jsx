@@ -1,7 +1,7 @@
 var React = require('react');
-var HomeworkTableRow = require('HomeworkTableRow');
+var QuizTableRow = require('QuizTableRow');
 
-class HomeworkNotDoneMain extends React.Component {
+class QuizExpectMain extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -10,7 +10,7 @@ class HomeworkNotDoneMain extends React.Component {
       update_at: [],
     }
 
-    this.getHomeworkNotDone = this.getHomeworkNotDone.bind(this);
+    this.getQuizExpect = this.getQuizExpect.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.storeData = this.storeData.bind(this);
@@ -20,11 +20,11 @@ class HomeworkNotDoneMain extends React.Component {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-    this.getHomeworkNotDone(date)
+    this.getQuizExpect(date)
   }
 
-  getHomeworkNotDone(specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/study_manage/homework/not_done/' + specific_date + '/', {
+  getQuizExpect(specific_date) {
+    return fetch('http://localhost:8000/api/v1.0/study_manage/signing/actual/' + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)
@@ -56,29 +56,29 @@ class HomeworkNotDoneMain extends React.Component {
   }
 
   handleData(data) {
-    var studentHomeworkTableRowList = this.state.students['signing_list'].map((student, index) => {
+    var studentQuizTableRowList = this.state.students['signing_list'].map((student, index) => {
       return (
-        <HomeworkTableRow
+        <QuizTableRow
           key={student['id']}
           signing_id={student['id']}
           student_number={index+1}
           student_id={student['student_id']}
           student_name={student['student_name']}
           student_seat={student['student_seat']}
-          student_have_finish_homework={student['finish_homework']}
+          student_have_finish_quiz={student['finish_quiz']}
           handle_update={this.handleUpdate}
         />
       )
     });
     this.setState({
-      list: studentHomeworkTableRowList,
+      list: studentQuizTableRowList,
     });
   }
 
   handleUpdate(data){
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    this.getHomeworkNotDone(date)
+    this.getQuizExpect(date)
     this.setState({
       update_at: data,
     });
@@ -92,7 +92,7 @@ class HomeworkNotDoneMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div className="row"> <h3 style={hStyle}>作業未完成名單</h3></div>
+        <div className="row"> <h3 style={hStyle}>應該完成考試名單</h3></div>
         <div className="row">
           <table className="table table-striped table-hover ">
             <thead>
@@ -100,6 +100,7 @@ class HomeworkNotDoneMain extends React.Component {
                 <th>#</th>
                 <th>姓名</th>
                 <th>座位</th>
+                <th>查看</th>
                 <th>完成</th>
                 <th>取消</th>
               </tr>
@@ -114,4 +115,4 @@ class HomeworkNotDoneMain extends React.Component {
   }
 }
 
-module.exports = HomeworkNotDoneMain;
+module.exports = QuizExpectMain;

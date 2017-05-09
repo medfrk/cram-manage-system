@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 #SOCIALACCOUNT_ADAPTER = 'authentication.socialaccount_adapter.mySocialAccountAdapter'
-LOGIN_REDIRECT_URL = '/profile'
+LOGIN_REDIRECT_URL = '/'
 #ACCOUNT_LOGOUT_REDIRECT_URL  = '/accounts/login'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

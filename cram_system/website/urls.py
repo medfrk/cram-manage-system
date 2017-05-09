@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^homework_expect/$', views.homework_expect_view),
     url(r'^homework_done/$', views.homework_done_view),
     url(r'^homework_not_done/$', views.homework_not_done_view),
+    url(r'^quiz_expect/$', views.quiz_expect_view),
+    url(r'^quiz_done/$', views.quiz_done_view),
+    url(r'^quiz_not_done/$', views.quiz_not_done_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

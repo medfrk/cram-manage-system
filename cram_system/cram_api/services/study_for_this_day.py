@@ -239,3 +239,15 @@ def collect_homework_not_done_list(date):
     d = datetime_gen(date)
     homeworkNotDone = homework_not_done(d)
     return homeworkNotDone
+
+
+def collect_quiz_done_list(date):
+    d = datetime_gen(date)
+    quizDone = quiz_done(d)
+    return quizDone
+
+
+def collect_quiz_not_done_list(date):
+    d = datetime_gen(date)
+    quizNotDone = quiz_not_done(d)
+    return quizNotDone
