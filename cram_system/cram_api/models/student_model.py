@@ -69,6 +69,7 @@ class StudentCourseSigning(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE,)
     date = models.DateField(default=timezone.now, editable=True)
     sign = models.BooleanField(default=False)
+    leave = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
@@ -105,12 +106,21 @@ class StudentStudyBank(models.Model):
 
 class StudentStudySigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    seat = models.CharField(max_length=50, default="")
+    date = models.DateField(default=timezone.now, editable=True)
     finish_previous = models.BooleanField(default=False)
+    sign_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     sign = models.BooleanField(default=False)
+    leave = models.BooleanField(default=False)
+    create_quiz_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
+    have_create_quiz = models.BooleanField(default=False)
+    finish_homework_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     finish_homework = models.BooleanField(default=False)
+    finish_quiz_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     finish_quiz = models.BooleanField(default=False)
+    finish_plan_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     finish_plan = models.BooleanField(default=False)
+    left_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     left = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
@@ -185,7 +195,7 @@ class StudentQuiz(models.Model):
         ('civil_ethics_education', '公民'),
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     subject = models.CharField(
         max_length=25,
         choices=SUBJECT_CHOICES,
@@ -213,7 +223,7 @@ class StudentPlan(models.Model):
         ('civil_ethics_education', '公民'),
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
-    date = models.DateTimeField(default=timezone.now, editable=True)
+    date = models.DateField(default=timezone.now, editable=True)
     subject = models.CharField(
         max_length=25,
         choices=SUBJECT_CHOICES,

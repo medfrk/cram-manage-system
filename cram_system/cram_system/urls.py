@@ -23,4 +23,5 @@ urlpatterns = [
     #url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/', include('authentication.urls')),
     url(r'^', include('cram_api.urls')),
+    url(r'^', include('website.urls')),
 ]

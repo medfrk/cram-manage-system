@@ -7,6 +7,7 @@ class StudentStudySerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentStudy
         fields = (
+            'id',
             'owner',
             'seat',
             'day',

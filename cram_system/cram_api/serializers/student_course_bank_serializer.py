@@ -7,6 +7,7 @@ class StudentCourseBankSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentCourseBank
         fields = (
+            'id',
             'owner',
             'course',
             'balance',

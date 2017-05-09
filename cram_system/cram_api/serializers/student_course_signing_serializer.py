@@ -11,5 +11,6 @@ class StudentCourseSigningSerializer(serializers.ModelSerializer):
             'course',
             'date',
             'sign',
+            'leave',
             'created_at'
         )
