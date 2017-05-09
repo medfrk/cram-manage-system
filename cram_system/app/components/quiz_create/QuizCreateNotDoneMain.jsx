@@ -59,7 +59,7 @@ class QuizCreateNotDoneMain extends React.Component {
     var studentQuizCreateTableRowList = this.state.students['signing_list'].map((student, index) => {
       return (
         <QuizCreateTableRow
-          key={index}
+          key={student['id']}
           signing_id={student['id']}
           student_number={index+1}
           student_id={student['student_id']}

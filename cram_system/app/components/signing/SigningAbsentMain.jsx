@@ -59,7 +59,7 @@ class SigningAbsentMain extends React.Component {
     var studentSigningTableRowList = this.state.students['signing_list'].map((student, index) => {
       return (
         <SigningTableRow
-          key={index}
+          key={student['id']}
           signing_id={student['id']}
           student_number={index+1}
           student_name={student['student_name']}

@@ -9,14 +9,15 @@ class QuizMain extends React.Component {
       name: [],
       id: [],
       quizzes: [],
+      cards: [],
     }
 
     this.getAllQuiz = this.getAllQuiz.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.storeQuizList = this.storeQuizList.bind(this);
-
-
+    this.handleData = this.handleData.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   // Before the first render, set state by localStorage.
@@ -42,6 +43,7 @@ class QuizMain extends React.Component {
            }).then(this.checkStatus)
              .then(this.parseJSON)
              .then(this.storeQuizList)
+             .then(this.handleData)
   }
 
   checkStatus(response) {
@@ -66,21 +68,49 @@ class QuizMain extends React.Component {
     });
   }
 
+  handleData() {
+    var quiz_list = this.state.quizzes.quiz_list;
+    var quiz_cards = quiz_list.map( (quiz, index) => {
+      return (
+        <QuizCard
+          key={quiz.id}
+          id={quiz.id}
+          date={quiz.date}
+          subject={quiz.subject}
+          range={quiz.range}
+          finish={quiz.finish}
+          score={quiz.score}
+          note={quiz.note}
+          handle_update={this.handleUpdate}
+        />
+      )
+    })
+    this.setState({
+      cards: quiz_cards,
+    })
+  }
+
+  handleUpdate(data){
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    this.getAllQuiz(this.state.id, date)
+    // this.setState({
+    //  update_at: data,
+    // });
+  }
+
+
   render() {
-    console.log('render' + this.state.id);
+    const hStyle = {
+      'textAlign': 'center',
+    }
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <h1>QuizMain</h1>
-        <p>{this.state.id}</p>
-        <p>{this.state.name}</p>
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
+        <div className="row"><h3 style={hStyle}>{this.state.name + '的小考總覽'}</h3></div>
+        <div>
+          {this.state.cards}
+        </div>
       </div>
     )
   }

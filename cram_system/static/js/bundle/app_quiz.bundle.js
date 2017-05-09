@@ -20147,14 +20147,16 @@
 	    _this.state = {
 	      name: [],
 	      id: [],
-	      quizzes: []
+	      quizzes: [],
+	      cards: []
 	    };
 
 	    _this.getAllQuiz = _this.getAllQuiz.bind(_this);
 	    _this.checkStatus = _this.checkStatus.bind(_this);
 	    _this.parseJSON = _this.parseJSON.bind(_this);
 	    _this.storeQuizList = _this.storeQuizList.bind(_this);
-
+	    _this.handleData = _this.handleData.bind(_this);
+	    _this.handleUpdate = _this.handleUpdate.bind(_this);
 	    return _this;
 	  }
 
@@ -20186,7 +20188,7 @@
 	      return fetch('http://localhost:8000/api/v1.0/study_manage/quiz_list/' + student_id + '/' + specific_date + '/', {
 	        accept: 'application/json',
 	        method: 'get'
-	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeQuizList);
+	      }).then(this.checkStatus).then(this.parseJSON).then(this.storeQuizList).then(this.handleData);
 	    }
 	  }, {
 	    key: 'checkStatus',
@@ -20214,9 +20216,44 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleData',
+	    value: function handleData() {
+	      var _this2 = this;
+
+	      var quiz_list = this.state.quizzes.quiz_list;
+	      var quiz_cards = quiz_list.map(function (quiz, index) {
+	        return React.createElement(QuizCard, {
+	          key: quiz.id,
+	          id: quiz.id,
+	          date: quiz.date,
+	          subject: quiz.subject,
+	          range: quiz.range,
+	          finish: quiz.finish,
+	          score: quiz.score,
+	          note: quiz.note,
+	          handle_update: _this2.handleUpdate
+	        });
+	      });
+	      this.setState({
+	        cards: quiz_cards
+	      });
+	    }
+	  }, {
+	    key: 'handleUpdate',
+	    value: function handleUpdate(data) {
+	      var today = new Date();
+	      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+	      this.getAllQuiz(this.state.id, date);
+	      // this.setState({
+	      //  update_at: data,
+	      // });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('render' + this.state.id);
+	      var hStyle = {
+	        'textAlign': 'center'
+	      };
 	      return React.createElement(
 	        'div',
 	        { className: 'container' },
@@ -20226,27 +20263,19 @@
 	          ' '
 	        ),
 	        React.createElement(
-	          'h1',
-	          null,
-	          'QuizMain'
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'h3',
+	            { style: hStyle },
+	            this.state.name + '的小考總覽'
+	          )
 	        ),
 	        React.createElement(
-	          'p',
+	          'div',
 	          null,
-	          this.state.id
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          this.state.name
-	        ),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null),
-	        React.createElement(QuizCard, null)
+	          this.state.cards
+	        )
 	      );
 	    }
 	  }]);
@@ -20260,7 +20289,7 @@
 /* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -20278,31 +20307,135 @@
 	  function QuizCard() {
 	    _classCallCheck(this, QuizCard);
 
-	    return _possibleConstructorReturn(this, (QuizCard.__proto__ || Object.getPrototypeOf(QuizCard)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (QuizCard.__proto__ || Object.getPrototypeOf(QuizCard)).call(this));
+
+	    _this.state = {
+	      id: [],
+	      date: [],
+	      subject: [],
+	      range: [],
+	      finish: [],
+	      score: [],
+	      note: []
+	    };
+
+	    _this.getSubject = _this.getSubject.bind(_this);
+	    _this.handleDelete = _this.handleDelete.bind(_this);
+	    _this.checkStatus = _this.checkStatus.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(QuizCard, [{
-	    key: "render",
+	    key: 'getSubject',
+	    value: function getSubject(subject) {
+	      switch (subject) {
+	        case 'chinese':
+	          return '國文';
+	        case 'english':
+	          return '英文';
+	        case 'math':
+	          return '數學';
+	        case 'physics':
+	          return '物理';
+	        case 'chemistry':
+	          return '化學';
+	        case 'biology':
+	          return '生物';
+	        case 'earth_science':
+	          return '地科';
+	        case 'geography':
+	          return '地理';
+	        case 'history':
+	          return '歷史';
+	        case 'civil_ethics_education':
+	          return '公民';
+	        default:
+	          return 'no match';
+	      }
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        id: this.props.id,
+	        date: this.props.date,
+	        subject: this.getSubject(this.props.subject),
+	        range: this.props.range,
+	        finish: this.props.finish,
+	        score: this.props.score,
+	        note: this.props.note
+	      });
+	    }
+	  }, {
+	    key: 'handleDelete',
+	    value: function handleDelete(cb) {
+	      fetch('http://localhost:8000/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
+	        method: 'DELETE',
+	        headers: {
+	          'Accept': 'application/json',
+	          'Content-Type': 'application/json'
+	        }
+	      }).then(this.checkStatus).then(cb);
+	    }
+	  }, {
+	    key: 'checkStatus',
+	    value: function checkStatus(response) {
+	      if (response.status >= 200 && response.status < 300) {
+	        return response;
+	      } else {
+	        var error = new Error('HTTP Error ' + response.statusText);
+	        error.status = response.statusText;
+	        error.response = response;
+	        console.log(error);
+	        throw error;
+	      }
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var aStyle = {
+	        "width": "100%"
+	      };
+	      var delete_button = React.createElement(
+	        'a',
+	        { className: 'btn btn-danger btn-sm', style: aStyle, onClick: function onClick() {
+	            _this2.handleDelete(function (results) {
+	              _this2.props.handle_update('123');
+	            });
+	          } },
+	        '\u522A\u9664'
+	      );
 	      return React.createElement(
-	        "div",
-	        { className: "col-md-3" },
+	        'div',
+	        { className: 'col-sm-3' },
 	        React.createElement(
-	          "div",
-	          { className: "panel panel-primary" },
+	          'div',
+	          { className: 'panel panel-primary' },
 	          React.createElement(
-	            "div",
-	            { className: "panel-heading" },
+	            'div',
+	            { className: 'panel-heading' },
 	            React.createElement(
-	              "h3",
-	              { className: "panel-title" },
-	              "Panel primary"
+	              'h3',
+	              { className: 'panel-title' },
+	              this.state.subject
 	            )
 	          ),
 	          React.createElement(
-	            "div",
-	            { className: "panel-body" },
-	            "Panel content"
+	            'div',
+	            { className: 'panel-body' },
+	            React.createElement(
+	              'p',
+	              null,
+	              '範圍: ' + this.state.range
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              '備註: ' + this.state.note
+	            ),
+	            delete_button
 	          )
 	        )
 	      );

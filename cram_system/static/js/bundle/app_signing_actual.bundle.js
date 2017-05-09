@@ -20404,7 +20404,7 @@
 
 	      var studentSigningTableRowList = this.state.students['signing_list'].map(function (student, index) {
 	        return React.createElement(SigningTableRow, {
-	          key: index,
+	          key: student['id'],
 	          signing_id: student['id'],
 	          student_number: index + 1,
 	          student_name: student['student_name'],

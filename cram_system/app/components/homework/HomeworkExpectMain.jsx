@@ -59,7 +59,7 @@ class HomeworkExpectMain extends React.Component {
     var studentHomeworkTableRowList = this.state.students['signing_list'].map((student, index) => {
       return (
         <HomeworkTableRow
-          key={index}
+          key={student['id']}
           signing_id={student['id']}
           student_number={index+1}
           student_id={student['student_id']}
