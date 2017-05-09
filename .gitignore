@@ -100,8 +100,8 @@ db.sqlite3
 node_modules/
 
 # react bundle
-# bundle/
+**/bundle
 
 cram_system/nohup.out
 
-migrations/*
+**/migrations
