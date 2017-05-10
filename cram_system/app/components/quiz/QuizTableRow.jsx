@@ -12,6 +12,7 @@ class QuizTableRow extends React.Component {
     this.cancel = this.cancel.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
+    this.setLocalStorage = this.setLocalStorage.bind(this);
   }
 
   quiz_done(signing_id, cb) {
@@ -63,9 +64,16 @@ class QuizTableRow extends React.Component {
     return response.json();
   }
 
+  setLocalStorage() {
+    localStorage.setItem('student_name', this.props.student_name);
+    localStorage.setItem('student_id', this.props.student_id);
+  }
+
   render() {
     var have_done = this.props.student_have_finish_quiz
-    var check_button = <a className="btn btn-primary btn-xs">查看</a>
+    const check_url = "http://localhost:8000/finish_quiz/"
+
+    var check_button = <a href={check_url} onClick={() => {this.setLocalStorage()}} className="btn btn-primary btn-xs">查看</a>
     var done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
     var cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
 

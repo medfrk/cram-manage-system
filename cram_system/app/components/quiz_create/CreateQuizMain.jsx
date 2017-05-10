@@ -19,8 +19,8 @@ class CreateQuizMain extends React.Component {
     this.handleRangeChange = this.handleRangeChange.bind(this);
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
   componentDidMount() {
@@ -95,16 +95,12 @@ class CreateQuizMain extends React.Component {
     this.setState({note: e.target.value});
   }
 
-  handleCancel() {
-    this.setState({
-      subject: 'chinese',
-      range: '',
-      note: '',
-    })
+  resetForm() {
+    document.getElementById("form_create_quiz").reset();
   }
 
   handleSubmit() {
-    this.create_quiz();
+    this.create_quiz(this.resetForm);
   }
 
   render() {
@@ -118,7 +114,7 @@ class CreateQuizMain extends React.Component {
         <div><h3 style={hStyle}>{'新增'+this.state.name+'的明天小考'}</h3></div>
         <div className="row">
           <div className="well bs-component">
-            <form className="form-horizontal">
+            <form className="form-horizontal" id="form_create_quiz">
               <fieldset>
                 <legend>{this.state.name+'小考'}</legend>
                 <div className="form-group">
@@ -154,7 +150,6 @@ class CreateQuizMain extends React.Component {
                   <div className="col-lg-10 col-lg-offset-2">
                     <a className="btn btn-primary" onClick={() => {window.history.back()}}>Back</a>
                     <a type="submit" className="btn btn-primary pull-right" onClick={this.handleSubmit}>Submit</a>
-                    <a type="reset" className="btn btn-default pull-right" onClick={this.handleCancel}>Cancel</a>
                   </div>
                 </div>
               </fieldset>

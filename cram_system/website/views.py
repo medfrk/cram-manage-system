@@ -82,3 +82,8 @@ def quiz_done_view(requests):
 @api_view(['GET'])
 def quiz_not_done_view(requests):
     return render(request=requests, template_name='quiz_not_done.html')
+
+
+@api_view(['GET'])
+def finish_quiz_view(requests):
+    return render(request=requests, template_name='finish_quiz.html')
