@@ -87,3 +87,13 @@ def quiz_not_done_view(requests):
 @api_view(['GET'])
 def finish_quiz_view(requests):
     return render(request=requests, template_name='finish_quiz.html')
+
+
+@api_view(['GET'])
+def plan_view(requests):
+    return render(request=requests, template_name='plan.html')
+
+
+@api_view(['GET'])
+def plan_search_view(requests):
+    return render(request=requests, template_name='plan_search.html')

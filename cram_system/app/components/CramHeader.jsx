@@ -40,7 +40,7 @@ class CramHeader extends React.Component {
                   <li><a href="#">自習管理</a></li>
                   <li className="divider"></li>
                   <li><a href="http://localhost:8000/quiz/">隔天小考</a></li>
-                  <li><a href="#">讀書計畫</a></li>
+                  <li><a href="http://localhost:8000/plan/">讀書計畫</a></li>
                 </ul>
               </li>
               <li className="dropdown">
