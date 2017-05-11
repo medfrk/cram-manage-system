@@ -4,6 +4,9 @@ class CramFooter extends React.Component {
 
 
   render() {
+    const divStyle ={
+      marginTop: '25px',
+    }
     const progressBarSuccessStyle = {
       width: '35%',
     };
@@ -18,7 +21,7 @@ class CramFooter extends React.Component {
     };
 
     return (
-      <div>
+      <div style={divStyle}>
         <div className="progress">
           <div className="progress-bar progress-bar-success" style={progressBarSuccessStyle}></div>
           <div className="progress-bar progress-bar-warning" style={progressBarWarningStyle}></div>

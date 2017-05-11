@@ -8,12 +8,17 @@ class PlanTableRow extends React.Component {
       update_at: [],
     }
 
+    this.setLocalStorage = this.setLocalStorage.bind(this);
   }
 
+  setLocalStorage() {
+    localStorage.setItem('student_name', this.props.student_name);
+    localStorage.setItem('student_id', this.props.student_id);
+  }
 
   render() {
     var check_button = <a className="btn btn-primary btn-xs">查看</a>
-    var edit_button = <a className="btn btn-warning btn-xs">編輯</a>
+    var edit_button = <a href="http://localhost:8000/plan_create/" className="btn btn-warning btn-xs" onClick={() => {this.setLocalStorage()}}>編輯</a>
 
     return(
       <tr>
