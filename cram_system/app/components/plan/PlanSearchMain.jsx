@@ -1,5 +1,6 @@
 var React = require('react');
 var DateTimeField = require('react-bootstrap-datetimepicker');
+var PlanSearchTableRow = require('PlanSearchTableRow');
 
 class PlanSearchMain extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ class PlanSearchMain extends React.Component {
     this.state = {
       id: [],
       name: [],
-      students: [],
+      plans: [],
       list: [],
       dateTime: date,
       format: "YYYY-MM-DD",
@@ -26,6 +27,11 @@ class PlanSearchMain extends React.Component {
 
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.checkStatus = this.checkStatus.bind(this);
+    this.parseJSON = this.parseJSON.bind(this);
+    this.storeData = this.storeData.bind(this);
+    this.handleData = this.handleData.bind(this);
   }
 
   componentWillMount() {
@@ -41,6 +47,58 @@ class PlanSearchMain extends React.Component {
 
   handleEndDateChange(newDate) {
     return this.setState({date_end: newDate});
+  }
+
+  handleSubmit() {
+    return fetch('http://localhost:8000/api/v1.0/plan_manage/number/' + this.state.id + '/' + this.state.date_start + '/' + this.state.date_end + '/', {
+             accept: 'application/json',
+             method: 'get',
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+             .then(this.storeData)
+             .then(this.handleData)
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      const error = new Error(`HTTP Error ${response.statusText}`);
+      error.status = response.statusText;
+      error.response = response;
+      console.log(error);
+      throw error;
+    }
+  }
+
+  parseJSON(response) {
+    return response.json();
+  }
+
+  storeData(data) {
+    this.setState({
+      plans: data,
+    });
+  }
+
+  handleData() {
+    var plan_list = this.state.plans.plan_number_list;
+    var plan_table_row = plan_list.map((plan, index) => {
+      return (
+        <PlanSearchTableRow
+          key={index}
+          student_name={this.state.name}
+          student_id={this.state.id}
+          plan_date={plan['date']}
+          plan_all={plan['plan_all']}
+          plan_done={plan['plan_done']}
+          plan_not_done={plan['plan_not_done']}
+        />
+      )
+    });
+    this.setState({
+      list: plan_table_row,
+    });
   }
 
   render() {
@@ -83,8 +141,25 @@ class PlanSearchMain extends React.Component {
         <div className="row" style={divStyle}>
           <div className="col-sm-10 col-sm-offset-1">
             <a className="btn btn-primary btn-lg" onClick={() => {window.history.back()}}>Back</a>
-            <a type="submit" className="btn btn-primary pull-right btn-lg" onClick={this.handleSubmit}>Submit</a>
+            <a type="submit" className="btn btn-primary pull-right btn-lg" onClick={this.handleSubmit}>Search</a>
           </div>
+        </div>
+        <div className="row">
+          <table className="table table-striped table-hover ">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>總數</th>
+                <th>完成</th>
+                <th>未完成</th>
+                <th>查看</th>
+                <th>新增</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.list}
+            </tbody>
+          </table>
         </div>
       </div>
     );

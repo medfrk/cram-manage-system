@@ -5,20 +5,14 @@ class PlanCreateMain extends React.Component {
   constructor() {
     super();
 
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    if (today.getMonth() + 1 < 10) {
-      date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
-    }
-
     this.state = {
-      dateTime: date,
+      dateTime: [],
       format: "YYYY-MM-DD",
       viewMode: "date",
       inputFormat: "YYYY/MM/DD",
       name: [],
       id: [],
-      date: date,
+      date: [],
       subject: 'chinese',
       range: [],
       need_a_quiz: true,
@@ -43,7 +37,9 @@ class PlanCreateMain extends React.Component {
   componentWillMount() {
     this.setState({
       name: localStorage.getItem("student_name"),
-      id: localStorage.getItem("student_id")
+      id: localStorage.getItem("student_id"),
+      dateTime: localStorage.getItem("plan_date"),
+      date: localStorage.getItem("plan_date"),
     });
   }
 

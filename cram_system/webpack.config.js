@@ -40,6 +40,7 @@ module.exports = {
       PlanCreateMain: 'app/components/plan/PlanCreateMain.jsx',
       PlanSearch: 'app/components/plan/PlanSearch.jsx',
       PlanSearchMain: 'app/components/plan/PlanSearchMain.jsx',
+      PlanSearchTableRow: 'app/components/plan/PlanSearchTableRow.jsx',
       PlanTableRow: 'app/components/plan/PlanTableRow.jsx',
       HomeworkListGroups: 'app/components/list_group/HomeworkListGroups.jsx',
       LeftListGroups: 'app/components/list_group/LeftListGroups.jsx',

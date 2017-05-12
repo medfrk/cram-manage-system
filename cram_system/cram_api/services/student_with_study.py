@@ -175,6 +175,98 @@ def get_all_quiz_by_student_id_and_date(student_id, date):
         return result
 
 
+def get_plan_number_by_date(student_id, date):
+    d = datetime_gen(date)
+    student = Student.objects.get(id=student_id)
+    plans = StudentPlan.objects.filter(owner=student, date=d)
+
+    plan_all = 0
+    plan_done = 0
+    plan_not_done = 0
+
+    if plans.exists():
+        plan_all = plans.count()
+        for plan in plans:
+            if plan.finish:
+                plan_done = plan_done + 1
+            else:
+                plan_not_done = plan_not_done + 1
+
+    result = {
+        "date": date,
+        "plan_all": plan_all,
+        "plan_done": plan_done,
+        "plan_not_done": plan_not_done,
+    }
+    return result
+
+
+def get_plan_number_by_date_range(student_id, date_start, date_end):
+    d_start = datetime_gen(date_start)
+    d_end = datetime_gen(date_end)
+
+    content = []
+    for day in range((d_end - d_start).days + 1):
+        date = d_start + timedelta(day)
+        content.append(get_plan_number_by_date(student_id, date.strftime("%Y-%m-%d")))
+    result = {
+        "plan_number_list": content,
+        "date_start": date_start,
+        "data_end": date_end,
+    }
+    return result
+
+
+def get_plan_by_date(student_id, date):
+    d = datetime_gen(date)
+    student = Student.objects.get(id=student_id)
+    plans = StudentPlan.objects.filter(owner=student, date=d)
+
+    if plans.exists():
+        plan_list = []
+        for plan in plans:
+            obj = {
+                "id": str(plan.id),
+                "date": plan.date,
+                "subject": plan.subject,
+                "range": plan.range,
+                "need_quiz": plan.need_quiz,
+                "score": plan.score,
+                "finish_quiz": plan.finish_quiz,
+                "finish": plan.finish,
+                "note": plan.note,
+                "updated_at": plan.updated_at,
+                "created_at": plan.created_at,
+            }
+            plan_list.append(obj)
+        result = {
+            "date": date,
+            "plan_list": plan_list,
+        }
+        return result
+    else:
+        result = {
+            "date": date,
+            "plan_list": [],
+        }
+        return result
+
+
+def collect_plan_list(student_id, date_start, date_end):
+    d_start = datetime_gen(date_start)
+    d_end = datetime_gen(date_end)
+
+    content = []
+    for day in range((d_end - d_start).days+1):
+        date = d_start + timedelta(day)
+        content.append(get_plan_by_date(student_id, date.strftime("%Y-%m-%d")))
+    result = {
+        "plan_list": content,
+        "date_start": date_start,
+        "data_end": date_end,
+    }
+    return result
+
 
 def create_study_signing_by_student_id(student_id, seat, date):
     """

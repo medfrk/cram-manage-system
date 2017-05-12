@@ -66,6 +66,24 @@ class StudentQuizList(generics.RetrieveAPIView):
         return Response(content)
 
 
+class StudentPlanNumberList(generics.RetrieveAPIView):
+    """
+    Get the plan number list by student id and date range.
+    """
+    def get(self, request, student_id, date_start, date_end, format=None):
+        content = get_plan_number_by_date_range(student_id, date_start, date_end)
+        return Response(content)
+
+
+class StudentPlanList(generics.RetrieveAPIView):
+    """
+    Get all plan list by student id and date range.
+    """
+    def get(self, request, student_id, date_start, date_end, format=None):
+        content = collect_plan_list(student_id, date_start, date_end)
+        return Response(content)
+
+
 class CreateStudySigningTable(generics.RetrieveAPIView):
     """
     Create Study Signing table for a specific date.

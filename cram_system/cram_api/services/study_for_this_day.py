@@ -251,3 +251,5 @@ def collect_quiz_not_done_list(date):
     d = datetime_gen(date)
     quizNotDone = quiz_not_done(d)
     return quizNotDone
+
+

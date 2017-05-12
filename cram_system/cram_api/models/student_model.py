@@ -240,3 +240,6 @@ class StudentPlan(models.Model):
     note = models.CharField(max_length=200, default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+    class Meta:
+        ordering = ('date', )
