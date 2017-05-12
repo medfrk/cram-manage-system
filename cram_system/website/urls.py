@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^plan/$', views.plan_view),
     url(r'^plan_create/$', views.plan_create_view),
     url(r'^plan_search/$', views.plan_search_view),
+    url(r'^plan_finish/$', views.plan_finish_view),
     url(r'^quiz/$', views.quiz_view),
     url(r'^signing/$', views.signing_view),
     url(r'^signing_absent/$', views.signing_absent_view),

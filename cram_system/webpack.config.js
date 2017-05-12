@@ -3,6 +3,7 @@ var path = require("path");
 module.exports = {
   entry: {
     app_create_quiz: './app/app_create_quiz.jsx',
+    app_finish_plan: './app/app_finish_plan.jsx',
     app_finish_quiz: './app/app_finish_quiz.jsx',
     app_index: './app/app_index.jsx',
     app_plan: './app/app_plan.jsx',
@@ -34,6 +35,9 @@ module.exports = {
       CramHeader: 'app/components/CramHeader.jsx',
       Index: 'app/components/Index.jsx',
       IndexMain: 'app/components/IndexMain.jsx',
+      FinishPlan: 'app/components/plan/FinishPlan.jsx',
+      FinishPlanCard: 'app/components/plan/FinishPlanCard.jsx',
+      FinishPlanMain: 'app/components/plan/FinishPlanMain.jsx',
       Plan: 'app/components/plan/Plan.jsx',
       PlanMain: 'app/components/plan/PlanMain.jsx',
       PlanCreate: 'app/components/plan/PlanCreate.jsx',

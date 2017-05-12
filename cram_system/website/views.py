@@ -102,3 +102,8 @@ def plan_search_view(requests):
 @api_view(['GET'])
 def plan_create_view(requests):
     return render(request=requests, template_name='plan_create.html')
+
+
+@api_view(['GET'])
+def plan_finish_view(requests):
+    return render(request=requests, template_name='finish_plan.html')
