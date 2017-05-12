@@ -26,12 +26,18 @@ class PlanCreateMain extends React.Component {
     }
 
     this.getSubject = this.getSubject.bind(this);
+    this.create_plan = this.create_plan.bind(this);
+    this.checkStatus = this.checkStatus.bind(this);
+    this.parseJSON = this.parseJSON.bind(this);
     this.handleRangeChange = this.handleRangeChange.bind(this);
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
     this.handleNeedQuizChange = this.handleNeedQuizChange.bind(this);
     this.handleNotNeedQuizChange = this.handleNotNeedQuizChange.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentWillMount() {
@@ -55,6 +61,42 @@ class PlanCreateMain extends React.Component {
       case '公民': return 'civil_ethics_education'
       default: return 'no match'
     }
+  }
+
+  create_plan(cb) {
+    fetch('http://localhost:8000/api/v1.0/basic/student/plan/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        owner: this.state.id,
+        date: this.state.date,
+        subject: this.state.subject,
+        range: this.state.range,
+        need_quiz: this.state.need_a_quiz,
+        note: this.state.note,
+      })
+    }).then(this.checkStatus)
+      .then(this.parseJSON)
+      .then(cb)
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      const error = new Error(`HTTP Error ${response.statusText}`);
+      error.status = response.statusText;
+      error.response = response;
+      console.log(error);
+      throw error;
+    }
+  }
+
+  parseJSON(response) {
+    return response.json();
   }
 
   handleRangeChange(e) {
@@ -81,6 +123,21 @@ class PlanCreateMain extends React.Component {
     return this.setState({date: newDate});
   }
 
+  resetForm() {
+    document.getElementById("form_create_plan").reset();
+    this.setState({
+      subject: 'chinese',
+      date: this.state.date,
+      range: '',
+      need_a_quiz: true,
+      note: '',
+    });
+  }
+
+  handleSubmit() {
+    this.create_plan(this.resetForm);
+  }
+
   render() {
     const {dateTime, format, viewMode, inputFormat} = this.state;
     const hStyle = {
@@ -92,7 +149,7 @@ class PlanCreateMain extends React.Component {
         <div><h3 style={hStyle}>{'新增'+this.state.name+'的讀計'}</h3></div>
         <div className="row">
           <div className="well bs-component">
-            <form className="form-horizontal" id="form_create_quiz">
+            <form className="form-horizontal" id="form_create_plan">
               <fieldset>
                 <legend>讀書計畫</legend>
                 <div className="form-group">

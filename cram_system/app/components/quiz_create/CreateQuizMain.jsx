@@ -97,6 +97,11 @@ class CreateQuizMain extends React.Component {
 
   resetForm() {
     document.getElementById("form_create_quiz").reset();
+    this.setState({
+      subject: 'chinese',
+      range: '',
+      note: '',
+    });
   }
 
   handleSubmit() {
@@ -137,7 +142,7 @@ class CreateQuizMain extends React.Component {
                 <div className="form-group">
                   <label htmlFor="inputRange" className="col-lg-2 control-label">範圍</label>
                   <div className="col-lg-10">
-                    <input type="text" className="form-control" id="inputRange" placeholder="Range" name="range" value={this.state.range} onChange={this.handleRangeChange}/>
+                    <input type="text" className="form-control" id="inputRange" placeholder="Range" name="range" onChange={this.handleRangeChange}/>
                   </div>
                 </div>
                 <div className="form-group">

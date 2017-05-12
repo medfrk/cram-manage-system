@@ -12,6 +12,8 @@ class PlanSearchMain extends React.Component {
     }
 
     this.state = {
+      id: [],
+      name: [],
       students: [],
       list: [],
       dateTime: date,
@@ -24,6 +26,13 @@ class PlanSearchMain extends React.Component {
 
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({
+      name: localStorage.getItem("student_name"),
+      id: localStorage.getItem("student_id")
+    });
   }
 
   handleStartDateChange(newDate) {
@@ -39,11 +48,15 @@ class PlanSearchMain extends React.Component {
     const hStyle = {
       textAlign: 'center'
     }
+    const divStyle = {
+      marginTop: '25px',
+      marginBottom: '25px',
+    }
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
         <div>
-          <h3 style={hStyle}>PlanSearchMain</h3>
+          <h3 style={hStyle}>{'搜尋'+this.state.name+'的讀書計畫'}</h3>
         </div>
         <div className="row">
           <div className="col-md-5 col-md-offset-1">
@@ -65,6 +78,12 @@ class PlanSearchMain extends React.Component {
               inputFormat={inputFormat}
               onChange={this.handleEndDateChange}
             />
+          </div>
+        </div>
+        <div className="row" style={divStyle}>
+          <div className="col-sm-10 col-sm-offset-1">
+            <a className="btn btn-primary btn-lg" onClick={() => {window.history.back()}}>Back</a>
+            <a type="submit" className="btn btn-primary pull-right btn-lg" onClick={this.handleSubmit}>Submit</a>
           </div>
         </div>
       </div>

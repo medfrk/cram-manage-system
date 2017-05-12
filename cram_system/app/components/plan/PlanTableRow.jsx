@@ -17,7 +17,7 @@ class PlanTableRow extends React.Component {
   }
 
   render() {
-    var check_button = <a className="btn btn-primary btn-xs">查看</a>
+    var check_button = <a href="http://localhost:8000/plan_search/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>查看</a>
     var edit_button = <a href="http://localhost:8000/plan_create/" className="btn btn-warning btn-xs" onClick={() => {this.setLocalStorage()}}>編輯</a>
 
     return(

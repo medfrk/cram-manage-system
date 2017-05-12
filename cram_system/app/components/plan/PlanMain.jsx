@@ -84,12 +84,13 @@ class PlanMain extends React.Component {
   }
 
   render() {
+    const hStyle = {
+      textAlign: 'center'
+    }
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div>
-          <h1>PlanMain</h1>
-        </div>
+        <div><h3 style={hStyle}>管理學生的讀書計畫</h3></div>
         <div className="row">
           <table className="table table-striped table-hover ">
             <thead>
