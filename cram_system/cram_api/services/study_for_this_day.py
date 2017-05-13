@@ -1,6 +1,7 @@
 from django.utils import timezone
 
 from cram_api.models.student_model import StudentStudySigning
+from cram_api.services.student_with_study import get_plan_number_by_date
 
 
 def datetime_gen(date):
@@ -29,8 +30,12 @@ def trans_grade(grade):
 
 def loop_through_signing_list(signing_list):
     content = []
+    now = timezone.now()
+    date = str(now.year) + '-' + str(now.month) + '-' + str(now.day)
     for signing in signing_list:
+        plan_number = get_plan_number_by_date(str(signing.owner.id), date)
         obj = {
+            "plan_number": plan_number,
             "id": str(signing.id),
             "student_seat": signing.seat,
             "student_id": str(signing.owner.id),

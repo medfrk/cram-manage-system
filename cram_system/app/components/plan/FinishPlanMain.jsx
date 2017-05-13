@@ -11,6 +11,7 @@ class FinishPlanMain extends React.Component {
       date: [],
       plans: [],
       cards: [],
+      last_url: [],
     }
 
     this.getAllPlan = this.getAllPlan.bind(this);
@@ -27,6 +28,7 @@ class FinishPlanMain extends React.Component {
       name: localStorage.getItem("student_name"),
       id: localStorage.getItem("student_id"),
       date: localStorage.getItem("plan_date"),
+      last_url: localStorage.getItem("last_url"),
     });
   }
 
@@ -99,6 +101,10 @@ class FinishPlanMain extends React.Component {
     const hStyle = {
       'textAlign': 'center',
     }
+    const aStyle = {
+      'width': '100%',
+    }
+
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
@@ -106,6 +112,7 @@ class FinishPlanMain extends React.Component {
         <div>
           {this.state.cards}
         </div>
+        <div className="row"><a href={this.state.last_url} className="btn btn-warning" style={aStyle}>Back</a></div>
       </div>
     )
   }
