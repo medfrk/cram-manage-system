@@ -71,18 +71,13 @@ class QuizCreateTableRow extends React.Component {
   render() {
     const create_url = "http://localhost:8000/create_quiz/"
     const check_url = "http://localhost:8000/quiz/"
-    var have_create = this.props.student_have_create_quiz
-    var check_button = <a href={check_url} onClick={() => {this.setLocalStorage()} } className="btn btn-primary btn-xs">查看</a>
-    var create_button = <a href={create_url} onClick={() => {this.setLocalStorage()} } className="btn btn-warning btn-xs" >新增</a>
-    var done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.create_quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
-    var cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
 
-    if (have_create) {
-      done_button = '完成'
-    }
-    else {
-      cancel_button = 'xxxx'
-    }
+    const have_create = this.props.student_have_create_quiz
+    const check_button = <a href={check_url} onClick={() => {this.setLocalStorage()} } className="btn btn-primary btn-xs">查看</a>
+    const create_button = <a href={create_url} onClick={() => {this.setLocalStorage()} } className="btn btn-warning btn-xs" >新增</a>
+    const done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.create_quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
+    const cancel_button = <a className="btn btn-danger btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
+    const done_cancel_button = have_create ? cancel_button : done_button
 
     return(
       <tr>
@@ -91,8 +86,7 @@ class QuizCreateTableRow extends React.Component {
         <td>{this.props.student_seat}</td>
         <td>{check_button}</td>
         <td>{create_button}</td>
-        <td>{done_button}</td>
-        <td>{cancel_button}</td>
+        <td>{done_cancel_button}</td>
       </tr>
     )
   }

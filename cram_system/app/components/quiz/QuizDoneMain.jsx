@@ -102,7 +102,6 @@ class QuizDoneMain extends React.Component {
                 <th>座位</th>
                 <th>查看</th>
                 <th>完成</th>
-                <th>取消</th>
               </tr>
             </thead>
             <tbody>

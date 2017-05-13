@@ -15,11 +15,11 @@ class PlanListGroups extends React.Component{
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.done}</span>
-            <a href="#">已經完成讀計人數</a>
+            <a href="http://localhost:8000/plan_done/">已經完成讀計人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.not_done}</span>
-            <a href="#">還未完成讀計人數</a>
+            <a href="http://localhost:8000/plan_not_done/">還未完成讀計人數</a>
           </li>
         </ul>
       </div>

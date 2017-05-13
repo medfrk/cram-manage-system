@@ -258,3 +258,14 @@ def collect_quiz_not_done_list(date):
     return quizNotDone
 
 
+def collect_plan_done_list(date):
+    d = datetime_gen(date)
+    planDone = plan_done(d)
+    return planDone
+
+
+def collect_plan_not_done_list(date):
+    d = datetime_gen(date)
+    planNotDone = plan_not_done(d)
+    return planNotDone
+

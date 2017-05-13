@@ -112,3 +112,14 @@ def plan_finish_view(requests):
 @api_view(['GET'])
 def plan_expect_view(requests):
     return render(request=requests, template_name='plan_expect.html')
+
+
+@api_view(['Get'])
+def plan_done_view(requests):
+    return render(request=requests, template_name='plan_done.html')
+
+
+@api_view(['GET'])
+def plan_not_done_view(requests):
+    return render(request=requests, template_name='plan_not_done.html')
+

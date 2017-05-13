@@ -67,7 +67,7 @@ class PlanTableRowForToday extends React.Component {
     localStorage.setItem('student_name', this.props.student_name);
     localStorage.setItem('student_id', this.props.student_id);
     localStorage.setItem('plan_date', this.props.student_plan['date']);
-    localStorage.setItem('last_url', 'http://localhost:8000/plan_expect/');
+    localStorage.setItem('last_url', this.props.back_url);
   }
 
   render() {
