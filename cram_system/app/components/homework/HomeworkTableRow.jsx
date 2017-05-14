@@ -64,24 +64,17 @@ class HomeworkTableRow extends React.Component {
   }
 
   render() {
-    var have_done = this.props.student_have_finish_homework
-    var done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.homework_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
-    var cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
-
-    if (have_done) {
-      done_button = '完成'
-    }
-    else {
-      cancel_button = 'xxxx'
-    }
+    const have_done = this.props.student_have_finish_homework
+    const done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.homework_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>
+    const cancel_button = <a className="btn btn-primary btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>取消</a>
+    const done_cancel_button = have_done ? cancel_button : done_button
 
     return(
       <tr>
         <td>{this.props.student_number}</td>
         <td>{this.props.student_name}</td>
         <td>{this.props.student_seat}</td>
-        <td>{done_button}</td>
-        <td>{cancel_button}</td>
+        <td>{done_cancel_button}</td>
       </tr>
     )
   }

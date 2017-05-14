@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var HomeworkExpect = require('HomeworkExpect');
+var Homework = require('Homework');
 
 ReactDOM.render(
-  <HomeworkExpect />,
+  <Homework />,
   document.getElementById('app')
 );
