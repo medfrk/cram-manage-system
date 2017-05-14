@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var QuizCreateNotDone = require('QuizCreateNotDone');
+var QuizCreate = require('QuizCreate');
 
 ReactDOM.render(
-  <QuizCreateNotDone />,
+  <QuizCreate />,
   document.getElementById('app')
 );

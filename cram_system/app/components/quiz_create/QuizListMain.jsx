@@ -1,7 +1,7 @@
 var React = require('react');
 var QuizCard = require('QuizCard');
 
-class QuizMain extends React.Component {
+class QuizListMain extends React.Component {
   constructor() {
     super();
 
@@ -94,9 +94,6 @@ class QuizMain extends React.Component {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     this.getAllQuiz(this.state.id, date)
-    // this.setState({
-    //  update_at: data,
-    // });
   }
 
 
@@ -116,4 +113,4 @@ class QuizMain extends React.Component {
   }
 }
 
-module.exports = QuizMain;
+module.exports = QuizListMain;

@@ -10,8 +10,8 @@ def index_view(requests):
 
 
 @api_view(['GET'])
-def quiz_view(requests):
-    return render(request=requests, template_name='quiz.html')
+def quiz_list_view(requests):
+    return render(request=requests, template_name='quiz_list.html')
 
 
 @api_view(['GET'])
@@ -32,21 +32,6 @@ def signing_actual_view(requests):
 @api_view(['GET'])
 def signing_leave_view(requests):
     return render(request=requests, template_name='signing_leave.html')
-
-
-@api_view(['GET'])
-def quiz_create_expect_view(requests):
-    return render(request=requests, template_name='quiz_create_expect.html')
-
-
-@api_view(['GET'])
-def quiz_create_done_view(requests):
-    return render(request=requests, template_name='quiz_create_done.html')
-
-
-@api_view(['GET'])
-def quiz_create_not_done_view(requests):
-    return render(request=requests, template_name='quiz_create_not_done.html')
 
 
 @api_view(['GET'])
@@ -118,3 +103,7 @@ def left_view(requests):
 def homework_view(requests):
     return render(request=requests, template_name='homework.html')
 
+
+@api_view(['GET'])
+def quiz_create_view(requests):
+    return render(request=requests, template_name='quiz_create.html')

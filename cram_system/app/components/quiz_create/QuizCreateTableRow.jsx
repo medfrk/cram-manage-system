@@ -70,7 +70,7 @@ class QuizCreateTableRow extends React.Component {
 
   render() {
     const create_url = "http://localhost:8000/create_quiz/"
-    const check_url = "http://localhost:8000/quiz/"
+    const check_url = "http://localhost:8000/quiz_list/"
 
     const have_create = this.props.student_have_create_quiz
     const check_button = <a href={check_url} onClick={() => {this.setLocalStorage()} } className="btn btn-primary btn-xs">查看</a>

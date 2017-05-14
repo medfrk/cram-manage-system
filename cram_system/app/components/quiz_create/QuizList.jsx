@@ -1,18 +1,18 @@
 var React = require('react');
 var CramHeader = require('CramHeader');
 var CramFooter = require('CramFooter');
-var QuizCreateDoneMain = require('QuizCreateDoneMain');
+var QuizListMain = require('QuizListMain');
 
-class QuizCreateDone extends React.Component {
+class QuizList extends React.Component {
   render() {
     return (
       <div>
         <CramHeader />
-        <QuizCreateDoneMain />
+        <QuizListMain />
         <CramFooter />
       </div>
     )
   }
 }
 
-module.exports = QuizCreateDone;
+module.exports = QuizList;

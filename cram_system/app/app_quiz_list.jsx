@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var QuizCreateDone = require('QuizCreateDone');
+var QuizList = require('QuizList');
 
 ReactDOM.render(
-  <QuizCreateDone />,
+  <QuizList />,
   document.getElementById('app')
 );
