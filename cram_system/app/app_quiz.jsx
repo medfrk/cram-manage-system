@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var QuizExpect = require('QuizExpect');
+var Quiz = require('Quiz');
 
 ReactDOM.render(
-  <QuizExpect />,
+  <Quiz />,
   document.getElementById('app')
 );

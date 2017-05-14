@@ -1,30 +1,41 @@
 var React = require('react');
 var QuizTableRow = require('QuizTableRow');
 
-class QuizNotDoneMain extends React.Component {
+class QuizMain extends React.Component {
   constructor() {
     super();
     this.state = {
       students: [],
       list: [],
       update_at: [],
+      page_header: [],
+      api_url: [],
     }
 
-    this.getQuizNotDone = this.getQuizNotDone.bind(this);
+    this.getQuiz = this.getQuiz.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.storeData = this.storeData.bind(this);
     this.handleData = this.handleData.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+  }
 
+  componentWillMount() {
+    this.setState({
+      page_header: localStorage.getItem("page_header"),
+      api_url: localStorage.getItem("api_url"),
+    });
+  }
+
+  componentDidMount() {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-    this.getQuizNotDone(date)
+    this.getQuiz(date)
   }
 
-  getQuizNotDone(specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/study_manage/quiz/not_done/' + specific_date + '/', {
+  getQuiz(specific_date) {
+    return fetch(this.state.api_url + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)
@@ -78,10 +89,7 @@ class QuizNotDoneMain extends React.Component {
   handleUpdate(data){
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    this.getQuizNotDone(date)
-    this.setState({
-      update_at: data,
-    });
+    this.getQuiz(date)
   }
 
   render() {
@@ -92,7 +100,7 @@ class QuizNotDoneMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div className="row"> <h3 style={hStyle}>考試未完成名單</h3></div>
+        <div className="row"> <h3 style={hStyle}>{this.state.page_header}</h3></div>
         <div className="row">
           <table className="table table-striped table-hover ">
             <thead>
@@ -114,4 +122,4 @@ class QuizNotDoneMain extends React.Component {
   }
 }
 
-module.exports = QuizNotDoneMain;
+module.exports = QuizMain;

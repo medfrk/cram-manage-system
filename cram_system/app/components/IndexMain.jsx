@@ -62,7 +62,6 @@ class IndexMain extends React.Component {
   }
 
   parseJSON(response) {
-    console.log(response);
     return response.json();
   }
 

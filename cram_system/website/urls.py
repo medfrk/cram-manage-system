@@ -14,9 +14,6 @@ urlpatterns = [
     url(r'^signing_actual/$', views.signing_actual_view),
     url(r'^signing_leave/$', views.signing_leave_view),
     url(r'^create_quiz/$', views.create_quiz_view),
-    url(r'^quiz_expect/$', views.quiz_expect_view),
-    url(r'^quiz_done/$', views.quiz_done_view),
-    url(r'^quiz_not_done/$', views.quiz_not_done_view),
     url(r'^finish_quiz/$', views.finish_quiz_view),
     url(r'^plan_expect/$', views.plan_expect_view),
     url(r'^plan_done/$', views.plan_done_view),
@@ -24,6 +21,7 @@ urlpatterns = [
     url(r'^left/$', views.left_view),
     url(r'^homework/$', views.homework_view),
     url(r'^quiz_create/$', views.quiz_create_view),
+    url(r'^quiz/$', views.quiz_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

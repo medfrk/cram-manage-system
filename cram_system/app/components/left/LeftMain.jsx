@@ -35,7 +35,6 @@ class LeftMain extends React.Component {
   }
 
   getLeftList(specific_date) {
-    console.log(this.state.api_url)
     return fetch(this.state.api_url + specific_date + '/', {
              accept: 'application/json',
              method: 'get',

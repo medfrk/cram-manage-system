@@ -40,21 +40,6 @@ def create_quiz_view(requests):
 
 
 @api_view(['GET'])
-def quiz_expect_view(requests):
-    return render(request=requests, template_name='quiz_expect.html')
-
-
-@api_view(['Get'])
-def quiz_done_view(requests):
-    return render(request=requests, template_name='quiz_done.html')
-
-
-@api_view(['GET'])
-def quiz_not_done_view(requests):
-    return render(request=requests, template_name='quiz_not_done.html')
-
-
-@api_view(['GET'])
 def finish_quiz_view(requests):
     return render(request=requests, template_name='finish_quiz.html')
 
@@ -107,3 +92,9 @@ def homework_view(requests):
 @api_view(['GET'])
 def quiz_create_view(requests):
     return render(request=requests, template_name='quiz_create.html')
+
+
+@api_view(['GET'])
+def quiz_view(requests):
+    return render(request=requests, template_name='quiz.html')
+
