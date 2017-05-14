@@ -269,3 +269,14 @@ def collect_plan_not_done_list(date):
     planNotDone = plan_not_done(d)
     return planNotDone
 
+
+def collect_left_done_list(date):
+    d = datetime_gen(date)
+    leftDone = left_done(d)
+    return leftDone
+
+
+def collect_left_not_done_list(date):
+    d = datetime_gen(date)
+    leftNotDone = left_not_done(d)
+    return leftNotDone

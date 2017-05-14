@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^plan_expect/$', views.plan_expect_view),
     url(r'^plan_done/$', views.plan_done_view),
     url(r'^plan_not_done/$', views.plan_not_done_view),
+    url(r'^left/$', views.left_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

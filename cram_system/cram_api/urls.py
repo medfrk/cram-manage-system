@@ -98,6 +98,10 @@ urlpatterns = [
         study_view.StudyPlanDoneList.as_view()),
     url(r'^api/v1.0/study_manage/plan/not_done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudyPlanNotDoneList.as_view()),
+    url(r'^api/v1.0/study_manage/left/done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyLeftDoneList.as_view()),
+    url(r'^api/v1.0/study_manage/left/not_done/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
+        study_view.StudyLeftNotDoneList.as_view()),
     url(r'^api/v1.0/plan_manage/number/(?P<student_id>[0-9]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/('
         r'?P<date_end>[0-9]+[-][0-9]+[-][0-9]+)/$', student_with_study.StudentPlanNumberList.as_view()),
     url(r'^api/v1.0/plan_manage/(?P<student_id>[0-9]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+['

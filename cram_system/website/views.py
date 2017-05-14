@@ -123,3 +123,7 @@ def plan_done_view(requests):
 def plan_not_done_view(requests):
     return render(request=requests, template_name='plan_not_done.html')
 
+
+@api_view(['GET'])
+def left_view(requests):
+    return render(request=requests, template_name='left.html')

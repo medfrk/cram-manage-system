@@ -141,3 +141,21 @@ class StudyPlanNotDoneList(generics.RetrieveAPIView):
     def get(self, request, date, format=None):
         content = collect_plan_not_done_list(date)
         return Response(content)
+
+
+class StudyLeftDoneList(generics.RetrieveAPIView):
+    """
+    Get the list of student who have finished the left. 
+    """
+    def get(self, request, date, format=None):
+        content = collect_left_done_list(date)
+        return Response(content)
+
+
+class StudyLeftNotDoneList(generics.RetrieveAPIView):
+    """
+    Get the list of student who have not finished the left yet.
+    """
+    def get(self, request, date, format=None):
+        content = collect_left_not_done_list(date)
+        return Response(content)
