@@ -1,18 +1,18 @@
 var React = require('react');
 var CramHeader = require('CramHeader');
 var CramFooter = require('CramFooter');
-var PlanExpectMain = require('PlanExpectMain');
+var PlanForTodayMain = require('PlanForTodayMain');
 
-class PlanExpect extends React.Component {
+class PlanForToday extends React.Component {
   render() {
     return (
       <div>
         <CramHeader />
-        <PlanExpectMain />
+        <PlanForTodayMain />
         <CramFooter />
       </div>
     )
   }
 }
 
-module.exports = PlanExpect;
+module.exports = PlanForToday;

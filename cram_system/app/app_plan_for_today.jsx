@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var PlanExpect = require('PlanExpect');
+var PlanForToday = require('PlanForToday');
 
 ReactDOM.render(
-  <PlanExpect />,
+  <PlanForToday />,
   document.getElementById('app')
 );
