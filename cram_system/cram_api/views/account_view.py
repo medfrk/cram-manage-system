@@ -10,7 +10,9 @@ class AccountList(generics.ListCreateAPIView):
     """
     List all account, or create a new account.
     """
-    permission_classes = permissions.DjangoModelPermissionsOrAnonReadOnly
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
@@ -19,7 +21,9 @@ class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a user.
     """
-    permission_classes = permissions.DjangoModelPermissionsOrAnonReadOnly
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
