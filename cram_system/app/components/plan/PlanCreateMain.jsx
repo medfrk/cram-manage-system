@@ -73,7 +73,8 @@ class PlanCreateMain extends React.Component {
         range: this.state.range,
         need_quiz: this.state.need_a_quiz,
         note: this.state.note,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

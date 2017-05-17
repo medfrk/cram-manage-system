@@ -25,7 +25,8 @@ class QuizCreateTableRow extends React.Component {
       body: JSON.stringify({
         have_create_quiz: true,
         create_quiz_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -41,7 +42,8 @@ class QuizCreateTableRow extends React.Component {
       },
       body: JSON.stringify({
         have_create_quiz: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

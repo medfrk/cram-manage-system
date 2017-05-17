@@ -25,7 +25,8 @@ class LeftTableRow extends React.Component {
       body: JSON.stringify({
         left: true,
         left_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -40,7 +41,8 @@ class LeftTableRow extends React.Component {
       },
       body: JSON.stringify({
         left: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

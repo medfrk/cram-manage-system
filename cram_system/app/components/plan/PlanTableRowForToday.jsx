@@ -26,7 +26,8 @@ class PlanTableRowForToday extends React.Component {
       body: JSON.stringify({
         finish_plan: true,
         finish_plan_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -41,7 +42,8 @@ class PlanTableRowForToday extends React.Component {
       },
       body: JSON.stringify({
         finish_plan: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

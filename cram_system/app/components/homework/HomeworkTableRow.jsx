@@ -25,7 +25,8 @@ class HomeworkTableRow extends React.Component {
       body: JSON.stringify({
         finish_homework: true,
         finish_homework_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -41,7 +42,8 @@ class HomeworkTableRow extends React.Component {
       },
       body: JSON.stringify({
         finish_homework: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

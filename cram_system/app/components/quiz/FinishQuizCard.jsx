@@ -61,7 +61,8 @@ class FinishQuizCard extends React.Component {
       },
       body: JSON.stringify({
         score: this.state.score_for_update,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -77,7 +78,8 @@ class FinishQuizCard extends React.Component {
       },
       body: JSON.stringify({
         finish: true,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -93,7 +95,8 @@ class FinishQuizCard extends React.Component {
       },
       body: JSON.stringify({
         finish: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

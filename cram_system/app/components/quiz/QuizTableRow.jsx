@@ -26,7 +26,8 @@ class QuizTableRow extends React.Component {
       body: JSON.stringify({
         finish_quiz: true,
         finish_quiz_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -42,7 +43,8 @@ class QuizTableRow extends React.Component {
       },
       body: JSON.stringify({
         finish_quiz: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

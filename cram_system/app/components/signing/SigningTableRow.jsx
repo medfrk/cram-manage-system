@@ -22,7 +22,8 @@ class SigningTableRow extends React.Component {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        credentials: 'include'
       },
       body: JSON.stringify({
         sign: true,

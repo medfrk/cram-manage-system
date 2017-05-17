@@ -37,6 +37,7 @@ class PlanMain extends React.Component {
     return fetch('http://localhost:8000/api/v1.0/basic/student/', {
              accept: 'application/json',
              method: 'get',
+             credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
              .then(this.storeData)

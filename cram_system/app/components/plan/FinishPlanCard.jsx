@@ -67,7 +67,8 @@ class FinishPlanCard extends React.Component {
       },
       body: JSON.stringify({
         score: this.state.score_for_update,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -82,7 +83,8 @@ class FinishPlanCard extends React.Component {
       },
       body: JSON.stringify({
         finish: true,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -97,7 +99,8 @@ class FinishPlanCard extends React.Component {
       },
       body: JSON.stringify({
         finish: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -112,7 +115,8 @@ class FinishPlanCard extends React.Component {
       },
       body: JSON.stringify({
         finish_quiz: true,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -127,7 +131,8 @@ class FinishPlanCard extends React.Component {
       },
       body: JSON.stringify({
         finish_quiz: false,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
