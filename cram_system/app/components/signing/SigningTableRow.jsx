@@ -27,7 +27,8 @@ class SigningTableRow extends React.Component {
       body: JSON.stringify({
         sign: true,
         sign_at: now.toTimeString(),
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -43,7 +44,8 @@ class SigningTableRow extends React.Component {
       },
       body: JSON.stringify({
         leave: true
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
@@ -60,7 +62,8 @@ class SigningTableRow extends React.Component {
       body: JSON.stringify({
         sign: false,
         leave: false
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)

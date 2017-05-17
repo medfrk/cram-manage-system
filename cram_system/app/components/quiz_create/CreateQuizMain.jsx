@@ -61,7 +61,8 @@ class CreateQuizMain extends React.Component {
         subject: this.state.subject,
         range: this.state.range,
         note: this.state.note,
-      })
+      }),
+      credentials: 'include'
     }).then(this.checkStatus)
       .then(this.parseJSON)
       .then(cb)
