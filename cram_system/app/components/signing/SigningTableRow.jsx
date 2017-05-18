@@ -18,7 +18,7 @@ class SigningTableRow extends React.Component {
 
   sign_in(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -37,7 +37,7 @@ class SigningTableRow extends React.Component {
 
   leave(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -54,7 +54,7 @@ class SigningTableRow extends React.Component {
 
   cancel(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

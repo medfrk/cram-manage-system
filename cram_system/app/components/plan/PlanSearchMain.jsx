@@ -50,7 +50,7 @@ class PlanSearchMain extends React.Component {
   }
 
   handleSubmit() {
-    return fetch('http://localhost:8000/api/v1.0/plan_manage/number/' + this.state.id + '/' + this.state.date_start + '/' + this.state.date_end + '/', {
+    return fetch('/api/v1.0/plan_manage/number/' + this.state.id + '/' + this.state.date_start + '/' + this.state.date_end + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)

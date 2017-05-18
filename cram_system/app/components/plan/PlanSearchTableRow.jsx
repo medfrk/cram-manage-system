@@ -15,12 +15,12 @@ class PlanSearchTableRow extends React.Component {
     localStorage.setItem('student_name', this.props.student_name);
     localStorage.setItem('student_id', this.props.student_id);
     localStorage.setItem('plan_date', this.props.plan_date);
-    localStorage.setItem('last_url', 'http://localhost:8000/plan_search/');
+    localStorage.setItem('last_url', '/plan_search/');
   }
 
   render() {
-    var check_button = <a href="http://localhost:8000/plan_finish/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>查看</a>
-    var edit_button = <a href="http://localhost:8000/plan_create/" className="btn btn-warning btn-xs" onClick={() => {this.setLocalStorage()}}>新增</a>
+    var check_button = <a href="/plan_finish/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>查看</a>
+    var edit_button = <a href="/plan_create/" className="btn btn-warning btn-xs" onClick={() => {this.setLocalStorage()}}>新增</a>
 
     return(
       <tr>

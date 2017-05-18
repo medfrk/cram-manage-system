@@ -16,7 +16,7 @@ class HomeworkTableRow extends React.Component {
 
   homework_done(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,7 @@ class HomeworkTableRow extends React.Component {
 
   cancel(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

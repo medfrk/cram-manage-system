@@ -17,7 +17,7 @@ class QuizTableRow extends React.Component {
 
   quiz_done(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -35,7 +35,7 @@ class QuizTableRow extends React.Component {
 
   cancel(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -73,7 +73,7 @@ class QuizTableRow extends React.Component {
 
   render() {
     const have_done = this.props.student_have_finish_quiz
-    const check_url = "http://localhost:8000/finish_quiz/"
+    const check_url = "/finish_quiz/"
 
     const check_button = <a href={check_url} onClick={() => {this.setLocalStorage()}} className="btn btn-primary btn-xs">查看</a>
     const done_button   = <a className="btn btn-success btn-xs" onClick={() => {this.quiz_done(this.props.signing_id, (results) => {this.props.handle_update('123')})}}>完成</a>

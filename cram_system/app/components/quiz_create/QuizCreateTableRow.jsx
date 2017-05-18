@@ -16,7 +16,7 @@ class QuizCreateTableRow extends React.Component {
 
   create_quiz_done(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,7 @@ class QuizCreateTableRow extends React.Component {
 
   cancel(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -71,8 +71,8 @@ class QuizCreateTableRow extends React.Component {
   }
 
   render() {
-    const create_url = "http://localhost:8000/create_quiz/"
-    const check_url = "http://localhost:8000/quiz_list/"
+    const create_url = "/create_quiz/"
+    const check_url = "/quiz_list/"
 
     const have_create = this.props.student_have_create_quiz
     const check_button = <a href={check_url} onClick={() => {this.setLocalStorage()} } className="btn btn-primary btn-xs">查看</a>

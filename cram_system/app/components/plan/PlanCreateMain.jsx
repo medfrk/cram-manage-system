@@ -60,7 +60,7 @@ class PlanCreateMain extends React.Component {
   }
 
   create_plan(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/', {
+    fetch('/api/v1.0/basic/student/plan/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

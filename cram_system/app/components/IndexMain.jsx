@@ -17,7 +17,6 @@ class IndexMain extends React.Component {
     }
 
     this.getNumberReport = this.getNumberReport.bind(this);
-    this.getAllStudent = this.getAllStudent.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.storeData = this.storeData.bind(this);
@@ -32,21 +31,12 @@ class IndexMain extends React.Component {
   }
 
   getNumberReport(specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/study_manage/' + specific_date + '/', {
+    return fetch('/api/v1.0/study_manage/' + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)
              .then(this.parseJSON)
              .then(this.storeNumberReport)
-  }
-
-  getAllStudent() {
-    return fetch('http://localhost:8000/api/v1.0/basic/student/', {
-             accept: 'application/json',
-             method: 'get',
-           }).then(this.checkStatus)
-             .then(this.parseJSON)
-             .then(this.storeData)
   }
 
   checkStatus(response) {
@@ -78,17 +68,6 @@ class IndexMain extends React.Component {
   }
 
   render() {
-    var studentCardList = this.state.students.map((student, index) => {
-      return (
-        <StudentCard
-          key={index}
-          student_name={student['name']}
-          student_image={student['image']}
-          student_school={student['school']}
-        />
-      )
-    })
-
     var number = this.state.numberReport
     var signingListGroups = <SigningListGroups
           expected={number['signingExpect']}
@@ -133,9 +112,6 @@ class IndexMain extends React.Component {
         <div className="row">
           {planListGroups}
           {leftListGroups}
-        </div>
-        <div>
-          {studentCardList}
         </div>
       </div>
     );

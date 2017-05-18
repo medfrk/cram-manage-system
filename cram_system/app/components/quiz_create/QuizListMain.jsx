@@ -37,7 +37,7 @@ class QuizListMain extends React.Component {
   }
 
   getAllQuiz(student_id, specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/study_manage/quiz_list/' + student_id + '/' + specific_date + '/', {
+    return fetch('/api/v1.0/study_manage/quiz_list/' + student_id + '/' + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)

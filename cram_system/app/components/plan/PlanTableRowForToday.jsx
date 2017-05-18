@@ -17,7 +17,7 @@ class PlanTableRowForToday extends React.Component {
 
   done(signing_id, cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,7 @@ class PlanTableRowForToday extends React.Component {
   }
 
   cancel(signing_id, cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
+    fetch('/api/v1.0/basic/student/study/signing/' + signing_id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -73,7 +73,7 @@ class PlanTableRowForToday extends React.Component {
   }
 
   render() {
-    const check_button = <a href="http://localhost:8000/plan_finish/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>查看</a>
+    const check_button = <a href="/plan_finish/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>查看</a>
     const finish_button = <a className="btn btn-success btn-xs" onClick={() => {this.done(this.props.signing_id, (results) => {this.props.handle_update()})}}>完成</a>
     const cancel_button = <a className="btn btn-danger btn-xs" onClick={() => {this.cancel(this.props.signing_id, (results) => {this.props.handle_update()})}}>取消</a>
     const done_cancel_button = this.props.student_finish_plan ? cancel_button : finish_button

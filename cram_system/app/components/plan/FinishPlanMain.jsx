@@ -38,7 +38,7 @@ class FinishPlanMain extends React.Component {
   }
 
   getAllPlan(student_id, specific_date) {
-    return fetch('http://localhost:8000/api/v1.0/plan_manage/' + student_id + '/' + specific_date + '/' + specific_date + '/', {
+    return fetch('/api/v1.0/plan_manage/' + student_id + '/' + specific_date + '/' + specific_date + '/', {
              accept: 'application/json',
              method: 'get',
            }).then(this.checkStatus)

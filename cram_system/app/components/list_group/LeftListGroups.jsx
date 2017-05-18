@@ -18,19 +18,19 @@ class LeftListGroups extends React.Component{
         <ul className="list-group">
           <li className="list-group-item">
             <span className="badge">{this.props.total}</span>
-            <a href="http://localhost:8000/left/" onClick={() => {this.setLocalStorage('本日自習學生', 'http://localhost:8000/api/v1.0/study_manage/signing/actual/')}}>今日自習人數</a>
+            <a href="/left/" onClick={() => {this.setLocalStorage('本日自習學生', '/api/v1.0/study_manage/signing/actual/')}}>今日自習人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.can_left}</span>
-            <a href="http://localhost:8000/left/" onClick={() => {this.setLocalStorage('可以回家的學生', 'http://localhost:8000/api/v1.0/study_manage/plan/done/')}}>可以回家人數</a>
+            <a href="/left/" onClick={() => {this.setLocalStorage('可以回家的學生', '/api/v1.0/study_manage/plan/done/')}}>可以回家人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.left}</span>
-            <a href="http://localhost:8000/left/" onClick={() => {this.setLocalStorage('已經回家的學生', 'http://localhost:8000/api/v1.0/study_manage/left/done/')}}>已經回家人數</a>
+            <a href="/left/" onClick={() => {this.setLocalStorage('已經回家的學生', '/api/v1.0/study_manage/left/done/')}}>已經回家人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.not_left}</span>
-            <a href="http://localhost:8000/left/" onClick={() => {this.setLocalStorage('還沒回家的學生', 'http://localhost:8000/api/v1.0/study_manage/left/not_done/')}}>還沒回家人數</a>
+            <a href="/left/" onClick={() => {this.setLocalStorage('還沒回家的學生', '/api/v1.0/study_manage/left/not_done/')}}>還沒回家人數</a>
           </li>
         </ul>
       </div>

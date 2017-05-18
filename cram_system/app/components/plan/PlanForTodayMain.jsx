@@ -80,7 +80,7 @@ class PlanForTodayMain extends React.Component {
           student_seat={student['student_seat']}
           student_finish_plan={student['finish_plan']}
           handle_update={this.handleUpdate}
-          back_url='http://localhost:8000/plan_for_today/'
+          back_url='/plan_for_today/'
         />
       )
     });

@@ -59,7 +59,7 @@ class FinishPlanCard extends React.Component {
 
   handleScoreUpdate(cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -75,7 +75,7 @@ class FinishPlanCard extends React.Component {
   }
 
   handlePlanDone(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -91,7 +91,7 @@ class FinishPlanCard extends React.Component {
   }
 
   handlePlanCancel(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -107,7 +107,7 @@ class FinishPlanCard extends React.Component {
   }
 
   handlePlanQuizDone(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -123,7 +123,7 @@ class FinishPlanCard extends React.Component {
   }
 
   handlePlanQuizCancel(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

@@ -49,7 +49,7 @@ class CreateQuizMain extends React.Component {
   create_quiz(cb) {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    fetch('http://localhost:8000/api/v1.0/basic/student/quiz/', {
+    fetch('/api/v1.0/basic/student/quiz/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

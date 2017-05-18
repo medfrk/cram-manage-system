@@ -53,7 +53,7 @@ class FinishQuizCard extends React.Component {
 
   handleScoreUpdate(cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -70,7 +70,7 @@ class FinishQuizCard extends React.Component {
 
   handleQuizDone(cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',
@@ -87,7 +87,7 @@ class FinishQuizCard extends React.Component {
 
   handleQuizCancel(cb) {
     var now = new Date()
-    fetch('http://localhost:8000/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
       method: 'PATCH',
       headers: {
         'Accept': 'application/json',

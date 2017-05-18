@@ -47,7 +47,7 @@ class QuizCard extends React.Component {
   }
 
   handleDelete(cb) {
-    fetch('http://localhost:8000/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
+    fetch('/api/v1.0/basic/student/quiz/' + this.state.id + '/', {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

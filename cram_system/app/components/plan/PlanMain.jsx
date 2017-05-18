@@ -34,7 +34,7 @@ class PlanMain extends React.Component {
   }
 
   getAllStudent() {
-    return fetch('http://localhost:8000/api/v1.0/basic/student/', {
+    return fetch('/api/v1.0/basic/student/', {
              accept: 'application/json',
              method: 'get',
              credentials: 'include'

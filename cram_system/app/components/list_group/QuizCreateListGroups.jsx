@@ -18,15 +18,15 @@ class QuizCreateListGroups extends React.Component{
         <ul className="list-group">
           <li className="list-group-item">
             <span className="badge">{this.props.expected}</span>
-            <a href="http://localhost:8000/quiz_create/" onClick={() => {this.setLocalStorage('應登記小考學生', 'http://localhost:8000/api/v1.0/study_manage/signing/actual/')}}>應該填寫考試人數</a>
+            <a href="/quiz_create/" onClick={() => {this.setLocalStorage('應登記小考學生', '/api/v1.0/study_manage/signing/actual/')}}>應該填寫考試人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.done}</span>
-            <a href="http://localhost:8000/quiz_create/" onClick={() => {this.setLocalStorage('已登記小考學生', 'http://localhost:8000/api/v1.0/study_manage/quiz_create/done/')}}>已經填寫考試人數</a>
+            <a href="/quiz_create/" onClick={() => {this.setLocalStorage('已登記小考學生', '/api/v1.0/study_manage/quiz_create/done/')}}>已經填寫考試人數</a>
           </li>
           <li className="list-group-item">
             <span className="badge">{this.props.not_done}</span>
-            <a href="http://localhost:8000/quiz_create/"onClick={() => {this.setLocalStorage('未登記小考學生', 'http://localhost:8000/api/v1.0/study_manage/quiz_create/not_done/')}}>還未填寫考試人數</a>
+            <a href="/quiz_create/"onClick={() => {this.setLocalStorage('未登記小考學生', '/api/v1.0/study_manage/quiz_create/not_done/')}}>還未填寫考試人數</a>
           </li>
         </ul>
       </div>
