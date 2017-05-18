@@ -28,7 +28,7 @@ class CramFooter extends React.Component {
           <div className="progress-bar progress-bar-danger" style={progressBarDangerStyle}></div>
         </div>
         <div>
-          <p style={pStyle}> © 2017 Designed by Wei-Tang Lin. </p>
+          <p style={pStyle}> © 2017 Designed by Wei-Tang Lin & Jerry Lee </p>
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ class CramHeader extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="http://localhost:8000/">璽理文理補習班</a>
+            <a className="navbar-brand" href="/">璽理文理補習班</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,8 +39,8 @@ class CramHeader extends React.Component {
                 <ul className="dropdown-menu" role="menu">
                   <li><a href="#">自習管理</a></li>
                   <li className="divider"></li>
-                  <li><a href="http://localhost:8000/quiz/">隔天小考</a></li>
-                  <li><a href="http://localhost:8000/plan/">讀書計畫</a></li>
+                  <li><a href="/quiz/">隔天小考</a></li>
+                  <li><a href="/plan/">讀書計畫</a></li>
                 </ul>
               </li>
               <li className="dropdown">
