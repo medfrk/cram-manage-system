@@ -41,10 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_docs',
     'corsheaders',
-#    'allauth',
-#    'allauth.account',
-#    'allauth.socialaccount',
-#    'allauth.socialaccount.providers.facebook',
     'cram_api',
     'website',
     'authentication',
@@ -129,8 +125,8 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '',
-            'PORT': '',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
             'NAME': 'cram_system_db',
             'USER': 'cramdev',
             'PASSWORD': 'qwertyuiop',
