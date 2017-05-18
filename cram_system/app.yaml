@@ -1,0 +1,9 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT cram_system.wsgi
+
+beta_settings:
+  cloud_sql_instances: cram-system:asia-east1:cram-system-sql
+
+runtime_config:
+  python_version: 3

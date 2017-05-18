@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -14,11 +16,11 @@
 
     <!-- CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
 
 
 </head>
@@ -27,7 +29,7 @@
 <div id="app"></div>
 
 <!-- cram_system -->
-<script src="../static/js/bundle/app_plan_search.bundle.js"></script>
+<script src="{% static 'js/bundle/app_plan_search.bundle.js' %}"></script>
 
 </body>
 

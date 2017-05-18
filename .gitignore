@@ -102,6 +102,19 @@ node_modules/
 # react bundle
 **/bundle
 
+# Google cloud sql proxy
+cram_system/cloud_sql_proxy
+
+# firebase
+cram_system/.firebaserc
+cram_system/firebase.json
+cram_system/public
+
+# python manage.py collectstatic
+cram_system/assets
+
 cram_system/nohup.out
 
 **/migrations
+
+

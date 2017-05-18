@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -12,10 +14,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
 
 
 </head>
@@ -24,7 +26,7 @@
 <div id="app"></div>
 
 <!-- cram_system -->
-<script src="../static/js/bundle/app_plan.bundle.js"></script>
+<script src="{% static 'js/bundle/app_plan.bundle.js' %}"></script>
 
 </body>
 
