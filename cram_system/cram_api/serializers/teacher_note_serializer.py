@@ -10,5 +10,6 @@ class TeacherNoteSerializer(serializers.ModelSerializer):
             'owner',
             'content',
             'created_by',
+            'updated_at',
             'created_at'
         )

@@ -7,6 +7,7 @@ module.exports = {
     app_finish_quiz: './app/app_finish_quiz.jsx',
     app_index: './app/app_index.jsx',
     app_left: './app/app_left.jsx',
+    app_note_course: './app/app_note_course.jsx',
     app_homework: './app/app_homework.jsx',
     app_quiz_create: './app/app_quiz_create.jsx',
     app_quiz: './app/app_quiz.jsx',
@@ -72,6 +73,8 @@ module.exports = {
       Quiz: 'app/components/quiz/Quiz.jsx',
       QuizMain: 'app/components/quiz/QuizMain.jsx',
       QuizTableRow: 'app/components/quiz/QuizTableRow.jsx',
+      NoteCourse: 'app/components/notes/NoteCourse.jsx',
+      NoteCourseMain: 'app/components/notes/NoteCourseMain.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

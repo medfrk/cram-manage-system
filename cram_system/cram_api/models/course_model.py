@@ -2,7 +2,6 @@ from django.utils import timezone
 from django.db import models
 from cram_api.models.teacher_model import Teacher
 from cram_api.models.space_model import Space
-from cram_api.models.account_model import Account
 
 
 class Course(models.Model):
@@ -70,6 +69,6 @@ class Course(models.Model):
 class CourseNote(models.Model):
     owner = models.ForeignKey(Course, on_delete=models.CASCADE)
     content = models.TextField(default="")
-    created_by = models.ForeignKey(Account)
+    created_by = models.CharField(max_length=50, default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)

@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index_view),
+    url(r'^logout/', views.Logout),
     url(r'^plan/$', views.plan_view),
     url(r'^plan_create/$', views.plan_create_view),
     url(r'^plan_search/$', views.plan_search_view),
@@ -17,6 +18,7 @@ urlpatterns = [
     url(r'^quiz_create/$', views.quiz_create_view),
     url(r'^quiz/$', views.quiz_view),
     url(r'^plan_for_today', views.plan_for_today_view),
+    url(r'^note_course', views.note_course_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

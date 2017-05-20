@@ -11,5 +11,6 @@ class StudentNoteSerializer(serializers.ModelSerializer):
             'kind',
             'content',
             'created_by',
+            'updated_at',
             'created_at'
         )

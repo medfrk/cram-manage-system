@@ -1,6 +1,5 @@
 from django.utils import timezone
 from django.db import models
-from cram_api.models.account_model import Account
 
 
 class Space(models.Model):
@@ -28,6 +27,6 @@ class Space(models.Model):
 class SpaceNote(models.Model):
     owner = models.ForeignKey(Space, on_delete=models.CASCADE)
     content = models.TextField(default="")
-    created_by = models.ForeignKey(Account)
+    created_by = models.CharField(max_length=50, default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
