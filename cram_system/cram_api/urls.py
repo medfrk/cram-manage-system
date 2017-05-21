@@ -106,6 +106,8 @@ urlpatterns = [
         r'?P<date_end>[0-9]+[-][0-9]+[-][0-9]+)/$', student_with_study.StudentPlanNumberList.as_view()),
     url(r'^api/v1.0/plan_manage/(?P<student_id>[0-9]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+['
         r'-][0-9]+[-][0-9]+)/$', student_with_study.StudentPlanList.as_view()),
+    url(r'^api/v1.0/course_info/$', student_with_course.AllCourseBasicInfo.as_view()),
+    url(r'^test/post/$', study_view.TestPost.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

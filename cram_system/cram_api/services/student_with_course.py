@@ -1,6 +1,7 @@
 from django.utils import timezone
 from cram_api.models.course_model import Course
 from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank
+from cram_api.models.teacher_model import Teacher
 from datetime import timedelta
 
 """
@@ -45,6 +46,52 @@ def get_course_student_by_course_id(course_id):
         "start_at": course.start_at,
         "end_at": course.end_at,
         "student_list": studentList,
+    }
+    return result
+
+
+def get_all_course_info_by_day(day):
+    """
+
+    :param day: 1~7 
+    :return: courses basic info for a specific day
+    """
+    courses = Course.objects.filter(day=day)
+    content = []
+    if courses.exists():
+        for course in courses:
+            obj = {
+                'course_id': str(course.id),
+                'teacher': course.teacher.name,
+                'space': course.space.name,
+                'subject': course.subject,
+                'grade': course.grade,
+                'day': course.day,
+                'start_at': course.start_at,
+                'end_at': course.end_at,
+                'student_number': course.student_number,
+            }
+            content.append(obj)
+    result = {
+        'day': day,
+        'course_list': content,
+    }
+    return result
+
+
+def get_all_courses_info():
+    """
+    
+    :return: courses basic info for day 1~7
+    """
+    day_list = [1, 2, 3, 4, 5, 6, 7]
+    content = []
+
+    for day in day_list:
+        content.append(get_all_course_info_by_day(day))
+
+    result = {
+        'course_basic_info': content,
     }
     return result
 

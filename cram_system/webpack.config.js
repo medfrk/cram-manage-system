@@ -2,6 +2,7 @@ var path = require("path");
 
 module.exports = {
   entry: {
+    app_all_course: './app/app_all_course.jsx',
     app_create_quiz: './app/app_create_quiz.jsx',
     app_finish_plan: './app/app_finish_plan.jsx',
     app_finish_quiz: './app/app_finish_quiz.jsx',
@@ -73,6 +74,9 @@ module.exports = {
       Quiz: 'app/components/quiz/Quiz.jsx',
       QuizMain: 'app/components/quiz/QuizMain.jsx',
       QuizTableRow: 'app/components/quiz/QuizTableRow.jsx',
+      AllCourse: 'app/components/list_all/AllCourse.jsx',
+      AllCourseMain: 'app/components/list_all/AllCourseMain.jsx',
+      CourseTableRow: 'app/components/list_all/CourseTableRow.jsx',
       NoteCourse: 'app/components/notes/NoteCourse.jsx',
       NoteCourseMain: 'app/components/notes/NoteCourseMain.jsx',
     },

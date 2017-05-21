@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework import permissions
+from rest_framework.response import Response
 
 from cram_api.models.course_model import Course, CourseNote
 from cram_api.serializers import CourseSerializer, CourseNoteSerializer
@@ -37,6 +38,12 @@ class CourseNoteList(generics.ListCreateAPIView):
     queryset = CourseNote.objects.all()
     serializer_class = CourseNoteSerializer
 
+    def create(self, request, *args, **kwargs):
+        print(request.user.username)
+        print(request.body)
+
+        return Response([])
+
 
 class CourseNoteDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -47,4 +54,5 @@ class CourseNoteDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = CourseNote.objects.all()
     serializer_class = CourseNoteSerializer
+
 

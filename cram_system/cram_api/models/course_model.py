@@ -63,7 +63,7 @@ class Course(models.Model):
         return str(self.teacher.name + " 星期" + self.day + " 科目:" + self.subject)
 
     class Meta:
-        ordering = ('created_at', )
+        ordering = ('day', 'start_at', 'created_at', )
 
 
 class CourseNote(models.Model):

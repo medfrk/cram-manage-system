@@ -24,6 +24,11 @@ def index_view(requests):
 
 
 @api_view(['GET'])
+def all_course_view(requests):
+    return render(request=requests, template_name='all_course.html')
+
+
+@api_view(['GET'])
 def quiz_list_view(requests):
     return render(request=requests, template_name='quiz_list.html')
 
@@ -91,3 +96,4 @@ def plan_for_today_view(requests):
 @api_view(['GET'])
 def note_course_view(requests):
     return render(request=requests, template_name='note_course.html')
+

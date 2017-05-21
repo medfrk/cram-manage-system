@@ -80,4 +80,10 @@ class StudentCreateAllStudentBank(generics.RetrieveAPIView):
         return Response(content)
 
 
-
+class AllCourseBasicInfo(generics.RetrieveAPIView):
+    """
+    Get all courses basic information.
+    """
+    def get(self, request, format=None):
+        content = get_all_courses_info()
+        return Response(content)

@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from cram_api.services.study_for_this_day import *
+from django.contrib.auth.models import User
 
 
 class StudyManageList(generics.RetrieveAPIView):
@@ -159,3 +160,27 @@ class StudyLeftNotDoneList(generics.RetrieveAPIView):
     def get(self, request, date, format=None):
         content = collect_left_not_done_list(date)
         return Response(content)
+
+from rest_framework import permissions
+from cram_api.models.student_model import StudentNote, Student
+
+class TestPost(generics.CreateAPIView):
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentNote.objects.all()
+
+    def create(self, request, *args, **kwargs):
+
+        print(request.user.username)
+        print(request.user.email)
+        print(request.user.first_name)
+        print(request.user.last_name)
+
+        student = Student.objects.get(pk=1)
+        # StudentNote.objects.create(
+        #     owner=student,
+        #     content='test',
+        #     created_by='leo',
+        # )
+
+        return Response([])
