@@ -27,17 +27,17 @@ def get_study_student_by_day(day):
     for student in students:
         obj = {
             "id": str(student.owner.id),
-            "name": student.owner.name,
+            "student_name": student.owner.name,
             "grade": student.owner.grade,
             "school": student.owner.school,
             "start_at": student.start_at,
             "end_at": student.end_at,
-            "seat": student.seat.name,
+            "student_seat": student.seat.name,
         }
         student_list.append(obj)
     result = {
         "day": day,
-        "students": student_list,
+        "student_list": student_list,
     }
     return result
 

@@ -1,7 +1,9 @@
+import simplejson as json
 from rest_framework import generics
+from rest_framework import permissions
 from rest_framework.response import Response
 from cram_api.services.student_with_study import *
-from rest_framework import permissions
+from cram_api.models.student_model import StudentStudySigning
 
 
 class StudentInOneDayList(generics.RetrieveAPIView):
@@ -94,13 +96,20 @@ class CreateStudySigningTable(generics.RetrieveAPIView):
         return Response(content)
 
 
-class CreateAllStudySigningTable(generics.RetrieveAPIView):
+class CreateAllStudySigningByDate(generics.CreateAPIView):
     """
-    Create all Study Signing table for a specific date.
+    Create all Study Signing table with a specific date.
     """
-    def get(self, request, date, format=None):
-        content = create_all_study_signing_by_date(date)
-        return Response(content)
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentStudySigning.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        result = create_all_study_signing_by_date(body['date'])
+
+        return Response(result)
 
 
 class CreateAllStudentStudyBank(generics.RetrieveAPIView):

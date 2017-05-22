@@ -4,6 +4,7 @@ from cram_api.views import account_view, course_view, space_view, teacher_view, 
 from cram_api.views import student_with_course
 from cram_api.views import student_with_study
 from cram_api.views import study_view
+from cram_api.views import note_view
 
 
 urlpatterns = [
@@ -54,8 +55,6 @@ urlpatterns = [
         student_with_course.StudentSigningTableDayList.as_view()),
     url(r'^api/v1.0/course_signing/range/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
         r'0-9]+[-][0-9]+)/$', student_with_course.StudentSigningTableDayRangeList.as_view()),
-    url(r'^api/v1.0/course_signing/create/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
-        student_with_course.StudentCreateCourseSigning.as_view()),
     url(r'^api/v1.0/course_bank/create/(?P<course_id>[0-9]+)/$', student_with_course.StudentCreateSingleCourseBank.as_view()),
     url(r'^api/v1.0/course_bank/create/all/$', student_with_course.StudentCreateAllStudentBank.as_view()),
     url(r'^api/v1.0/study_student/(?P<day>[0-9]+)/$', student_with_study.StudentInOneDayList.as_view()),
@@ -65,8 +64,6 @@ urlpatterns = [
         r'0-9]+[-][0-9]+)/$', student_with_study.StudentRangeSigningList.as_view()),
     url(r'^api/v1.0/study_signing/create/(?P<student_id>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         student_with_study.CreateStudySigningTable.as_view()),
-    url(r'^api/v1.0/study_signing/create/all/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
-        student_with_study.CreateAllStudySigningTable.as_view()),
     url(r'^api/v1.0/study_bank/(?P<student_id>[0-9]+)/$', student_with_study.StudentStudyBankList.as_view()),
     url(r'^api/v1.0/study_bank/all/$', student_with_study.StudentStudyBankAllList.as_view()),
     url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
@@ -107,6 +104,11 @@ urlpatterns = [
     url(r'^api/v1.0/plan_manage/(?P<student_id>[0-9]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+['
         r'-][0-9]+[-][0-9]+)/$', student_with_study.StudentPlanList.as_view()),
     url(r'^api/v1.0/course_info/$', student_with_course.AllCourseBasicInfo.as_view()),
+    url(r'^api/v1.0/note/create/course/$', note_view.CreateCourseNote.as_view()),
+    url(r'^api/v1.0/note/create/student/$', note_view.CreateStudentNote.as_view()),
+    url(r'^api/v1.0/course_manage/create/signing/$', student_with_course.CreateCourseSigningByDate.as_view()),
+    url(r'^api/v1.0/course_manage/get/signing/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/(?P<course_id>[0-9]+)/$', student_with_course.GetCourseSigningByDateAndCourseId.as_view()),
+    url(r'^api/v1.0/study_manage/create/signing/$', student_with_study.CreateAllStudySigningByDate.as_view()),
     url(r'^test/post/$', study_view.TestPost.as_view()),
 ]
 

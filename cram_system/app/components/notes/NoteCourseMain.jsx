@@ -26,7 +26,7 @@ class NoteCourseMain extends React.Component {
   }
 
   create_course_note(cb) {
-    fetch('/api/v1.0/basic/course/note/', {
+    fetch('/api/v1.0/note/create/course/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -80,12 +80,12 @@ class NoteCourseMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
-        <div><h3 style={hStyle}>新增課程紀錄</h3></div>
+        <div><h3 style={hStyle}>新增課程回報</h3></div>
         <div className="row">
           <div className="well bs-component">
             <form className="form-horizontal" id="form_create_course_note">
               <fieldset>
-                <legend>課程紀錄</legend>
+                <legend>{'課程回報 ' + '(' + this.state.course_name + '老師)'}</legend>
                 <div className="form-group">
                   <label htmlFor="textArea" className="col-sm-2 control-label">內容</label>
                   <div className="col-sm-10">

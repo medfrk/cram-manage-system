@@ -3,12 +3,15 @@ var path = require("path");
 module.exports = {
   entry: {
     app_all_course: './app/app_all_course.jsx',
+    app_console: './app/app_console.jsx',
     app_create_quiz: './app/app_create_quiz.jsx',
+    app_create_student_note_table: './app/app_create_student_note_table.jsx',
     app_finish_plan: './app/app_finish_plan.jsx',
     app_finish_quiz: './app/app_finish_quiz.jsx',
     app_index: './app/app_index.jsx',
     app_left: './app/app_left.jsx',
     app_note_course: './app/app_note_course.jsx',
+    app_note_student: './app/app_note_student.jsx',
     app_homework: './app/app_homework.jsx',
     app_quiz_create: './app/app_quiz_create.jsx',
     app_quiz: './app/app_quiz.jsx',
@@ -18,6 +21,7 @@ module.exports = {
     app_plan_search: './app/app_plan_search.jsx',
     app_quiz_list: './app/app_quiz_list.jsx',
     app_signing: './app/app_signing.jsx',
+    app_signing_course: './app/app_signing_course.jsx',
   },
   output: {
     path: path.join(__dirname, "/static/js/bundle"),
@@ -26,6 +30,8 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
+      Console: 'app/components/Console.jsx',
+      ConsoleMain: 'app/components/ConsoleMain.jsx',
       CramFooter: 'app/components/CramFooter.jsx',
       CramHeader: 'app/components/CramHeader.jsx',
       Index: 'app/components/Index.jsx',
@@ -53,6 +59,9 @@ module.exports = {
       Signing: 'app/components/signing/Signing.jsx',
       SigningMain: 'app/components/signing/SigningMain.jsx',
       SigningTableRow: 'app/components/signing/SigningTableRow.jsx',
+      SigningCourse: 'app/components/signing/SigningCourse.jsx',
+      SigningCourseMain: 'app/components/signing/SigningCourseMain.jsx',
+      SigningCourseTableRow: 'app/components/signing/SigningCourseTableRow.jsx',
       StudentCard: 'app/components/StudentCard.jsx',
       CreateQuiz: 'app/components/quiz_create/CreateQuiz.jsx',
       CreateQuizMain: 'app/components/quiz_create/CreateQuizMain.jsx',
@@ -77,8 +86,13 @@ module.exports = {
       AllCourse: 'app/components/list_all/AllCourse.jsx',
       AllCourseMain: 'app/components/list_all/AllCourseMain.jsx',
       CourseTableRow: 'app/components/list_all/CourseTableRow.jsx',
+      CreateStudentNoteTable: 'app/components/notes/CreateStudentNoteTable.jsx',
+      CreateStudentNoteTableMain: 'app/components/notes/CreateStudentNoteTableMain.jsx',
+      CreateStudentNoteTableRow: 'app/components/notes/CreateStudentNoteTableRow.jsx',
       NoteCourse: 'app/components/notes/NoteCourse.jsx',
       NoteCourseMain: 'app/components/notes/NoteCourseMain.jsx',
+      NoteStudent: 'app/components/notes/NoteStudent.jsx',
+      NoteStudentMain: 'app/components/notes/NoteStudentMain.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

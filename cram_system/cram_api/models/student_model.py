@@ -63,6 +63,16 @@ class StudentCourseBank(models.Model):
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
 
+class StudentCourseBankLog(models.Model):
+    owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, )
+    balance = models.IntegerField(default=0)
+    money = models.IntegerField(default=0)
+    note = models.TextField(default="")
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+
 class StudentCourseSigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
     course = models.ForeignKey(Course, on_delete=models.CASCADE,)
@@ -71,6 +81,9 @@ class StudentCourseSigning(models.Model):
     leave = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+    class Meta:
+        ordering = ('date', 'course', )
 
 
 class StudentStudy(models.Model):
@@ -103,6 +116,15 @@ class StudentStudyBank(models.Model):
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
 
+class StudentStudyBankLog(models.Model):
+    owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    balance = models.IntegerField(default=0)
+    money = models.IntegerField(default=0)
+    note = models.TextField(default="")
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+
 class StudentStudySigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
     seat = models.CharField(max_length=50, default="")
@@ -130,13 +152,18 @@ class StudentStudySigning(models.Model):
 
 class StudentNote(models.Model):
     KIND_CHOICES = (
-        ('good', '好'),
+        ('course', '課程'),
+        ('sign', '點名'),
+        ('homework', '作業'),
+        ('quiz', '小考'),
+        ('plan', '讀計'),
+        ('order', '秩序'),
+        ('bank', '學費'),
         ('normal', '一般'),
-        ('bad', '差'),
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
     kind = models.CharField(
-        max_length=6,
+        max_length=8,
         choices=KIND_CHOICES,
         default='normal',
     )
@@ -176,9 +203,16 @@ class StudentSibling(models.Model):
 
 class StudentMealsBank(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
-    money = models.IntegerField(default=0)
-    note = models.CharField(max_length=200, default="")
     balance = models.IntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+
+class StudentMealsBankLog(models.Model):
+    owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
+    balance = models.IntegerField(default=0)
+    money = models.IntegerField(default=0)
+    note = models.TextField(default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 

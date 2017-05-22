@@ -19,6 +19,11 @@ class Logout(APIView):
 
 
 @api_view(['GET'])
+def console_view(requests):
+    return render(request=requests, template_name='console.html')
+
+
+@api_view(['GET'])
 def index_view(requests):
     return render(request=requests, template_name='index.html')
 
@@ -36,6 +41,11 @@ def quiz_list_view(requests):
 @api_view(['GET'])
 def signing_view(requests):
     return render(request=requests, template_name='signing.html')
+
+
+@api_view(['GET'])
+def signing_course_view(requests):
+    return render(request=requests, template_name='signing_course.html')
 
 
 @api_view(['GET'])
@@ -97,3 +107,12 @@ def plan_for_today_view(requests):
 def note_course_view(requests):
     return render(request=requests, template_name='note_course.html')
 
+
+@api_view(['GET'])
+def note_student_view(requests):
+    return render(request=requests, template_name='note_student.html')
+
+
+@api_view(['GET'])
+def create_student_note_table_view(requests):
+    return render(request=requests, template_name='create_student_note_table.html')

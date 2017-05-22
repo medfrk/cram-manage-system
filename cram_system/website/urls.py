@@ -3,6 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
+    url(r'^console/$', views.console_view),
     url(r'^$', views.index_view),
     url(r'^logout/', views.Logout),
     url(r'^plan/$', views.plan_view),
@@ -11,6 +12,7 @@ urlpatterns = [
     url(r'^plan_finish/$', views.plan_finish_view),
     url(r'^quiz_list/$', views.quiz_list_view),
     url(r'^signing/$', views.signing_view),
+    url(r'^signing_course/$', views.signing_course_view),
     url(r'^create_quiz/$', views.create_quiz_view),
     url(r'^finish_quiz/$', views.finish_quiz_view),
     url(r'^left/$', views.left_view),
@@ -20,6 +22,8 @@ urlpatterns = [
     url(r'^plan_for_today/$', views.plan_for_today_view),
     url(r'^all_course/$', views.all_course_view),
     url(r'^note_course/$', views.note_course_view),
+    url(r'^note_student/$', views.note_student_view),
+    url(r'^create_student_note_table/$', views.create_student_note_table_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

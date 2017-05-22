@@ -1,14 +1,16 @@
 from rest_framework import serializers
 
-from cram_api.models.student_model import StudentMealsBank
+from cram_api.models.student_model import StudentMealsBankLog
 
 
 class StudentMealsBankSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentMealsBank
+        model = StudentMealsBankLog
         fields = (
             'owner',
             'balance',
+            'money',
+            'note',
             'updated_at',
             'created_at'
         )

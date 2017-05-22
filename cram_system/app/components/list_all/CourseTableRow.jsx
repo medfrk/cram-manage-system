@@ -13,11 +13,32 @@ class CourseTableRow extends React.Component {
   }
 
   setLocalStorage() {
+    const name = this.props.course_grade + '-' + this.props.course_subject + '-' + this.props.course_teacher
+    localStorage.setItem('course_name', name);
     localStorage.setItem('course_id', this.props.course_id);
   }
 
+  setLocalStorageForCreateStudentNoteTable() {
+    const name = this.props.course_grade + '-' + this.props.course_subject + '-' + this.props.course_teacher
+    localStorage.setItem('page_header', name + '老師 課程學生列表');
+    localStorage.setItem('api_url', '/api/v1.0/course_student/' + this.props.course_id + '/');
+  }
+
   render() {
-    const manage_button = <a href="#" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>Manage</a>
+    const manage_button = (
+      <div className="btn-group">
+        <a href="#" className="btn btn-primary btn-sm">Manage</a>
+        <a href="#" className="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span className="caret"></span></a>
+        <ul className="dropdown-menu">
+          <li><a href="/signing_course/" onClick={() => {this.setLocalStorage()}}>簽到</a></li>
+          <li><a href="#">繳費</a></li>
+          <li><a href="/note_course/" onClick={() => {this.setLocalStorage()}}>回報</a></li>
+          <li className="divider"></li>
+          <li><a href="/create_student_note_table/" onClick={() => {this.setLocalStorageForCreateStudentNoteTable()}}>課程學生</a></li>
+        </ul>
+      </div>
+    )
+
     return(
       <tr>
         <td>{this.props.course_number}</td>

@@ -72,3 +72,6 @@ class CourseNote(models.Model):
     created_by = models.CharField(max_length=50, default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+    class Meta:
+        ordering = ('owner', 'created_at', )

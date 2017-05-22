@@ -30,7 +30,8 @@ def get_course_student_by_course_id(course_id):
     for studentInCourse in studentsInCourse:
         obj = {
             "id": str(studentInCourse.owner.id),
-            "name": studentInCourse.owner.name,
+            "student_name": studentInCourse.owner.name,
+            "student_seat": course.space.name,
             "school": studentInCourse.owner.school,
         }
         studentList.append(obj)
@@ -168,6 +169,37 @@ def get_course_signing_by_date_range(date_start, date_end):
     return result
 
 
+def get_course_signing_by_date_and_course_id(date, course_id):
+    """
+    Get course signing tables with a specific date and course id.
+    :param date: ex. 2018-01-01
+    :param course_id: ex. 1 
+    :return: signing list 
+    """
+    d = datetime_gen(date)
+    course = Course.objects.get(id=course_id)
+    signing_list = StudentCourseSigning.objects.filter(date=d, course=course)
+    content = []
+    if signing_list.exists():
+        for signing in signing_list:
+            obj = {
+                'id': str(signing.id),
+                'owner_id': str(signing.owner.id),
+                'owner_name': signing.owner.name,
+                'owner_contact': signing.owner.contact1_name + ' ' + signing.owner.contact1_phone,
+                'date': signing.date,
+                'sign': signing.sign,
+                'leave': signing.leave,
+                'updated_at': signing.updated_at,
+                'created_at': signing.created_at,
+            }
+            content.append(obj)
+    result = {
+        'signing_list': content,
+    }
+    return result
+
+
 def create_course_signing_by_date(date):
     """
     Create course signing tables for students in a specific day. 
@@ -178,25 +210,26 @@ def create_course_signing_by_date(date):
     for course in courses:
         studentsInCourse = StudentCourse.objects.filter(course=course)
         create_log = []
-        for student in studentsInCourse:
-            if StudentCourseSigning.objects.filter(owner=student.owner, course=course, date=d).exists():
-                obj = {
-                    'error': 'course signing already exist',
-                    'student_id': str(student.owner.id),
-                    'student_name': student.owner.name,
-                }
-            else:
-                obj = {
-                    'status': 'create course signing success',
-                    'student_id': str(student.owner.id),
-                    'student_name': student.owner.name,
-                }
-                StudentCourseSigning.objects.create(
-                    owner=student.owner,
-                    course=course,
-                    date=d
-                )
-            create_log.append(obj)
+        if studentsInCourse.exists():
+            for student in studentsInCourse:
+                if StudentCourseSigning.objects.filter(owner=student.owner, course=course, date=d).exists():
+                    obj = {
+                        'error': 'course signing already exist',
+                        'student_id': str(student.owner.id),
+                        'student_name': student.owner.name,
+                    }
+                else:
+                    obj = {
+                        'status': 'create course signing success',
+                        'student_id': str(student.owner.id),
+                        'student_name': student.owner.name,
+                    }
+                    StudentCourseSigning.objects.create(
+                        owner=student.owner,
+                        course=course,
+                        date=d
+                    )
+                create_log.append(obj)
         course_obj = {
             'create_log': create_log,
             'course_id': course.id,
