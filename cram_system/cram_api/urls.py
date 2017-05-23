@@ -5,6 +5,7 @@ from cram_api.views import student_with_course
 from cram_api.views import student_with_study
 from cram_api.views import study_view
 from cram_api.views import note_view
+from cram_api.views import bank_view
 
 
 urlpatterns = [
@@ -26,10 +27,14 @@ urlpatterns = [
     url(r'^api/v1.0/basic/teacher/arrangement/(?P<pk>[0-9]+)/$', teacher_view.TeacherArrangeDetail.as_view()),
     url(r'^api/v1.0/basic/student/course/$', student_view.StudentCourseList.as_view()),
     url(r'^api/v1.0/basic/student/course/(?P<pk>[0-9]+)/$', student_view.StudentCourseDetail.as_view()),
+    url(r'^api/v1.0/basic/student/course/bank/log/$', student_view.StudentCourseBankLogList.as_view()),
+    url(r'^api/v1.0/basic/student/course/bank/log/(?P<pk>[0-9]+)/$', student_view.StudentCourseBankLogDetail.as_view()),
     url(r'^api/v1.0/basic/student/course/bank/$', student_view.StudentCourseBankList.as_view()),
     url(r'^api/v1.0/basic/student/course/bank/(?P<pk>[0-9]+)/$', student_view.StudentCourseBankDetail.as_view()),
     url(r'^api/v1.0/basic/student/course/signing/$', student_view.StudentCourseSigningList.as_view()),
     url(r'^api/v1.0/basic/student/course/signing/(?P<pk>[0-9]+)/$', student_view.StudentCourseSigningDetail.as_view()),
+    url(r'^api/v1.0/basic/student/meals/bank/log/$', student_view.StudentMealsBankLogList.as_view()),
+    url(r'^api/v1.0/basic/student/meals/bank/log/(?P<pk>[0-9]+)/$', student_view.StudentMealsBankLogDetail.as_view()),
     url(r'^api/v1.0/basic/student/meals/bank/$', student_view.StudentMealsBankList.as_view()),
     url(r'^api/v1.0/basic/student/meals/bank/(?P<pk>[0-9]+)/$', student_view.StudentMealsBankDetail.as_view()),
     url(r'^api/v1.0/basic/student/note/$', student_view.StudentNoteList.as_view()),
@@ -42,6 +47,8 @@ urlpatterns = [
     url(r'^api/v1.0/basic/student/(?P<pk>[0-9]+)/$', student_view.StudentDetail.as_view()),
     url(r'^api/v1.0/basic/student/sibling/$', student_view.StudentSiblingList.as_view()),
     url(r'^api/v1.0/basic/student/sibling/(?P<pk>[0-9]+)/$', student_view.StudentSiblingDetail.as_view()),
+    url(r'^api/v1.0/basic/student/study/bank/log/$', student_view.StudentStudyBankLogList.as_view()),
+    url(r'^api/v1.0/basic/student/study/bank/log/(?P<pk>[0-9]+)/$', student_view.StudentStudyBankLogDetail.as_view()),
     url(r'^api/v1.0/basic/student/study/bank/$', student_view.StudentStudyBankList.as_view()),
     url(r'^api/v1.0/basic/student/study/bank/(?P<pk>[0-9]+)/$', student_view.StudentStudyBankDetail.as_view()),
     url(r'^api/v1.0/basic/student/study/$', student_view.StudentStudyList.as_view()),
@@ -109,7 +116,11 @@ urlpatterns = [
     url(r'^api/v1.0/course_manage/create/signing/$', student_with_course.CreateCourseSigningByDate.as_view()),
     url(r'^api/v1.0/course_manage/get/signing/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/(?P<course_id>[0-9]+)/$', student_with_course.GetCourseSigningByDateAndCourseId.as_view()),
     url(r'^api/v1.0/study_manage/create/signing/$', student_with_study.CreateAllStudySigningByDate.as_view()),
-    url(r'^test/post/$', study_view.TestPost.as_view()),
+    url(r'^api/v1.0/bank/course/logs/(?P<student_id>[0-9]+)/(?P<course_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.CourseBankLogList.as_view()),
+    url(r'^api/v1.0/bank/study/logs/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.StudyBankLogList.as_view()),
+    url(r'^api/v1.0/bank/meals/logs/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.MealsBankLogList.as_view()),
+    url(r'^api/v1.0/bank/study/(?P<student_id>[0-9]+)/$', bank_view.GetStudyBank.as_view()),
+    url(r'^api/v1.0/bank/meals/(?P<student_id>[0-9]+)/$', bank_view.GetMealsBank.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

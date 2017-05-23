@@ -19,18 +19,23 @@ class Logout(APIView):
 
 
 @api_view(['GET'])
-def console_view(requests):
-    return render(request=requests, template_name='console.html')
-
-
-@api_view(['GET'])
 def index_view(requests):
     return render(request=requests, template_name='index.html')
 
 
 @api_view(['GET'])
+def console_view(requests):
+    return render(request=requests, template_name='console.html')
+
+
+@api_view(['GET'])
 def all_course_view(requests):
     return render(request=requests, template_name='all_course.html')
+
+
+@api_view(['GET'])
+def all_student_view(requests):
+    return render(request=requests, template_name='all_student.html')
 
 
 @api_view(['GET'])
@@ -116,3 +121,9 @@ def note_student_view(requests):
 @api_view(['GET'])
 def create_student_note_table_view(requests):
     return render(request=requests, template_name='create_student_note_table.html')
+
+
+@api_view(['GET'])
+def student_dashboard_view(requests):
+    return render(request=requests, template_name='student_dashboard.html')
+

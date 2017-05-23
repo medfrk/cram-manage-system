@@ -27,8 +27,8 @@ class CourseTableRow extends React.Component {
   render() {
     const manage_button = (
       <div className="btn-group">
-        <a href="#" className="btn btn-primary btn-sm">Manage</a>
-        <a href="#" className="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span className="caret"></span></a>
+        <a href="#" className="btn btn-primary btn-xs">Manage</a>
+        <a href="#" className="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span className="caret"></span></a>
         <ul className="dropdown-menu">
           <li><a href="/signing_course/" onClick={() => {this.setLocalStorage()}}>簽到</a></li>
           <li><a href="#">繳費</a></li>
@@ -44,7 +44,6 @@ class CourseTableRow extends React.Component {
         <td>{this.props.course_number}</td>
         <td>{this.props.course_subject}</td>
         <td>{this.props.course_grade}</td>
-        <td>{this.parseTime(this.props.course_start_at) + '~' + this.parseTime(this.props.course_end_at)}</td>
         <td>{this.props.course_teacher}</td>
         <td>{manage_button}</td>
       </tr>

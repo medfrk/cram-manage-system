@@ -313,11 +313,11 @@ def create_all_study_signing_by_date(date):
     """
     d = datetime_gen(date)
     students_list = get_study_student_by_day(d.weekday()+1)
-    students = students_list['students']
+    students = students_list['student_list']
 
     content = []
     for student in students:
-        content.append(create_study_signing_by_student_id(student['id'], student['seat'], date))
+        content.append(create_study_signing_by_student_id(student['id'], student['student_seat'], date))
     result = {
         'log': content,
         'date': date,

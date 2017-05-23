@@ -39,6 +39,7 @@ class CramHeader extends React.Component {
               <button type="submit" className="btn btn-default">Submit</button>
             </form>
             <ul className="nav navbar-nav navbar-right">
+              <li><a href="/all_student/">學生</a></li>
               <li><a href="/all_course/">課程</a></li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">自習 <span className="caret"></span></a>
@@ -48,7 +49,7 @@ class CramHeader extends React.Component {
                   <li><a href="/plan/">讀書計畫</a></li>
                 </ul>
               </li>
-              <li><a href="#">進度報告</a></li>
+              <li><a href="/console/">Manage</a></li>
             </ul>
           </div>
         </div>

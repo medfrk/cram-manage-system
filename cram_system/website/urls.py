@@ -3,8 +3,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
-    url(r'^console/$', views.console_view),
     url(r'^$', views.index_view),
+    url(r'^console/', views.console_view),
     url(r'^logout/', views.Logout),
     url(r'^plan/$', views.plan_view),
     url(r'^plan_create/$', views.plan_create_view),
@@ -21,9 +21,11 @@ urlpatterns = [
     url(r'^quiz/$', views.quiz_view),
     url(r'^plan_for_today/$', views.plan_for_today_view),
     url(r'^all_course/$', views.all_course_view),
+    url(r'^all_student/$', views.all_student_view),
     url(r'^note_course/$', views.note_course_view),
     url(r'^note_student/$', views.note_student_view),
     url(r'^create_student_note_table/$', views.create_student_note_table_view),
+    url(r'^student_dashboard/$', views.student_dashboard_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

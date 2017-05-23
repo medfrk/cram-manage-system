@@ -72,6 +72,9 @@ class StudentCourseBankLog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
+    class Meta:
+        ordering = ('created_at', )
+
 
 class StudentCourseSigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
@@ -124,6 +127,9 @@ class StudentStudyBankLog(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
+    class Meta:
+        ordering = ('created_at', )
+
 
 class StudentStudySigning(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
@@ -172,6 +178,9 @@ class StudentNote(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
+    class Meta:
+        ordering = ('owner', 'created_at', )
+
 
 class StudentSibling(models.Model):
     GRADE_CHOICES = {
@@ -207,6 +216,9 @@ class StudentMealsBank(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
+    class Meta:
+        ordering = ('created_at', )
+
 
 class StudentMealsBankLog(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE, )
@@ -215,6 +227,9 @@ class StudentMealsBankLog(models.Model):
     note = models.TextField(default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+    class Meta:
+        ordering = ('created_at', )
 
 
 class StudentQuiz(models.Model):
@@ -243,6 +258,9 @@ class StudentQuiz(models.Model):
     note = models.CharField(max_length=200, default="")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
+
+    class Meta:
+        ordering = ('created_at', )
 
 
 class StudentPlan(models.Model):

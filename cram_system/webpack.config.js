@@ -3,6 +3,7 @@ var path = require("path");
 module.exports = {
   entry: {
     app_all_course: './app/app_all_course.jsx',
+    app_all_student: './app/app_all_student.jsx',
     app_console: './app/app_console.jsx',
     app_create_quiz: './app/app_create_quiz.jsx',
     app_create_student_note_table: './app/app_create_student_note_table.jsx',
@@ -22,6 +23,7 @@ module.exports = {
     app_quiz_list: './app/app_quiz_list.jsx',
     app_signing: './app/app_signing.jsx',
     app_signing_course: './app/app_signing_course.jsx',
+    app_student_dashboard: './app/app_student_dashboard.jsx',
   },
   output: {
     path: path.join(__dirname, "/static/js/bundle"),
@@ -86,6 +88,9 @@ module.exports = {
       AllCourse: 'app/components/list_all/AllCourse.jsx',
       AllCourseMain: 'app/components/list_all/AllCourseMain.jsx',
       CourseTableRow: 'app/components/list_all/CourseTableRow.jsx',
+      AllStudent: 'app/components/list_all/AllStudent.jsx',
+      AllStudentMain: 'app/components/list_all/AllStudentMain.jsx',
+      StudentTableRow: 'app/components/list_all/StudentTableRow.jsx',
       CreateStudentNoteTable: 'app/components/notes/CreateStudentNoteTable.jsx',
       CreateStudentNoteTableMain: 'app/components/notes/CreateStudentNoteTableMain.jsx',
       CreateStudentNoteTableRow: 'app/components/notes/CreateStudentNoteTableRow.jsx',
@@ -93,6 +98,16 @@ module.exports = {
       NoteCourseMain: 'app/components/notes/NoteCourseMain.jsx',
       NoteStudent: 'app/components/notes/NoteStudent.jsx',
       NoteStudentMain: 'app/components/notes/NoteStudentMain.jsx',
+      StudentDashboard: 'app/components/student/StudentDashboard.jsx',
+      StudentDashboardMain: 'app/components/student/StudentDashboardMain.jsx',
+      StudentBasicInfo: 'app/components/student/StudentBasicInfo.jsx',
+      StudentNotes: 'app/components/student/StudentNotes.jsx',
+      StudentStudyInfo: 'app/components/student/StudentStudyInfo.jsx',
+      StudentMealsInfo: 'app/components/student/StudentMealsInfo.jsx',
+      StudentCourseInfo: 'app/components/student/StudentCourseInfo.jsx',
+      TableRowForCourseBankLog: 'app/components/student/TableRowForCourseBankLog.jsx',
+      TableRowForMealsBankLog: 'app/components/student/TableRowForMealsBankLog.jsx',
+      TableRowForStudyBankLog: 'app/components/student/TableRowForStudyBankLog.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

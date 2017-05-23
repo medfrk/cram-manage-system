@@ -2,14 +2,14 @@ from rest_framework import generics
 from rest_framework import permissions
 
 from cram_api.models.student_model import Student, StudentNote, StudentSibling
-from cram_api.models.student_model import StudentQuiz, StudentPlan, StudentMealsBank
-from cram_api.models.student_model import StudentStudy, StudentStudySigning, StudentStudyBank
-from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank
+from cram_api.models.student_model import StudentQuiz, StudentPlan, StudentMealsBank, StudentMealsBankLog
+from cram_api.models.student_model import StudentStudy, StudentStudySigning, StudentStudyBank, StudentStudyBankLog
+from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank, StudentCourseBankLog
 
 from cram_api.serializers import StudentSerializer, StudentNoteSerializer, StudentSiblingSerializer
-from cram_api.serializers import StudentQuizSerializer, StudentPlanSerializer, StudentMealsBankSerializer
-from cram_api.serializers import StudentStudySerializer, StudentStudySigningSerializer, StudentStudyBankSerializer
-from cram_api.serializers import StudentCourseSerializer, StudentCourseSigningSerializer, StudentCourseBankSerializer
+from cram_api.serializers import StudentQuizSerializer, StudentPlanSerializer, StudentMealsBankSerializer, StudentMealsBankLogSerializer
+from cram_api.serializers import StudentStudySerializer, StudentStudySigningSerializer, StudentStudyBankSerializer, StudentStudyBankLogSerializer
+from cram_api.serializers import StudentCourseSerializer, StudentCourseSigningSerializer, StudentCourseBankSerializer, StudentCourseBankLogSerializer
 
 
 class StudentList(generics.ListCreateAPIView):
@@ -122,6 +122,28 @@ class StudentPlanDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StudentPlanSerializer
 
 
+class StudentMealsBankLogList(generics.ListCreateAPIView):
+    """
+    List all student meals banks log, or create a new student meals bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentMealsBankLog.objects.all()
+    serializer_class = StudentMealsBankLogSerializer
+
+
+class StudentMealsBankLogDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a student meals bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentMealsBankLog.objects.all()
+    serializer_class = StudentMealsBankLogSerializer
+
+
 class StudentMealsBankList(generics.ListCreateAPIView):
     """
     List all student meals banks, or create a new student meals bank.
@@ -188,6 +210,28 @@ class StudentStudySigningDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StudentStudySigningSerializer
 
 
+class StudentStudyBankLogList(generics.ListCreateAPIView):
+    """
+    List all student study banks log, or create a new student study bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentStudyBankLog.objects.all()
+    serializer_class = StudentStudyBankLogSerializer
+
+
+class StudentStudyBankLogDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a student study bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentStudyBankLog.objects.all()
+    serializer_class = StudentStudyBankLogSerializer
+
+
 class StudentStudyBankList(generics.ListCreateAPIView):
     """
     List all student study bank, or create a new student study bank.
@@ -252,6 +296,28 @@ class StudentCourseSigningDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = StudentCourseSigning.objects.all()
     serializer_class = StudentCourseSigningSerializer
+
+
+class StudentCourseBankLogList(generics.ListCreateAPIView):
+    """
+    List all student course banks log, or create a new student course bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentCourseBankLog.objects.all()
+    serializer_class = StudentCourseBankLogSerializer
+
+
+class StudentCourseBankLogDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a student course bank log.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+
+    queryset = StudentCourseBankLog.objects.all()
+    serializer_class = StudentCourseBankLogSerializer
 
 
 class StudentCourseBankList(generics.ListCreateAPIView):

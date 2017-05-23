@@ -153,7 +153,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -171,7 +170,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -189,7 +187,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -207,7 +204,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -225,7 +221,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -243,7 +238,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>
@@ -261,7 +255,6 @@ class AllCourseMain extends React.Component {
                 <th>#</th>
                 <th>科目</th>
                 <th>年級</th>
-                <th>時間</th>
                 <th>老師</th>
                 <th>管理</th>
               </tr>

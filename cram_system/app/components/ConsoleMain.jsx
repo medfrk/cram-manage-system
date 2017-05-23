@@ -5,7 +5,7 @@ class ConsoleMain extends React.Component {
     super();
 
     this.handleCreateCourseSigning = this.handleCreateCourseSigning.bind(this);
-    this.handleCreateStyleSigning = this.handleCreateStyleSigning.bind(this);
+    this.handleCreateStudySigning = this.handleCreateStudySigning.bind(this);
     this.handleCourseBalance = this.handleCourseBalance.bind(this);
     this.handleStudyBalance = this.handleStudyBalance.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
@@ -34,7 +34,7 @@ class ConsoleMain extends React.Component {
       .then(this.parseJSON)
   }
 
-  handleCreateStyleSigning() {
+  handleCreateStudySigning() {
     fetch('/api/v1.0/study_manage/create/signing/', {
       method: 'POST',
       headers: {
@@ -90,7 +90,7 @@ class ConsoleMain extends React.Component {
           <div className="row"><h3 style={hStyle}>產生今日點名表</h3></div>
           <div className="row">
             <a className="btn btn-primary btn-lg" style={btnStyle} onClick={() => {this.handleCreateCourseSigning()} }>課程</a>
-            <a className="btn btn-primary btn-lg pull-right" style={btnStyle} onClick={() => {this.handleCreateStyleSigning()} }>自習</a>
+            <a className="btn btn-primary btn-lg pull-right" style={btnStyle} onClick={() => {this.handleCreateStudySigning()} }>自習</a>
           </div>
         </div>
         <div>

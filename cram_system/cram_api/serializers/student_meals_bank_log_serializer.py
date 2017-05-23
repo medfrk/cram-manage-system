@@ -3,7 +3,7 @@ from rest_framework import serializers
 from cram_api.models.student_model import StudentMealsBankLog
 
 
-class StudentMealsBankSerializer(serializers.ModelSerializer):
+class StudentMealsBankLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentMealsBankLog
         fields = (
