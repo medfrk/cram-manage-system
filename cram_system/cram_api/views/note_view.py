@@ -57,3 +57,33 @@ class CreateStudentNote(generics.CreateAPIView):
         }
 
         return Response(result)
+
+
+class GetStudentNote(generics.RetrieveAPIView):
+    """
+    Get Student Notes.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentNote.objects.all()
+
+    def get(self, request, student_id, number, format=None):
+        student = Student.objects.get(id=student_id)
+        notes = StudentNote.objects.filter(owner=student).order_by('-created_at')[:int(number)]
+        note_list = []
+        for note in notes:
+            obj = {
+                'id': str(note.id),
+                'kind': note.kind,
+                'content': note.content,
+                'created_by': note.created_by,
+                'created_at': str(note.created_at).split(' ')[0],
+            }
+            note_list.append(obj)
+
+        result = {
+            'student_name': student.name,
+            'note_list': note_list,
+        }
+
+        return Response(result)

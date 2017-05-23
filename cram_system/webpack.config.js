@@ -108,6 +108,7 @@ module.exports = {
       TableRowForCourseBankLog: 'app/components/student/TableRowForCourseBankLog.jsx',
       TableRowForMealsBankLog: 'app/components/student/TableRowForMealsBankLog.jsx',
       TableRowForStudyBankLog: 'app/components/student/TableRowForStudyBankLog.jsx',
+      TableRowForNote: 'app/components/student/TableRowForNote.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

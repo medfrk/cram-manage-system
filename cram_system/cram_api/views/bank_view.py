@@ -18,8 +18,8 @@ class CourseBankLogList(generics.RetrieveAPIView):
     """
     Get student course bank log
     """
-    def get(self, request, student_id, course_id, number, format=None):
-        content = get_course_bank_log(student_id, course_id, number)
+    def get(self, request, course_id, student_id, number, format=None):
+        content = get_course_bank_log(course_id, student_id, number)
         return Response(content)
 
 
@@ -47,4 +47,13 @@ class GetMealsBank(generics.RetrieveAPIView):
     """
     def get(self, request, student_id, format=None):
         content = get_meals_bank(student_id)
+        return Response(content)
+
+
+class GetCourseBank(generics.RetrieveAPIView):
+    """
+    Get student course bank by course_id & student id.
+    """
+    def get(self, request, course_id, student_id, format=None):
+        content = get_course_bank(course_id, student_id)
         return Response(content)

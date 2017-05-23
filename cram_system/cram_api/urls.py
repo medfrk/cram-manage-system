@@ -116,11 +116,14 @@ urlpatterns = [
     url(r'^api/v1.0/course_manage/create/signing/$', student_with_course.CreateCourseSigningByDate.as_view()),
     url(r'^api/v1.0/course_manage/get/signing/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/(?P<course_id>[0-9]+)/$', student_with_course.GetCourseSigningByDateAndCourseId.as_view()),
     url(r'^api/v1.0/study_manage/create/signing/$', student_with_study.CreateAllStudySigningByDate.as_view()),
-    url(r'^api/v1.0/bank/course/logs/(?P<student_id>[0-9]+)/(?P<course_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.CourseBankLogList.as_view()),
+    url(r'^api/v1.0/bank/course/logs/(?P<course_id>[0-9]+)/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.CourseBankLogList.as_view()),
     url(r'^api/v1.0/bank/study/logs/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.StudyBankLogList.as_view()),
     url(r'^api/v1.0/bank/meals/logs/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', bank_view.MealsBankLogList.as_view()),
     url(r'^api/v1.0/bank/study/(?P<student_id>[0-9]+)/$', bank_view.GetStudyBank.as_view()),
     url(r'^api/v1.0/bank/meals/(?P<student_id>[0-9]+)/$', bank_view.GetMealsBank.as_view()),
+    url(r'^api/v1.0/bank/course/(?P<course_id>[0-9]+)/(?P<student_id>[0-9]+)/$', bank_view.GetCourseBank.as_view()),
+    url(r'^api/v1.0/student_course/(?P<student_id>[0-9]+)/$', student_with_course.GetCourseListByStudentId.as_view()),
+    url(r'^api/v1.0/note/get/student/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', note_view.GetStudentNote.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -7,8 +7,7 @@ from cram_api.models.student_model import StudentMealsBankLog, StudentMealsBank
 from datetime import datetime
 
 
-
-def get_course_bank_log(student_id, course_id, number):
+def get_course_bank_log(course_id, student_id, number):
     """
     Get Student Course Bank Log. 
     :param course_id:
@@ -26,6 +25,7 @@ def get_course_bank_log(student_id, course_id, number):
     log_list = []
     for log in logs:
         obj = {
+            'id': str(log.id),
             'balance': log.balance,
             'money': log.money,
             'note': log.note,
@@ -58,6 +58,7 @@ def get_study_bank_log(student_id, number):
     log_list = []
     for log in logs:
         obj = {
+            'id': str(log.id),
             'balance': log.balance,
             'money': log.money,
             'note': log.note,
@@ -89,6 +90,7 @@ def get_meals_bank_log(student_id, number):
     log_list = []
     for log in logs:
         obj = {
+            'id': str(log.id),
             'balance': log.balance,
             'money': log.money,
             'note': log.note,
@@ -128,6 +130,24 @@ def get_meals_bank(student_id):
     """
     student = Student.objects.get(id=student_id)
     bank = StudentMealsBank.objects.get(owner=student)
+    result = {
+        'bank_id': str(bank.id),
+        'balance': bank.balance,
+    }
+
+    return result
+
+
+def get_course_bank(course_id, student_id):
+    """
+    Get course bank info by course_id, student_id.
+    :param course_id:
+    :param student_id: 
+    :return: Information of student's course bank.
+    """
+    student = Student.objects.get(id=student_id)
+    course = Course.objects.get(id=course_id)
+    bank = StudentCourseBank.objects.get(owner=student, course=course)
     result = {
         'bank_id': str(bank.id),
         'balance': bank.balance,

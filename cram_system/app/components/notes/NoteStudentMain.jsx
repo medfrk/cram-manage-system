@@ -28,8 +28,8 @@ class NoteStudentMain extends React.Component {
     });
   }
 
-  getKind(subject) {
-    switch (subject) {
+  getKind(kind) {
+    switch (kind) {
         case '課程': return 'course'
         case '點名': return 'sign'
         case '作業': return 'homework'

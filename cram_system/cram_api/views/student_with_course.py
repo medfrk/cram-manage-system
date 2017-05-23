@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
 from cram_api.services.student_with_course import *
-from cram_api.models.student_model import StudentCourseSigning
+from cram_api.models.student_model import StudentCourseSigning, StudentCourse
 
 
 class StudentInCourseList(generics.RetrieveAPIView):
@@ -104,4 +104,17 @@ class GetCourseSigningByDateAndCourseId(generics.RetrieveAPIView):
 
     def get(self, request, date, course_id, format=None):
         content = get_course_signing_by_date_and_course_id(date, course_id)
+        return Response(content)
+
+
+class GetCourseListByStudentId(generics.RetrieveAPIView):
+    """
+    Get Course List By Student Id.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentCourse.objects.all()
+
+    def get(self, request, student_id, format=None):
+        content = get_course_list_by_student_id(student_id)
         return Response(content)

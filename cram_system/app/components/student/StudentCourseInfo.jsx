@@ -1,4 +1,5 @@
 var React = require('react');
+var TableRowForCourseBankLog = require('TableRowForCourseBankLog');
 
 class StudentCourseInfo extends React.Component {
   constructor() {
@@ -8,11 +9,129 @@ class StudentCourseInfo extends React.Component {
       add_balance: [],
       add_money: [],
       note: [],
+      bank: [],
+      logs: [],
+      log_list: [],
     }
 
+    this.getCourseBank = this.getCourseBank.bind(this);
+    this.getCourseLog = this.getCourseLog.bind(this);
+    this.updateCourseBank = this.updateCourseBank.bind(this);
+    this.updateCourseBank = this.updateCourseBank.bind(this);
+    this.checkStatus = this.checkStatus.bind(this);
+    this.parseJSON = this.parseJSON.bind(this);
+    this.storeData = this.storeData.bind(this);
+    this.storeLogData = this.storeLogData.bind(this);
+    this.handleLogData = this.handleLogData.bind(this);
     this.handleBalanceChange = this.handleBalanceChange.bind(this);
     this.handleMoneyChange = this.handleMoneyChange.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCourseBank();
+    this.getCourseLog();
+  }
+
+  getCourseBank() {
+    return fetch('/api/v1.0/bank/course/' + this.props.course_id + '/' + this.props.student_id + '/', {
+             accept: 'application/json',
+             method: 'get',
+             credentials: 'include'
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+             .then(this.storeData)
+  }
+
+  getCourseLog() {
+    return fetch('/api/v1.0/bank/course/logs/' + this.props.course_id + '/' + this.props.student_id + '/7/', {
+             accept: 'application/json',
+             method: 'get',
+             credentials: 'include'
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+             .then(this.storeLogData)
+             .then(this.handleLogData)
+  }
+
+  updateCourseBank() {
+    return fetch('/api/v1.0/basic/student/course/bank/' + this.state.bank['bank_id'] + '/', {
+             method: 'patch',
+             headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+               balance: parseInt(this.state.bank['balance']) + parseInt(this.state.add_balance),
+             }),
+             credentials: 'include'
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+  }
+
+  createCourseBankLog() {
+    return fetch('/api/v1.0/basic/student/course/bank/log/', {
+             method: 'post',
+             headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+               owner: this.props.student_id,
+               course: this.props.course_id,
+               balance: this.state.add_balance,
+               money: this.state.add_money,
+               note: this.state.note,
+             }),
+             credentials: 'include'
+           }).then(this.checkStatus)
+             .then(this.parseJSON)
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      const error = new Error(`HTTP Error ${response.statusText}`);
+      error.status = response.statusText;
+      error.response = response;
+      console.log(error);
+      throw error;
+    }
+  }
+
+  parseJSON(response) {
+    return response.json();
+  }
+
+  storeData(data) {
+    this.setState({
+      bank: data,
+    });
+  }
+
+  storeLogData(data) {
+    this.setState({
+      logs: data,
+    });
+  }
+
+  handleLogData() {
+    var BankLogList = this.state.logs['log_list'].map((list, index) => {
+      return(
+        <TableRowForCourseBankLog
+          key={list['id']}
+          balance={list['balance']}
+          money={list['money']}
+          note={list['note']}
+          date={list['created_at']}
+        />
+      )
+    })
+    this.setState({
+      log_list: BankLogList
+    })
   }
 
   handleBalanceChange(e) {
@@ -27,6 +146,10 @@ class StudentCourseInfo extends React.Component {
     this.setState({note: e.target.value});
   }
 
+  handleSubmit() {
+    this.updateCourseBank();
+    this.createCourseBankLog();
+  }
 
   render() {
     const hStyle = {
@@ -44,43 +167,21 @@ class StudentCourseInfo extends React.Component {
     return (
       <div>
         <div className="row"> <h5 style={hStyle}>Course Info</h5></div>
+        <div className="row"> <h5 style={hStyle}>{this.props.course_name}</h5></div>
         <div className="row">
           <div className="col-sm-6">
             <div className="row">
               <table className="table table-striped table-hover ">
                 <thead>
                   <tr>
-                    <th>金額</th>
                     <th>堂數</th>
+                    <th>金額</th>
+                    <th>備註</th>
                     <th>時間</th>
-                    <th>操作</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>3200</td>
-                    <td>+10</td>
-                    <td>2017-5-17</td>
-                    <td>wtlin</td>
-                  </tr>
-                  <tr>
-                    <td>2800</td>
-                    <td>+8</td>
-                    <td>2017-5-17</td>
-                    <td>wtlin</td>
-                  </tr>
-                  <tr>
-                    <td>3200</td>
-                    <td>+10</td>
-                    <td>2017-5-17</td>
-                    <td>wtlin</td>
-                  </tr>
-                  <tr>
-                    <td>2400</td>
-                    <td>+6</td>
-                    <td>2017-5-17</td>
-                    <td>wtlin</td>
-                  </tr>
+                  {this.state.log_list}
                 </tbody>
               </table>
               <a className="btn btn-primary" style={btnStyle}>More</a>
@@ -97,7 +198,7 @@ class StudentCourseInfo extends React.Component {
               <div className="panel-body">
                 <div className="row">
                   <div className="col-sm-12">
-                    <p>剩餘堂數: 20</p>
+                    <p>{'剩餘堂數: ' + this.state.bank['balance'] + ' 堂'}</p>
                   </div>
                 </div>
                 <div className="row">
@@ -124,7 +225,7 @@ class StudentCourseInfo extends React.Component {
                         </div>
                         <div className="form-group">
                           <div className="col-lg-12">
-                            <a className="btn btn-primary" style={btnStyle}>Submit</a>
+                            <a className="btn btn-primary" style={btnStyle} onClick={() => {this.handleSubmit()} }>Submit</a>
                           </div>
                         </div>
                       </fieldset>

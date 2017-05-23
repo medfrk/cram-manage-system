@@ -1,7 +1,6 @@
 from django.utils import timezone
 from cram_api.models.course_model import Course
-from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank
-from cram_api.models.teacher_model import Teacher
+from cram_api.models.student_model import StudentCourse, StudentCourseSigning, StudentCourseBank, Student
 from datetime import timedelta
 
 """
@@ -200,6 +199,27 @@ def get_course_signing_by_date_and_course_id(date, course_id):
     return result
 
 
+def get_course_list_by_student_id(student_id):
+    student = Student.objects.get(id=student_id)
+    courses = StudentCourse.objects.filter(owner=student)
+    content = []
+    if courses.exists():
+        for course in courses:
+            obj = {
+                'course_id': str(course.course.id),
+                'course_grade': course.course.grade,
+                'course_subject': course.course.subject,
+                'course_teacher': course.course.teacher.name,
+                'course_day': course.course.day,
+            }
+            content.append(obj)
+    result = {
+        'course_list': content,
+        'student_name': student.name,
+    }
+    return result
+
+
 def create_course_signing_by_date(date):
     """
     Create course signing tables for students in a specific day. 
@@ -293,3 +313,5 @@ def create_all_course_bank():
         'status': 'success'
     }
     return result
+
+

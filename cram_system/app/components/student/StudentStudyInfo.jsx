@@ -121,7 +121,7 @@ class StudentStudyInfo extends React.Component {
     var BankLogList = this.state.logs['log_list'].map((list, index) => {
       return(
         <TableRowForStudyBankLog
-          key={index}
+          key={list['id']}
           balance={list['balance']}
           money={list['money']}
           note={list['note']}
