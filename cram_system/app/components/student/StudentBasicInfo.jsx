@@ -90,7 +90,7 @@ class StudentBasicInfo extends React.Component {
             <p>{'電話: ' + this.state.student['contact1_phone']}</p>
           </div>
           <div className="col-sm-6">
-            <img style={imgStyle} src="http://placehold.it/1000x1000"/>
+            <img style={imgStyle}/>
           </div>
         </div>
       </div>

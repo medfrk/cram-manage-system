@@ -55,7 +55,7 @@ class StudentMealsInfo extends React.Component {
 
   updateMealsBank() {
     return fetch('/api/v1.0/basic/student/meals/bank/' + this.state.bank['bank_id'] + '/', {
-             method: 'patch',
+             method: 'PATCH',
              headers: {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
@@ -188,7 +188,7 @@ class StudentMealsInfo extends React.Component {
                 </div>
                 <div className="row">
                   <div className="well bs-component">
-                    <form className="form-horizontal">
+                    <form className="form-horizontal" id="form_meals_info">
                       <fieldset>
                         <div className="form-group">
                           <label htmlFor="inputMoney" className="col-sm-4 control-label">金額:</label>

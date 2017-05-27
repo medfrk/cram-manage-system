@@ -57,7 +57,7 @@ class StudentCourseInfo extends React.Component {
 
   updateCourseBank() {
     return fetch('/api/v1.0/basic/student/course/bank/' + this.state.bank['bank_id'] + '/', {
-             method: 'patch',
+             method: 'PATCH',
              headers: {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ class StudentCourseInfo extends React.Component {
                 </div>
                 <div className="row">
                   <div className="well bs-component">
-                    <form className="form-horizontal">
+                    <form className="form-horizontal" id="form_course_info">
                       <fieldset>
                         <div className="form-group">
                           <label htmlFor="inputBalance" className="col-sm-4 control-label">新增堂數:</label>

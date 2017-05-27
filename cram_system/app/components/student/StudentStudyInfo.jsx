@@ -13,6 +13,9 @@ class StudentStudyInfo extends React.Component {
       bank: [],
       logs: [],
       log_list: [],
+      updateStudyBankNotDone: false,
+      createStudyBankLogNotDone: false,
+      prevState: false
     }
 
     this.getStudyBank = this.getStudyBank.bind(this);
@@ -58,7 +61,7 @@ class StudentStudyInfo extends React.Component {
 
   updateStudyBank() {
     return fetch('/api/v1.0/basic/student/study/bank/' + this.state.bank['bank_id'] + '/', {
-             method: 'patch',
+             method: 'PATCH',
              headers: {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
@@ -69,6 +72,9 @@ class StudentStudyInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getStudyBank)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({updateStudyBankNotDone:false}));
   }
 
   createStudyBankLog() {
@@ -87,6 +93,9 @@ class StudentStudyInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getStudyLog)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({createStudyBankLogNotDone:false}));
   }
 
   checkStatus(response) {
@@ -147,6 +156,9 @@ class StudentStudyInfo extends React.Component {
   }
 
   handleSubmit() {
+    console.log("submit"+this.state.updateStudyBankNotDone+this.state.createStudyBankLogNotDone);
+    this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone});
+    this.setState({updateStudyBankNotDone:true, createStudyBankLogNotDone:true});
     this.updateStudyBank();
     this.createStudyBankLog();
   }
@@ -164,12 +176,27 @@ class StudentStudyInfo extends React.Component {
       'margin': '10px',
     }
 
+    const not_done = this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone
+
+    const inputBalance = not_done ?
+      <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange} disabled/> :
+      <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange}/>;
+    const inputMoney =  not_done ?
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange} disabled/> :
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/> ;
+    const textarea =  not_done ?
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange} disabled></textarea > :
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea> ;
+
+    console.log("PREV_STATE "+ this.state.prevState+" " + not_done);
+    if(this.state.prevState && ! not_done){
+      document.getElementById("form_study_info").reset();
+    }
+
     return (
       <div>
         <div className="row"> <h5 style={hStyle}>Study Info</h5></div>
-        <div className="row">
-          <p>一 四 五 日</p>
-        </div>
+        <div className="row"> <p> need to add the study days here </p></div>
         <div className="row">
           <div className="col-sm-6">
             <div className="row">
@@ -205,24 +232,24 @@ class StudentStudyInfo extends React.Component {
                 </div>
                 <div className="row">
                   <div className="well bs-component">
-                    <form className="form-horizontal">
+                    <form className="form-horizontal" id="form_study_info">
                       <fieldset>
                         <div className="form-group">
                           <label htmlFor="inputBalance" className="col-sm-4 control-label">新增堂數:</label>
                           <div className="col-sm-8">
-                            <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange}/>
+                            {inputBalance}
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="inputMoney" className="col-sm-4 control-label">繳費金額:</label>
                           <div className="col-sm-8">
-                            <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/>
+                            {inputMoney}
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="textArea" className="col-sm-4 control-label">備註:</label>
                           <div className="col-sm-8">
-                            <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea>
+                            {textarea}
                           </div>
                         </div>
                         <div className="form-group">
