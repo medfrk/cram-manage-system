@@ -8,8 +8,14 @@ class PlanSearchMain extends React.Component {
 
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    if (today.getMonth() + 1 < 10) {
+    if (today.getMonth() + 1 < 10 && today.getDay() < 10) {
+      date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-0' + today.getDate();
+    }
+    else if (today.getMonth() + 1 < 10) {
       date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
+    }
+    else if (today.getDay() < 10) {
+      date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-0' + today.getDate();
     }
 
     this.state = {
@@ -37,7 +43,8 @@ class PlanSearchMain extends React.Component {
   componentWillMount() {
     this.setState({
       name: localStorage.getItem("student_name"),
-      id: localStorage.getItem("student_id")
+      id: localStorage.getItem("student_id"),
+      dateTime: localStorage.getItem("plan_date"),
     });
   }
 
