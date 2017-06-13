@@ -156,7 +156,6 @@ class StudentStudyInfo extends React.Component {
   }
 
   handleSubmit() {
-    console.log("submit"+this.state.updateStudyBankNotDone+this.state.createStudyBankLogNotDone);
     this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone});
     this.setState({updateStudyBankNotDone:true, createStudyBankLogNotDone:true});
     this.updateStudyBank();

@@ -13,16 +13,22 @@ class PlanTableRow extends React.Component {
 
   setLocalStorage() {
     var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    if (today.getMonth() + 1 < 10 && today.getDay() < 10) {
-      date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-0' + today.getDate();
+    var date = today.getFullYear();
+
+    if (today.getMonth() + 1 < 10) {
+      date += '-0' + (today.getMonth() + 1);
     }
-    else if (today.getMonth() + 1 < 10) {
-      date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();
+    else {
+      date += '-' + (today.getMonth() + 1);
     }
-    else if (today.getDay() < 10) {
-      date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-0' + today.getDate();
+
+    if (today.getDate() < 10) {
+      date += '-0' + today.getDate();
     }
+    else {
+      date += '-' + today.getDate();
+    }
+
     localStorage.setItem('student_name', this.props.student_name);
     localStorage.setItem('student_id', this.props.student_id);
     localStorage.setItem('plan_date', date);

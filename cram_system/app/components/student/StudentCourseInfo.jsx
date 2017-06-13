@@ -12,6 +12,9 @@ class StudentCourseInfo extends React.Component {
       bank: [],
       logs: [],
       log_list: [],
+      updateStudyBankNotDone: false,
+      createStudyBankLogNotDone: false,
+      prevState: false
     }
 
     this.getCourseBank = this.getCourseBank.bind(this);
@@ -68,6 +71,9 @@ class StudentCourseInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getCourseBank)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({updateStudyBankNotDone:false}));
   }
 
   createCourseBankLog() {
@@ -87,6 +93,9 @@ class StudentCourseInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getCourseLog)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({createStudyBankLogNotDone:false}));
   }
 
   checkStatus(response) {
@@ -147,6 +156,8 @@ class StudentCourseInfo extends React.Component {
   }
 
   handleSubmit() {
+    this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone});
+    this.setState({updateStudyBankNotDone:true, createStudyBankLogNotDone:true});
     this.updateCourseBank();
     this.createCourseBankLog();
   }
@@ -162,6 +173,22 @@ class StudentCourseInfo extends React.Component {
 
     const divStyle = {
       'margin': '10px',
+    }
+
+    const not_done = this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone
+
+    const inputBalance = not_done ?
+      <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange} disabled/> :
+      <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange}/>;
+    const inputMoney =  not_done ?
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange} disabled/> :
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/> ;
+    const textarea =  not_done ?
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange} disabled></textarea > :
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea> ;
+
+    if(this.state.prevState && ! not_done){
+      document.getElementById("form_course_info"+this.props.course_id).reset();
     }
 
     return (
@@ -203,24 +230,24 @@ class StudentCourseInfo extends React.Component {
                 </div>
                 <div className="row">
                   <div className="well bs-component">
-                    <form className="form-horizontal" id="form_course_info">
+                    <form className="form-horizontal" id={"form_course_info"+this.props.course_id}>
                       <fieldset>
                         <div className="form-group">
                           <label htmlFor="inputBalance" className="col-sm-4 control-label">新增堂數:</label>
                           <div className="col-sm-8">
-                            <input type="text" className="form-control" id="inputBalance" placeholder="Add balance" name="Balance" onChange={this.handleBalanceChange}/>
+                            {inputBalance}
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="inputMoney" className="col-sm-4 control-label">繳費金額:</label>
                           <div className="col-sm-8">
-                            <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/>
+                            {inputMoney}
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="textArea" className="col-sm-4 control-label">備註:</label>
                           <div className="col-sm-8">
-                            <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea>
+                            {textarea}
                           </div>
                         </div>
                         <div className="form-group">

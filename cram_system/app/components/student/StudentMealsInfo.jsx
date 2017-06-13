@@ -11,6 +11,9 @@ class StudentMealsInfo extends React.Component {
       bank: [],
       meals_logs: [],
       meals_log_list: [],
+      updateStudyBankNotDone: false,
+      createStudyBankLogNotDone: false,
+      prevState: false
     }
 
     this.getMealsBank = this.getMealsBank.bind(this);
@@ -66,6 +69,9 @@ class StudentMealsInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getMealsBank)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({updateStudyBankNotDone:false}));
   }
 
   createMealsBankLog() {
@@ -84,6 +90,9 @@ class StudentMealsInfo extends React.Component {
              credentials: 'include'
            }).then(this.checkStatus)
              .then(this.parseJSON)
+             .then(this.getMealsLog)
+             .then(()=>this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone}))
+             .then(()=>this.setState({createStudyBankLogNotDone:false}));
   }
 
   checkStatus(response) {
@@ -140,6 +149,8 @@ class StudentMealsInfo extends React.Component {
   }
 
   handleSubmit() {
+    this.setState({prevState: this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone});
+    this.setState({updateStudyBankNotDone:true, createStudyBankLogNotDone:true});
     this.updateMealsBank();
     this.createMealsBankLog();
   }
@@ -151,6 +162,20 @@ class StudentMealsInfo extends React.Component {
 
     const btnStyle = {
       'width': '100%',
+    }
+
+    const not_done = this.state.updateStudyBankNotDone && this.state.createStudyBankLogNotDone
+
+    const inputMoney =  not_done ?
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange} disabled/> :
+      <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/> ;
+    const textarea =  not_done ?
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange} disabled></textarea > :
+      <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea> ;
+
+    console.log("PREV_STATE "+ this.state.prevState+" " + not_done);
+    if(this.state.prevState && ! not_done){
+      document.getElementById("form_meals_info").reset();
     }
 
     return (
@@ -193,13 +218,13 @@ class StudentMealsInfo extends React.Component {
                         <div className="form-group">
                           <label htmlFor="inputMoney" className="col-sm-4 control-label">金額:</label>
                           <div className="col-sm-8">
-                            <input type="text" className="form-control" id="inputMoney" placeholder="Add money" name="Money" onChange={this.handleMoneyChange}/>
+                            {inputMoney}
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="textArea" className="col-sm-4 control-label">備註:</label>
                           <div className="col-sm-8">
-                            <textarea className="form-control" rows="3" id="textArea" placeholder="Take notes" name="note" onChange={this.handleNoteChange}></textarea>
+                            {textarea}
                           </div>
                         </div>
                         <div className="form-group">
