@@ -163,6 +163,9 @@ class StudentStudyInfo extends React.Component {
   }
 
   render() {
+    const infoStyle = {
+      'marginTop': '20px',
+    }
     const hStyle = {
       'textAlign': 'center',
     }
@@ -193,31 +196,9 @@ class StudentStudyInfo extends React.Component {
     }
 
     return (
-      <div>
-        <div className="row"> <h5 style={hStyle}>Study Info</h5></div>
-        <div className="row"> <p> need to add the study days here </p></div>
+      <div style={infoStyle}>
+        <div className="row"> <h5 style={hStyle}>自習繳費狀況</h5></div>
         <div className="row">
-          <div className="col-sm-6">
-            <div className="row">
-              <table className="table table-striped table-hover ">
-                <thead>
-                  <tr>
-                    <th>堂數</th>
-                    <th>金額</th>
-                    <th>備註</th>
-                    <th>時間</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.log_list}
-                </tbody>
-              </table>
-              <a className="btn btn-primary" style={btnStyle}>More</a>
-            </div>
-            <div style={divStyle}>
-              <a className="btn btn-primary" style={btnStyle}>Signing Log</a>
-            </div>
-          </div>
           <div className="col-sm-6">
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -261,6 +242,27 @@ class StudentStudyInfo extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="row">
+              <table className="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>堂數</th>
+                    <th>金額</th>
+                    <th>備註</th>
+                    <th>時間</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.log_list}
+                </tbody>
+              </table>
+              <a href="/bank_log_for_study/" className="btn btn-primary" style={btnStyle}>More</a>
+            </div>
+            <div style={divStyle}>
+              <a className="btn btn-primary" style={btnStyle}>Signing Log</a>
             </div>
           </div>
         </div>

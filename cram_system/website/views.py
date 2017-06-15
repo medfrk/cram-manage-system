@@ -127,3 +127,22 @@ def create_student_note_table_view(requests):
 def student_dashboard_view(requests):
     return render(request=requests, template_name='student_dashboard.html')
 
+
+@api_view(['GET'])
+def bank_log_for_course_view(requests):
+    return render(request=requests, template_name='bank_log_for_course.html')
+
+
+@api_view(['GET'])
+def bank_log_for_meals_view(requests):
+    return render(request=requests, template_name='bank_log_for_meals.html')
+
+
+@api_view(['GET'])
+def bank_log_for_study_view(requests):
+    return render(request=requests, template_name='bank_log_for_study.html')
+
+
+@api_view(['GET'])
+def student_note_more_view(requests):
+    return render(request=requests, template_name='student_note_more.html')

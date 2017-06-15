@@ -3,6 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from cram_api.views import account_view, course_view, space_view, teacher_view, student_view
 from cram_api.views import student_with_course
 from cram_api.views import student_with_study
+from cram_api.views import student_with_meals
 from cram_api.views import study_view
 from cram_api.views import note_view
 from cram_api.views import bank_view
@@ -74,6 +75,7 @@ urlpatterns = [
     url(r'^api/v1.0/study_bank/(?P<student_id>[0-9]+)/$', student_with_study.StudentStudyBankList.as_view()),
     url(r'^api/v1.0/study_bank/all/$', student_with_study.StudentStudyBankAllList.as_view()),
     url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
+    url(r'^api/v1.0/meals_bank/create/all/$', student_with_meals.CreateAllStudentMealsBank.as_view()),
     url(r'^api/v1.0/study_manage/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudyManageList.as_view()),
     url(r'^api/v1.0/study_manage/signing/expect/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',

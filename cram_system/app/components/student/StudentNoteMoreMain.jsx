@@ -1,11 +1,12 @@
 var React = require('react');
 var TableRowForNote = require('TableRowForNote');
 
-class StudentNotes extends React.Component {
+class StudentNoteMoreMain extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      student_id: [],
       notes: [],
       note_list: [],
     }
@@ -32,12 +33,18 @@ class StudentNotes extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.setState({
+      student_id: localStorage.getItem("student_id"),
+    });
+  }
+
   componentDidMount() {
     this.getStudyNote();
   }
 
   getStudyNote() {
-    return fetch('/api/v1.0/note/get/student/' + this.props.student_id + '/8/', {
+    return fetch('/api/v1.0/note/get/student/' + this.state.student_id + '/50/', {
              accept: 'application/json',
              method: 'get',
              credentials: 'include'
@@ -91,13 +98,10 @@ class StudentNotes extends React.Component {
       'textAlign': 'center',
     }
 
-    const btnStyle = {
-      'width': '100%',
-    }
-
     return (
-      <div>
-        <div className="row"> <h5 style={hStyle}>Notes</h5></div>
+      <div className="container">
+        <div className="page-header" id="banner"> </div>
+        <div className="row"> <h3 style={hStyle}>Student Notes</h3></div>
         <div className="row">
           <div className="col-sm-12">
             <table className="table table-striped table-hover ">
@@ -114,13 +118,10 @@ class StudentNotes extends React.Component {
               </tbody>
             </table>
           </div>
-          <div>
-            <a href="/student_note_more/" className="btn btn-primary" style={btnStyle}>More</a>
-          </div>
         </div>
       </div>
     )
   }
 }
 
-module.exports = StudentNotes;
+module.exports = StudentNoteMoreMain;

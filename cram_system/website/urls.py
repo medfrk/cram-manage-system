@@ -26,6 +26,10 @@ urlpatterns = [
     url(r'^note_student/$', views.note_student_view),
     url(r'^create_student_note_table/$', views.create_student_note_table_view),
     url(r'^student_dashboard/$', views.student_dashboard_view),
+    url(r'^bank_log_for_course/$', views.bank_log_for_course_view),
+    url(r'^bank_log_for_meals/$', views.bank_log_for_meals_view),
+    url(r'^bank_log_for_study/$', views.bank_log_for_study_view),
+    url(r'^student_note_more/$', views.student_note_more_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

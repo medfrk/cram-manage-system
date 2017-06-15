@@ -156,6 +156,9 @@ class StudentMealsInfo extends React.Component {
   }
 
   render() {
+    const infoStyle = {
+      'marginTop': '20px',
+    }
     const hStyle = {
       'textAlign': 'center',
     }
@@ -179,27 +182,9 @@ class StudentMealsInfo extends React.Component {
     }
 
     return (
-      <div>
-        <div className="row"> <h5 style={hStyle}>Meals Info</h5></div>
+      <div style={infoStyle}>
+        <div className="row"> <h5 style={hStyle}>餐費繳費狀況</h5></div>
         <div className="row">
-          <div className="col-sm-6">
-            <div className="row">
-              <table className="table table-striped table-hover ">
-                <thead>
-                  <tr>
-                    <th>餘額</th>
-                    <th>金額</th>
-                    <th>備註</th>
-                    <th>時間</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.meals_log_list}
-                </tbody>
-              </table>
-              <a className="btn btn-primary" style={btnStyle}>More</a>
-            </div>
-          </div>
           <div className="col-sm-6">
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -237,6 +222,24 @@ class StudentMealsInfo extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="row">
+              <table className="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>餘額</th>
+                    <th>金額</th>
+                    <th>備註</th>
+                    <th>時間</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.meals_log_list}
+                </tbody>
+              </table>
+              <a href="/bank_log_for_meals/" className="btn btn-primary" style={btnStyle}>More</a>
             </div>
           </div>
         </div>

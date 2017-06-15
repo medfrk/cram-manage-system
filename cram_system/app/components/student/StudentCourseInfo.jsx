@@ -30,6 +30,7 @@ class StudentCourseInfo extends React.Component {
     this.handleMoneyChange = this.handleMoneyChange.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleMoreClick = this.handleMoreClick.bind(this);
   }
 
   componentDidMount() {
@@ -162,7 +163,16 @@ class StudentCourseInfo extends React.Component {
     this.createCourseBankLog();
   }
 
+  handleMoreClick() {
+    localStorage.setItem('course_id', this.props.course_id);
+    localStorage.setItem('course_name', this.props.course_name);
+  }
+
   render() {
+    const infoStyle = {
+      'marginTop': '20px',
+    }
+
     const hStyle = {
       'textAlign': 'center',
     }
@@ -192,31 +202,10 @@ class StudentCourseInfo extends React.Component {
     }
 
     return (
-      <div>
-        <div className="row"> <h5 style={hStyle}>Course Info</h5></div>
+      <div style={infoStyle}>
+        <div className="row"> <h5 style={hStyle}>課程繳費狀況</h5></div>
         <div className="row"> <h5 style={hStyle}>{this.props.course_name}</h5></div>
         <div className="row">
-          <div className="col-sm-6">
-            <div className="row">
-              <table className="table table-striped table-hover ">
-                <thead>
-                  <tr>
-                    <th>堂數</th>
-                    <th>金額</th>
-                    <th>備註</th>
-                    <th>時間</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.log_list}
-                </tbody>
-              </table>
-              <a className="btn btn-primary" style={btnStyle}>More</a>
-            </div>
-            <div style={divStyle}>
-              <a className="btn btn-primary" style={btnStyle}>Signing Log</a>
-            </div>
-          </div>
           <div className="col-sm-6">
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -260,6 +249,27 @@ class StudentCourseInfo extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="row">
+              <table className="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>堂數</th>
+                    <th>金額</th>
+                    <th>備註</th>
+                    <th>時間</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.log_list}
+                </tbody>
+              </table>
+              <a href="/bank_log_for_course/" className="btn btn-primary" style={btnStyle} onClick={() => {this.handleMoreClick()}}>More</a>
+            </div>
+            <div style={divStyle}>
+              <a className="btn btn-primary" style={btnStyle}>Signing Log</a>
             </div>
           </div>
         </div>
