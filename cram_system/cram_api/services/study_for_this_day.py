@@ -152,48 +152,61 @@ def take_a_leave(signing_id):
 
 def collect_the_study_number_report(date):
     d = datetime_gen(date)
+    signing_list = StudentStudySigning.objects.filter(date=d)
 
-    signingExpect = signing_expect(d)
-    signingActual = signing_actual(d)
-    signingAbsent = signing_absent(d)
-    signingLeave = signing_leave(d)
+    signingExpect = signing_list.count()
+    signingActual = 0
+    signingLeave = 0
+    quizCreateDone = 0
+    homeworkDone = 0
+    quizDone = 0
+    planDone = 0
+    leftDone = 0
 
-    quizCreateDone = quiz_create_done(d)
-    quizCreateNotDone = quiz_create_not_done(d)
+    for signing in signing_list:
+        if signing.sign:
+            signingActual = signingActual + 1
+        if signing.leave:
+            signingLeave = signingLeave + 1
+        if signing.have_create_quiz:
+            quizCreateDone = quizCreateDone + 1
+        if signing.finish_homework:
+            homeworkDone = homeworkDone + 1
+        if signing.finish_quiz:
+            quizDone = quizDone + 1
+        if signing.finish_plan:
+            planDone = planDone + 1
+        if signing.left:
+            leftDone = leftDone + 1
 
-    homeworkDone = homework_done(d)
-    homeworkNotDone = homework_not_done(d)
-
-    quizDone = quiz_done(d)
-    quizNotDone = quiz_not_done(d)
-
-    planDone = plan_done(d)
-    planNotDone = plan_not_done(d)
-
-    leftDone = left_done(d)
-    leftNotDone = left_not_done(d)
+    signingAbsent = signingExpect - signingActual - signingLeave
+    quizCreateNotDone = signingActual - quizCreateDone
+    homeworkNotDone = signingActual - homeworkDone
+    quizNotDone = signingActual - quizDone
+    planNotDone = signingActual - planDone
+    leftNotDone = signingActual - leftDone
 
     result = {
-        "signingExpect": signingExpect['count'],
-        "signingActual": signingActual['count'],
-        "signingAbsent": signingAbsent['count'],
-        "signingLeave": signingLeave['count'],
-        "quizCreateExpect": signingActual['count'],
-        "quizCreateDone": quizCreateDone['count'],
-        "quizCreateNotDone": quizCreateNotDone['count'],
-        "homeworkExpect": signingActual['count'],
-        "homeworkDone": homeworkDone['count'],
-        "homeworkNotDone": homeworkNotDone['count'],
-        "quizExpect": signingActual['count'],
-        "quizDone": quizDone['count'],
-        "quizNotDone": quizNotDone['count'],
-        "planExpect": signingActual['count'],
-        "planDone": planDone['count'],
-        "planNotDone": planNotDone['count'],
-        "leftExpect": signingActual['count'],
-        "leftCanGo": planDone['count'],
-        "leftDone": leftDone['count'],
-        "leftNotDone": leftNotDone['count'],
+        "signingExpect": signingExpect,
+        "signingActual": signingActual,
+        "signingAbsent": signingAbsent,
+        "signingLeave": signingLeave,
+        "quizCreateExpect": signingActual,
+        "quizCreateDone": quizCreateDone,
+        "quizCreateNotDone": quizCreateNotDone,
+        "homeworkExpect": signingActual,
+        "homeworkDone": homeworkDone,
+        "homeworkNotDone": homeworkNotDone,
+        "quizExpect": signingActual,
+        "quizDone": quizDone,
+        "quizNotDone": quizNotDone,
+        "planExpect": signingActual,
+        "planDone": planDone,
+        "planNotDone": planNotDone,
+        "leftExpect": signingActual,
+        "leftCanGo": planDone,
+        "leftDone": leftDone,
+        "leftNotDone": leftNotDone,
     }
     return result
 
