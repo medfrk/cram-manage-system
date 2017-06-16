@@ -7,6 +7,7 @@ class StudentSiblingSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentSibling
         fields = (
+            'id',
             'owner',
             'name',
             'grade',

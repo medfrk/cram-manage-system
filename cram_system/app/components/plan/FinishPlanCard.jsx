@@ -22,6 +22,7 @@ class FinishPlanCard extends React.Component {
     this.handlePlanCancel = this.handlePlanCancel.bind(this);
     this.handlePlanQuizDone = this.handlePlanQuizDone.bind(this);
     this.handlePlanQuizCancel = this.handlePlanQuizCancel.bind(this);
+    this.handlePlanDelete = this.handlePlanDelete.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
     this.handleScoreChange = this.handleScoreChange.bind(this);
@@ -138,6 +139,18 @@ class FinishPlanCard extends React.Component {
       .then(cb)
   }
 
+  handlePlanDelete(cb) {
+    fetch('/api/v1.0/basic/student/plan/' + this.state.id + '/', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(this.checkStatus)
+      .then(cb)
+  }
+
   checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
       return response;
@@ -159,14 +172,21 @@ class FinishPlanCard extends React.Component {
   }
 
   render() {
+    const aStyle = {
+      "width": "100%"
+    }
+
     var update_button = <a className="btn btn-primary pull-right" onClick={() => {this.handleScoreUpdate((results) => {this.props.handle_update()})}}>登記成績</a>
     var quiz_done_button = <a className="btn btn-primary pull-right" onClick={() => {this.handlePlanQuizDone((results) => {this.props.handle_update()})}}>完成小考</a>
     var quiz_cancel_button = <a className="btn btn-default" onClick={() => {this.handlePlanQuizCancel((results) => {this.props.handle_update()})}}>取消</a>
     var done_button = <a className="btn btn-primary pull-right" onClick={() => {this.handlePlanDone((results) => {this.props.handle_update()})}}>完成讀計</a>
     var cancel_button = <a className="btn btn-default" onClick={() => {this.handlePlanCancel((results) => {this.props.handle_update()})}}>取消</a>
+    var delete_button = <a className="btn btn-danger" style={aStyle} onClick={() => {this.handlePlanDelete((results) => {this.props.handle_update()})}}>Delete</a>
+
     const need_a_quiz = this.props.need_quiz ? 'Yes' : 'No'
     var finish_quiz_or_not = this.props.finish_quiz ? '完成' : '未完成'
     var finish_or_not = this.props.finish ? '完成' : '未完成'
+
     return (
       <div className="col-sm-4">
         <div className="panel panel-primary">
@@ -204,6 +224,11 @@ class FinishPlanCard extends React.Component {
                       <div className="col-lg-12">
                         {done_button}
                         {cancel_button}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <div className="col-lg-12">
+                        {delete_button}
                       </div>
                     </div>
                   </fieldset>

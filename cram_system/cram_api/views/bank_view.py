@@ -1,3 +1,5 @@
+import simplejson as json
+
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -57,3 +59,35 @@ class GetCourseBank(generics.RetrieveAPIView):
     def get(self, request, course_id, student_id, format=None):
         content = get_course_bank(course_id, student_id)
         return Response(content)
+
+
+class StudyBankSettlement(generics.CreateAPIView):
+    """
+    Update the bank and create bank's log by date.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentStudyBank.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        result = study_bank_settlement_by_date(body['date'])
+
+        return Response(result)
+
+
+class CourseBankSettlement(generics.CreateAPIView):
+    """
+    Update the bank and create bank's log by date.
+    """
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentCourseBank.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        result = course_bank_settlement_by_date(body['date'])
+
+        return Response(result)

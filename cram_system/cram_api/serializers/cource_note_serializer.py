@@ -7,6 +7,7 @@ class CourseNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseNote
         fields = (
+            'id',
             'owner',
             'content',
             'created_by',

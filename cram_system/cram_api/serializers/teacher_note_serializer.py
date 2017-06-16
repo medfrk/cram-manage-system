@@ -7,6 +7,7 @@ class TeacherNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeacherNote
         fields = (
+            'id',
             'owner',
             'content',
             'created_by',

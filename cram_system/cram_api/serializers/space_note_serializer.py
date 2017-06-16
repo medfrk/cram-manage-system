@@ -7,6 +7,7 @@ class SpaceNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = SpaceNote
         fields = (
+            'id',
             'owner',
             'content',
             'created_by',

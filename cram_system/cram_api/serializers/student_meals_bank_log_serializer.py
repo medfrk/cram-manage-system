@@ -7,6 +7,7 @@ class StudentMealsBankLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentMealsBankLog
         fields = (
+            'id',
             'owner',
             'balance',
             'money',

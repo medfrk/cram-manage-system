@@ -7,6 +7,7 @@ class StudentPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentPlan
         fields = (
+            'id',
             'owner',
             'date',
             'subject',

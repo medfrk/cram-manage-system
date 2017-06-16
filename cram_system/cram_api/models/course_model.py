@@ -60,7 +60,7 @@ class Course(models.Model):
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
     def __str__(self):
-        return str(self.teacher.name + " 星期" + self.day + " 科目:" + self.subject)
+        return str(self.teacher.name + " 星期" + self.day + " 年級" + self.grade + " 科目:" + self.subject)
 
     class Meta:
         ordering = ('day', 'start_at', 'created_at', )

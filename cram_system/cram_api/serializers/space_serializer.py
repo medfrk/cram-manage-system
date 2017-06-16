@@ -7,6 +7,7 @@ class SpaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Space
         fields = (
+            'id',
             'name',
             'kind',
             'capacity',

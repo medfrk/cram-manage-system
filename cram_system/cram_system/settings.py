@@ -102,66 +102,66 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cram_system.wsgi.application'
 
 
-# USE_LOCAL_SQLITE_DB = True
-# if USE_LOCAL_SQLITE_DB:
-#     DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.sqlite3',
-#            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#        }
-#     }
-# else:
+USE_LOCAL_SQLITE_DB = True
+if USE_LOCAL_SQLITE_DB:
+    DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+           'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'cram_system_db',                       # Or path to database file if using sqlite3.
+            'USER': 'cramdev',                       # Not used with sqlite3.
+            'PASSWORD': 'qwertyuiop',               # Not used with sqlite3.
+            'HOST': '',                           # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                           # Set to empty string for default. Not used with sqlite3.
+        }
+    }
+
+# # Database
+# # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+#     # Running on production App Engine, so connect to Google Cloud SQL using
+#     # the unix socket at /cloudsql/<your-cloudsql-connection string>
 #     DATABASES = {
 #         'default': {
-#             'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#             'NAME': 'cram_system_db',                       # Or path to database file if using sqlite3.
-#             'USER': 'cramdev',                       # Not used with sqlite3.
-#             'PASSWORD': 'qwertyuiop',               # Not used with sqlite3.
-#             'HOST': '',                           # Set to empty string for localhost. Not used with sqlite3.
-#             'PORT': '',                           # Set to empty string for default. Not used with sqlite3.
+#             'ENGINE': 'django.db.backends.mysql',
+#             'HOST': '/cloudsql/cram-system:asia-east1:cram-system-sql',
+#             'NAME': 'cram_system_db',
+#             'USER': 'cramdev',
+#             'PASSWORD': 'qwertyuiop',
 #         }
 #     }
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
-    # Running on production App Engine, so connect to Google Cloud SQL using
-    # the unix socket at /cloudsql/<your-cloudsql-connection string>
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/cram-system:asia-east1:cram-system-sql',
-            'NAME': 'cram_system_db',
-            'USER': 'cramdev',
-            'PASSWORD': 'qwertyuiop',
-        }
-    }
-else:
-    # Running locally so connect to either a local MySQL instance or connect to
-    # Cloud SQL via the proxy. To start the proxy via command line:
-    #
-    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:5432
-    #
-    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-            'NAME': 'cram_system_db',
-            'USER': 'cramdev',
-            'PASSWORD': 'qwertyuiop',
-        }
-    }
-
-# In the flexible environment, you connect to CloudSQL using a unix socket.
-# Locally, you can use the CloudSQL proxy to proxy a localhost connection
-# to the instance
-DATABASES['default']['HOST'] = '/cloudsql/cram-system:asia-east1:cram-system-sql'
-if os.getenv('GAE_INSTANCE'):
-    pass
-else:
-    DATABASES['default']['HOST'] = '127.0.0.1'
+# else:
+#     # Running locally so connect to either a local MySQL instance or connect to
+#     # Cloud SQL via the proxy. To start the proxy via command line:
+#     #
+#     #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:5432
+#     #
+#     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'HOST': '127.0.0.1',
+#             'PORT': '5432',
+#             'NAME': 'cram_system_db',
+#             'USER': 'cramdev',
+#             'PASSWORD': 'qwertyuiop',
+#         }
+#     }
+#
+# # In the flexible environment, you connect to CloudSQL using a unix socket.
+# # Locally, you can use the CloudSQL proxy to proxy a localhost connection
+# # to the instance
+# DATABASES['default']['HOST'] = '/cloudsql/cram-system:asia-east1:cram-system-sql'
+# if os.getenv('GAE_INSTANCE'):
+#     pass
+# else:
+#     DATABASES['default']['HOST'] = '127.0.0.1'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

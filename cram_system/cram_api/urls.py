@@ -10,6 +10,11 @@ from cram_api.views import bank_view
 
 
 urlpatterns = [
+    url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
+    url(r'^api/v1.0/meals_bank/create/all/$', student_with_meals.CreateAllStudentMealsBank.as_view()),
+    url(r'^api/v1.0/course_bank/create/all/$', student_with_course.StudentCreateAllStudentBank.as_view()),
+    url(r'^api/v1.0/study_bank/settlement/$', bank_view.StudyBankSettlement.as_view()),
+    url(r'^api/v1.0/course_bank/settlement/$', bank_view.CourseBankSettlement.as_view()),
     url(r'^api/v1.0/basic/account/$', account_view.AccountList.as_view()),
     url(r'^api/v1.0/basic/account/(?P<pk>[0-9]+)/$', account_view.AccountDetail.as_view()),
     url(r'^api/v1.0/basic/course/$', course_view.CourseList.as_view()),
@@ -64,7 +69,6 @@ urlpatterns = [
     url(r'^api/v1.0/course_signing/range/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
         r'0-9]+[-][0-9]+)/$', student_with_course.StudentSigningTableDayRangeList.as_view()),
     url(r'^api/v1.0/course_bank/create/(?P<course_id>[0-9]+)/$', student_with_course.StudentCreateSingleCourseBank.as_view()),
-    url(r'^api/v1.0/course_bank/create/all/$', student_with_course.StudentCreateAllStudentBank.as_view()),
     url(r'^api/v1.0/study_student/(?P<day>[0-9]+)/$', student_with_study.StudentInOneDayList.as_view()),
     url(r'^api/v1.0/study_student/all', student_with_study.StudentInAllDayList.as_view()),
     url(r'^api/v1.0/study_signing/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$', student_with_study.StudentDailySigningList.as_view()),
@@ -74,8 +78,6 @@ urlpatterns = [
         student_with_study.CreateStudySigningTable.as_view()),
     url(r'^api/v1.0/study_bank/(?P<student_id>[0-9]+)/$', student_with_study.StudentStudyBankList.as_view()),
     url(r'^api/v1.0/study_bank/all/$', student_with_study.StudentStudyBankAllList.as_view()),
-    url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
-    url(r'^api/v1.0/meals_bank/create/all/$', student_with_meals.CreateAllStudentMealsBank.as_view()),
     url(r'^api/v1.0/study_manage/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',
         study_view.StudyManageList.as_view()),
     url(r'^api/v1.0/study_manage/signing/expect/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$',

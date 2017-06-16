@@ -7,6 +7,7 @@ class TeacherArrangeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeacherArrange
         fields = (
+            'id',
             'owner',
             'day',
             'position',

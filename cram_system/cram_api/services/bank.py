@@ -1,10 +1,20 @@
+from django.utils import timezone
+
 from cram_api.models.course_model import Course
-from cram_api.models.student_model import Student
+from cram_api.models.student_model import Student, StudentStudySigning, StudentCourseSigning
 from cram_api.models.student_model import StudentCourseBankLog, StudentCourseBank
 from cram_api.models.student_model import StudentStudyBankLog, StudentStudyBank
 from cram_api.models.student_model import StudentMealsBankLog, StudentMealsBank
 
-from datetime import datetime
+
+def datetime_gen(date):
+    split_date = date.split("-")
+    result = timezone.datetime(
+        year=int(split_date[0]),
+        month=int(split_date[1]),
+        day=int(split_date[2])
+    )
+    return result
 
 
 def get_course_bank_log(course_id, student_id, number):
@@ -151,6 +161,70 @@ def get_course_bank(course_id, student_id):
     result = {
         'bank_id': str(bank.id),
         'balance': bank.balance,
+    }
+
+    return result
+
+
+def study_bank_settlement_by_date(date):
+    """
+    Update the student's study bank by the signing table.
+    :param date: 
+    :return: log
+    """
+    d = datetime_gen(date)
+    signing_list = StudentStudySigning.objects.filter(date=d, sign=True)
+    for signing in signing_list:
+        student = signing.owner
+
+        # Bank
+        bank = StudentStudyBank.objects.get(owner=student)
+        bank.balance = bank.balance - 1
+        bank.save()
+
+        # Bank log
+        StudentStudyBankLog.objects.create(
+            owner=student,
+            balance=-1,
+            money=0,
+            note='自習'
+        )
+
+    result = {
+        'log': 'done'
+    }
+
+    return result
+
+
+def course_bank_settlement_by_date(date):
+    """
+    Update the student's course bank by the signing table.
+    :param date: 
+    :return: log
+    """
+    d = datetime_gen(date)
+    signing_list = StudentCourseSigning.objects.filter(date=d, sign=True)
+    for signing in signing_list:
+        student = signing.owner
+        course = signing.course
+
+        # Bank
+        bank = StudentCourseBank.objects.get(owner=student, course=course)
+        bank.balance = bank.balance - 1
+        bank.save()
+
+        # Bank log
+        StudentCourseBankLog.objects.create(
+            owner=student,
+            course=course,
+            balance=-1,
+            money=0,
+            note='上課'
+        )
+
+    result = {
+        'log': 'done'
     }
 
     return result
