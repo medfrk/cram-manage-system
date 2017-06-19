@@ -13,6 +13,7 @@ class StudentPlanSerializer(serializers.ModelSerializer):
             'subject',
             'range',
             'need_quiz',
+            'print_out',
             'score',
             'finish_quiz',
             'finish',

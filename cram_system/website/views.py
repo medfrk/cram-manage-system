@@ -146,3 +146,18 @@ def bank_log_for_study_view(requests):
 @api_view(['GET'])
 def student_note_more_view(requests):
     return render(request=requests, template_name='student_note_more.html')
+
+
+@api_view(['GET'])
+def plan_to_print_view(requests):
+    return render(request=requests, template_name='plan_to_print.html')
+
+
+@api_view(['GET'])
+def quiz_to_print_view(requests):
+    return render(request=requests, template_name='quiz_to_print.html')
+
+
+@api_view(['GET'])
+def note_course_by_date_view(requests):
+    return render(request=requests, template_name='note_course_by_date.html')

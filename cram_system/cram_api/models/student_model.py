@@ -253,6 +253,7 @@ class StudentQuiz(models.Model):
         default='math',
     )
     range = models.CharField(max_length=200, default="")
+    print_out = models.BooleanField(default=False)
     finish = models.BooleanField(default=False)
     score = models.CharField(max_length=3, default="")
     note = models.CharField(max_length=200, default="")
@@ -285,6 +286,7 @@ class StudentPlan(models.Model):
     )
     range = models.CharField(max_length=200, default="")
     need_quiz = models.BooleanField(default=False)
+    print_out = models.BooleanField(default=False)
     score = models.CharField(max_length=3, default="")
     finish_quiz = models.BooleanField(default=False)
     finish = models.BooleanField(default=False)

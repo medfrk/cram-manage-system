@@ -4,8 +4,10 @@ from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
 
-from cram_api.models.course_model import CourseNote, Course
-from cram_api.models.student_model import StudentNote, Student
+from cram_api.models.course_model import Course
+from cram_api.models.student_model import Student
+
+from cram_api.services.note import *
 
 
 class CreateCourseNote(generics.CreateAPIView):
@@ -87,3 +89,23 @@ class GetStudentNote(generics.RetrieveAPIView):
         }
 
         return Response(result)
+
+
+class GetStudentNoteByDate(generics.RetrieveAPIView):
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = StudentNote.objects.all()
+
+    def get(self, request, date, format=None):
+        content = get_student_note_by_date(date)
+        return Response(content)
+
+
+class GetCourseNoteByDate(generics.RetrieveAPIView):
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,
+                          permissions.IsAuthenticated,)
+    queryset = CourseNote.objects.all()
+
+    def get(self, request, date, format=None):
+        content = get_course_note_by_date(date)
+        return Response(content)

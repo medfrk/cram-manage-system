@@ -30,6 +30,9 @@ urlpatterns = [
     url(r'^bank_log_for_meals/$', views.bank_log_for_meals_view),
     url(r'^bank_log_for_study/$', views.bank_log_for_study_view),
     url(r'^student_note_more/$', views.student_note_more_view),
+    url(r'^plan_to_print/$', views.plan_to_print_view),
+    url(r'^quiz_to_print/$', views.quiz_to_print_view),
+    url(r'^note_course_by_date/$', views.note_course_by_date_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

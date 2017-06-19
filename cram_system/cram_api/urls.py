@@ -7,6 +7,7 @@ from cram_api.views import student_with_meals
 from cram_api.views import study_view
 from cram_api.views import note_view
 from cram_api.views import bank_view
+from cram_api.views import examination_paper_view
 
 
 urlpatterns = [
@@ -15,6 +16,9 @@ urlpatterns = [
     url(r'^api/v1.0/course_bank/create/all/$', student_with_course.StudentCreateAllStudentBank.as_view()),
     url(r'^api/v1.0/study_bank/settlement/$', bank_view.StudyBankSettlement.as_view()),
     url(r'^api/v1.0/course_bank/settlement/$', bank_view.CourseBankSettlement.as_view()),
+    url(r'^api/v1.0/plan_to_print/(?P<subject>[a-z]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
+        r'0-9]+[-][0-9]+)/$', examination_paper_view.GetPlansBySubjectAndDateRange.as_view()),
+    url(r'^api/v1.0/quiz_to_print/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)', examination_paper_view.GetQuizzesByDate.as_view()),
     url(r'^api/v1.0/basic/account/$', account_view.AccountList.as_view()),
     url(r'^api/v1.0/basic/account/(?P<pk>[0-9]+)/$', account_view.AccountDetail.as_view()),
     url(r'^api/v1.0/basic/course/$', course_view.CourseList.as_view()),
@@ -128,6 +132,8 @@ urlpatterns = [
     url(r'^api/v1.0/bank/course/(?P<course_id>[0-9]+)/(?P<student_id>[0-9]+)/$', bank_view.GetCourseBank.as_view()),
     url(r'^api/v1.0/student_course/(?P<student_id>[0-9]+)/$', student_with_course.GetCourseListByStudentId.as_view()),
     url(r'^api/v1.0/note/get/student/(?P<student_id>[0-9]+)/(?P<number>[0-9]+)/$', note_view.GetStudentNote.as_view()),
+    url(r'^api/v1.0/note/get_by_date/student/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$', note_view.GetStudentNoteByDate.as_view()),
+    url(r'^api/v1.0/note/get_by_date/course/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$', note_view.GetCourseNoteByDate.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

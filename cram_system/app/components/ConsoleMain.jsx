@@ -121,6 +121,12 @@ class ConsoleMain extends React.Component {
       'width': '40%'
     }
 
+    const btn_plan_to_print = <a className="btn btn-primary btn-lg" href="/plan_to_print/" style={btnStyle}>讀書計畫</a>
+    const btn_quiz_to_print = <a className="btn btn-primary btn-lg pull-right" href="/quiz_to_print/" style={btnStyle}>隔天小考</a>
+
+    const btn_course_note = <a className="btn btn-primary btn-lg" href="/note_course_by_date/" style={btnStyle}>課程</a>
+    const btn_student_note = <a className="btn btn-primary btn-lg pull-right" href="/note_student_by_date/" style={btnStyle}>自習</a>
+
     const btn_create_course_signing = this.state.create_course_signing_done ?
       <a className="btn btn-primary btn-lg" style={btnStyle} onClick={() => {this.handleCreateCourseSigning()} }>課程</a> :
       <a className="btn btn-primary btn-lg disabled" style={btnStyle}>課程</a>
@@ -140,6 +146,20 @@ class ConsoleMain extends React.Component {
     return (
       <div className="container">
         <div className="page-header" id="banner"> </div>
+        <div>
+          <div className="row"><h3 style={hStyle}>需要印的考卷們</h3></div>
+          <div className="row">
+            {btn_plan_to_print}
+            {btn_quiz_to_print}
+          </div>
+        </div>
+        <div>
+          <div className="row"><h3 style={hStyle}>查詢回報</h3></div>
+          <div className="row">
+            {btn_course_note}
+            {btn_student_note}
+          </div>
+        </div>
         <div>
           <div className="row"><h3 style={hStyle}>產生今日點名表</h3></div>
           <div className="row">

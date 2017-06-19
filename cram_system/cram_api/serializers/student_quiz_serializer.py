@@ -12,6 +12,7 @@ class StudentQuizSerializer(serializers.ModelSerializer):
             'date',
             'subject',
             'range',
+            'print_out',
             'finish',
             'score',
             'note',
