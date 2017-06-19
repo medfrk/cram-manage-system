@@ -6,6 +6,7 @@ class QuizToPrintMain extends React.Component {
   constructor() {
     super();
 
+    this.getSubject = this.getSubject.bind(this);
     this.getQuizToPrint = this.getQuizToPrint.bind(this);
     this.checkStatus = this.checkStatus.bind(this);
     this.parseJSON = this.parseJSON.bind(this);
@@ -34,6 +35,22 @@ class QuizToPrintMain extends React.Component {
       dateTime: date,
       quizzes: [],
       list: [],
+    }
+  }
+
+  getSubject(subject) {
+    switch (subject) {
+      case 'chinese': return '國文'
+      case 'english': return '英文'
+      case 'math': return '數學'
+      case 'physics': return '物理'
+      case 'chemistry': return '化學'
+      case 'biology': return '生物'
+      case 'earth_science': return '地科'
+      case 'geography': return '地理'
+      case 'history': return '歷史'
+      case 'civil_ethics_education': return '公民'
+      default: return 'no match'
     }
   }
 
@@ -85,6 +102,7 @@ class QuizToPrintMain extends React.Component {
           owner_grade={quiz['owner_grade']}
           owner_school={quiz['owner_school']}
           quiz_date={quiz['quiz_date']}
+          quiz_subject={this.getSubject(quiz['subject'])}
           quiz_range={quiz['quiz_range']}
           quiz_note={quiz['quiz_note']}
           print_out={quiz['print_out']}
@@ -123,6 +141,7 @@ class QuizToPrintMain extends React.Component {
                 <th>日期</th>
                 <th>年級</th>
                 <th>學校</th>
+                <th>科目</th>
                 <th>範圍</th>
                 <th>備註</th>
                 <th>出卷</th>

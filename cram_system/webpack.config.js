@@ -31,6 +31,7 @@ module.exports = {
     app_plan_to_print: './app/app_plan_to_print.jsx',
     app_quiz_to_print: './app/app_quiz_to_print.jsx',
     app_note_course_by_date: './app/app_note_course_by_date.jsx',
+    app_note_student_by_date: './app/app_note_student_by_date.jsx',
   },
   output: {
     path: path.join(__dirname, "/static/js/bundle"),
@@ -108,6 +109,9 @@ module.exports = {
       NoteCourseByDateRow: 'app/components/notes/NoteCourseByDateRow.jsx',
       NoteStudent: 'app/components/notes/NoteStudent.jsx',
       NoteStudentMain: 'app/components/notes/NoteStudentMain.jsx',
+      NoteStudentByDate: 'app/components/notes/NoteStudentByDate.jsx',
+      NoteStudentByDateMain: 'app/components/notes/NoteStudentByDateMain.jsx',
+      NoteStudentByDateRow: 'app/components/notes/NoteStudentByDateRow.jsx',
       StudentDashboard: 'app/components/student/StudentDashboard.jsx',
       StudentDashboardMain: 'app/components/student/StudentDashboardMain.jsx',
       StudentBasicInfo: 'app/components/student/StudentBasicInfo.jsx',

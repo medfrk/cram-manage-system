@@ -58,6 +58,7 @@ def get_quizzes_by_date(date):
             "owner_grade": quiz.owner.grade,
             "owner_school": quiz.owner.school,
             "quiz_date": quiz.date,
+            "subject": quiz.subject,
             "quiz_range": quiz.range,
             "quiz_note": quiz.note,
             "print_out": quiz.print_out,

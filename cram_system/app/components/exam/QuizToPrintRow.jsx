@@ -72,6 +72,7 @@ class QuizToPrintRow extends React.Component {
         <td>{this.props.quiz_date}</td>
         <td>{this.props.owner_grade}</td>
         <td>{this.props.owner_school}</td>
+        <td>{this.props.quiz_subject}</td>
         <td>{this.props.quiz_range}</td>
         <td>{this.props.quiz_note}</td>
         <td>{done_cancel_button}</td>
