@@ -119,3 +119,12 @@ class CreateAllStudentStudyBank(generics.RetrieveAPIView):
     def get(self, request, format=None):
         content = create_all_student_bank()
         return Response(content)
+
+
+class GetStudySigningInfoByStudentIdAndDate(generics.RetrieveAPIView):
+    """
+    Get the daily report.
+    """
+    def get(self, request, student_id, date, format=None):
+        content = get_study_signing_info_by_student_id_and_date(student_id, date)
+        return Response(content)

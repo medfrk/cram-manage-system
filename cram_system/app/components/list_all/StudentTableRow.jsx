@@ -16,7 +16,16 @@ class StudentTableRow extends React.Component {
   }
 
   render() {
-    var manage_button = <a href="/student_dashboard/" className="btn btn-primary btn-xs" onClick={() => {this.setLocalStorage()}}>Manage</a>
+    var manage_button = (
+      <div className="btn-group">
+        <a href="#" className="btn btn-primary btn-xs">Manage</a>
+        <a href="#" className="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span className="caret"></span></a>
+        <ul className="dropdown-menu">
+          <li><a href="/student_dashboard/" onClick={() => {this.setLocalStorage()}}>基本資料</a></li>
+          <li><a href="/study_summary/" onClick={() => {this.setLocalStorage()}}>自習報表</a></li>
+        </ul>
+      </div>
+    )
 
     return(
       <tr>

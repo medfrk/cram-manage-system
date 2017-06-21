@@ -169,7 +169,7 @@ class StudentNote(models.Model):
     )
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
     kind = models.CharField(
-        max_length=8,
+        max_length=10,
         choices=KIND_CHOICES,
         default='normal',
     )

@@ -11,6 +11,7 @@ from cram_api.views import examination_paper_view
 
 
 urlpatterns = [
+    url(r'^api/v1.0/study_report/(?P<student_id>[0-9]+)/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$', student_with_study.GetStudySigningInfoByStudentIdAndDate.as_view()),
     url(r'^api/v1.0/study_bank/create/all/$', student_with_study.CreateAllStudentStudyBank.as_view()),
     url(r'^api/v1.0/meals_bank/create/all/$', student_with_meals.CreateAllStudentMealsBank.as_view()),
     url(r'^api/v1.0/course_bank/create/all/$', student_with_course.StudentCreateAllStudentBank.as_view()),
@@ -18,7 +19,7 @@ urlpatterns = [
     url(r'^api/v1.0/course_bank/settlement/$', bank_view.CourseBankSettlement.as_view()),
     url(r'^api/v1.0/plan_to_print/(?P<subject>[a-z]+)/(?P<date_start>[0-9]+[-][0-9]+[-][0-9]+)/(?P<date_end>[0-9]+[-]['
         r'0-9]+[-][0-9]+)/$', examination_paper_view.GetPlansBySubjectAndDateRange.as_view()),
-    url(r'^api/v1.0/quiz_to_print/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)', examination_paper_view.GetQuizzesByDate.as_view()),
+    url(r'^api/v1.0/quiz_to_print/(?P<date>[0-9]+[-][0-9]+[-][0-9]+)/$', examination_paper_view.GetQuizzesByDate.as_view()),
     url(r'^api/v1.0/basic/account/$', account_view.AccountList.as_view()),
     url(r'^api/v1.0/basic/account/(?P<pk>[0-9]+)/$', account_view.AccountDetail.as_view()),
     url(r'^api/v1.0/basic/course/$', course_view.CourseList.as_view()),

@@ -166,3 +166,8 @@ def note_course_by_date_view(requests):
 @api_view(['GET'])
 def note_student_by_date_view(requests):
     return render(request=requests, template_name='note_student_by_date.html')
+
+
+@api_view(['GET'])
+def study_summary_view(requests):
+    return render(request=requests, template_name='study_summary.html')

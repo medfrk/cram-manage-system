@@ -1,5 +1,6 @@
 from django.utils import timezone
-from cram_api.models.student_model import Student, StudentStudy, StudentStudySigning, StudentStudyBank, StudentPlan, StudentQuiz
+from cram_api.models.student_model import Student, StudentStudy, StudentStudySigning, \
+    StudentStudyBank, StudentPlan, StudentQuiz, StudentNote
 from datetime import timedelta
 
 """
@@ -362,3 +363,76 @@ def create_all_student_bank():
         'status': 'success',
     }
     return result
+
+
+def get_study_signing_info_by_student_id_and_date(student_id, date):
+    d = datetime_gen(date)
+    filter_start = d - timedelta(0)
+    filter_end = d + timedelta(1)
+    student = Student.objects.get(id=student_id)
+    signing = StudentStudySigning.objects.get(owner=student, date=d)
+    note_list = StudentNote.objects.filter(owner=student, created_at__range=[filter_start, filter_end]).order_by('owner', '-created_at')
+    quiz_list = StudentQuiz.objects.filter(owner=student, date=d)
+    plan_list = StudentPlan.objects.filter(owner=student, date=d)
+
+    note_content = []
+    for note in note_list:
+        obj = {
+            'owner_name': note.owner.name,
+            'kind': note.kind,
+            'content': note.content,
+            'created_by': note.created_by,
+            'created_at': note.created_at,
+        }
+        note_content.append(obj)
+
+    quiz_content = []
+    for quiz in quiz_list:
+        obj = {
+            'subject': quiz.subject,
+            'range': quiz.range,
+            'note': quiz.note,
+            'score': quiz.score,
+            'finish': quiz.finish,
+            'updated_at': quiz.updated_at,
+        }
+        quiz_content.append(obj)
+
+    plan_content = []
+    for plan in plan_list:
+        obj = {
+            'subject': plan.subject,
+            'range': plan.range,
+            'need_quiz': plan.need_quiz,
+            'note': plan.note,
+            'score': plan.score,
+            'finish': plan.finish,
+            'updated_at': plan.updated_at,
+        }
+        plan_content.append(obj)
+
+    result = {
+        'student_name': student.name,
+        'signing_report': {
+            'finish_previous': signing.finish_previous,
+            'sign': signing.sign,
+            'sign_at': signing.sign_at,
+            'create_quiz': signing.have_create_quiz,
+            'create_quiz_at': signing.create_quiz_at,
+            'finish_homework': signing.finish_homework,
+            'finish_homework_at': signing.finish_homework_at,
+            'finish_quiz': signing.finish_quiz,
+            'finish_quiz_at': signing.finish_quiz_at,
+            'finish_plan': signing.finish_plan,
+            'finish_plan_at': signing.finish_plan_at,
+            'left': signing.left,
+            'left_at': signing.left_at,
+        },
+        'note_report': note_content,
+        'quiz_report': quiz_content,
+        'plan_report': plan_content,
+    }
+
+    return result
+
+

@@ -32,6 +32,7 @@ module.exports = {
     app_quiz_to_print: './app/app_quiz_to_print.jsx',
     app_note_course_by_date: './app/app_note_course_by_date.jsx',
     app_note_student_by_date: './app/app_note_student_by_date.jsx',
+    app_study_summary: './app/app_study_summary.jsx',
   },
   output: {
     path: path.join(__dirname, "/static/js/bundle"),
@@ -137,6 +138,11 @@ module.exports = {
       QuizToPrint: 'app/components/exam/QuizToPrint.jsx',
       QuizToPrintMain: 'app/components/exam/QuizToPrintMain.jsx',
       QuizToPrintRow: 'app/components/exam/QuizToPrintRow.jsx',
+      NoteRow: 'app/components/summary/NoteRow.jsx',
+      PlanRow: 'app/components/summary/PlanRow.jsx',
+      QuizRow: 'app/components/summary/QuizRow.jsx',
+      StudySummary: 'app/components/summary/StudySummary.jsx',
+      StudySummaryMain: 'app/components/summary/StudySummaryMain.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

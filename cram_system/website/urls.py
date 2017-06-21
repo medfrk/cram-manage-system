@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^quiz_to_print/$', views.quiz_to_print_view),
     url(r'^note_course_by_date/$', views.note_course_by_date_view),
     url(r'^note_student_by_date/$', views.note_student_by_date_view),
+    url(r'^study_summary/$', views.study_summary_view),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
