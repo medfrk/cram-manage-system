@@ -214,7 +214,7 @@ class StudySummaryMain extends React.Component {
           note={quiz['note']}
           score={quiz['score']}
           finish={quiz['finish'] ? '完成' : '未完成'}
-          updated_at={quiz['updated_at']}
+          updated_at={quiz['finish'] ? quiz['updated_at'] : ' '}
         />
       )
     });
@@ -235,7 +235,7 @@ class StudySummaryMain extends React.Component {
           note={plan['note']}
           score={plan['need_quiz'] ? plan['score'] : '--'}
           finish={plan['finish'] ? '完成' : '未完成'}
-          updated_at={plan['updated_at']}
+          updated_at={plan['finish'] ? plan['updated_at'] : ' '}
         />
       )
     });

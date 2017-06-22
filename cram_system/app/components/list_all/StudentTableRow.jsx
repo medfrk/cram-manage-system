@@ -13,6 +13,7 @@ class StudentTableRow extends React.Component {
 
   setLocalStorage() {
     localStorage.setItem('student_id', this.props.student_id);
+    localStorage.setItem('student_name', this.props.student_name);
   }
 
   render() {
@@ -23,6 +24,7 @@ class StudentTableRow extends React.Component {
         <ul className="dropdown-menu">
           <li><a href="/student_dashboard/" onClick={() => {this.setLocalStorage()}}>基本資料</a></li>
           <li><a href="/study_summary/" onClick={() => {this.setLocalStorage()}}>自習報表</a></li>
+          <li><a href="/note_student/" onClick={() => {this.setLocalStorage()}}>回報</a></li>
         </ul>
       </div>
     )
