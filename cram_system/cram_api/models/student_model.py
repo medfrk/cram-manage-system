@@ -54,6 +54,9 @@ class StudentCourse(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
+    class Meta:
+        ordering = ('course', )
+
 
 class StudentCourseBank(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE,)
