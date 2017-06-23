@@ -82,6 +82,7 @@ class StudentCourseSigning(models.Model):
     date = models.DateField(default=timezone.now, editable=True)
     sign = models.BooleanField(default=False)
     leave = models.BooleanField(default=False)
+    settlement = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 
@@ -149,6 +150,7 @@ class StudentStudySigning(models.Model):
     finish_plan = models.BooleanField(default=False)
     left_at = models.TimeField(default=timezone.now, auto_now=False, auto_now_add=False)
     left = models.BooleanField(default=False)
+    settlement = models.BooleanField(default=False)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, blank=True)
 

@@ -173,8 +173,11 @@ def study_bank_settlement_by_date(date):
     :return: log
     """
     d = datetime_gen(date)
-    signing_list = StudentStudySigning.objects.filter(date=d, sign=True)
+    signing_list = StudentStudySigning.objects.filter(date=d, sign=True, settlement=False)
     for signing in signing_list:
+        signing.settlement = True
+        signing.save()
+
         student = signing.owner
 
         # Bank
@@ -204,8 +207,11 @@ def course_bank_settlement_by_date(date):
     :return: log
     """
     d = datetime_gen(date)
-    signing_list = StudentCourseSigning.objects.filter(date=d, sign=True)
+    signing_list = StudentCourseSigning.objects.filter(date=d, sign=True, settlement=False)
     for signing in signing_list:
+        signing.settlement = True
+        signing.save()
+
         student = signing.owner
         course = signing.course
 
