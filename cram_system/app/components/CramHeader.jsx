@@ -13,6 +13,10 @@ class CramHeader extends React.Component {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var day = today.getDay();
 
+    if (day==0){
+      day = 7
+    }
+
     localStorage.setItem('page_header', date + ' 自習學生列表');
     localStorage.setItem('api_url', '/api/v1.0/study_student/' + day + '/');
   }
