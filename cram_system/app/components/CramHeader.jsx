@@ -6,8 +6,28 @@ class CramHeader extends React.Component {
 
     this.setLocalStorageForCreateStudentNoteTable = this.setLocalStorageForCreateStudentNoteTable.bind(this);
   }
-
-
+	isNotLogin(){
+	  return (
+	    <li>
+	      <a href="login?next=/">登入
+	      </a>
+	    </li>
+	);}
+	isLogin(){
+	  return (
+	    <li>
+	      <a href="logout?next=/">登出
+	      </a>
+	    </li>
+	);}
+	helloUser(){
+	  return this.props.loginState==="true" ? (
+	      <li>
+	        <a href="#">Hi! {this.props.userName}
+	        </a>
+	      </li>
+	    ) : null ;
+	}
   setLocalStorageForCreateStudentNoteTable() {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -54,6 +74,8 @@ class CramHeader extends React.Component {
                 </ul>
               </li>
               <li><a href="/console/">Manage</a></li>
+							{ this.helloUser() }
+							{ this.props.loginState==="true" ? this.isLogin() : this.isNotLogin() }
             </ul>
           </div>
         </div>

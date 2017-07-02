@@ -7,7 +7,7 @@ class QuizCreate extends React.Component {
   render() {
     return (
       <div>
-        <CramHeader />
+        <CramHeader loginState={this.props.loginState} userName={this.props.userName}/>
         <QuizCreateMain />
         <CramFooter />
       </div>
