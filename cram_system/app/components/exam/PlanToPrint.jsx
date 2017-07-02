@@ -7,7 +7,7 @@ class PlanToPrint extends React.Component {
   render() {
     return (
       <div>
-        <CramHeader />
+        <CramHeader loginState={this.props.loginState} userName={this.props.userName} />
         <PlanToPrintMain />
         <CramFooter />
       </div>
