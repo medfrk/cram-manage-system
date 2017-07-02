@@ -7,7 +7,7 @@ class StudySummary extends React.Component {
   render() {
     return (
       <div>
-        <CramHeader />
+        <CramHeader loginState={this.props.loginState} userName={this.props.userName} />
         <StudySummaryMain />
         <CramFooter />
       </div>
