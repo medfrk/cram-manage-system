@@ -3,8 +3,7 @@ var ReactDOM = require('react-dom');
 var Index = require('Index');
 
 const app_element = document.getElementById('app');
-const app_element = document.getElementById('app');
-ReReact.createElement(ctDOM, {loginState: app_element.getAttribute("loginState"), userName: app_element.getAttribute("userName")}),
-  app_element
+ReactDOM.render(
+  React.createElement(Index, {loginState: app_element.getAttribute("loginState"), userName: app_element.getAttribute("userName")}),
   app_element
 );
